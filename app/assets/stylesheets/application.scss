@@ -71,6 +71,9 @@ table{
 	@extend .navbar-dark;
 	border-radius:0px;
 }
+#collapsibleNavbar{
+	background: #343a40 !important
+}
 
 #minFullBrowserContainer{
 	min-height:100%;
