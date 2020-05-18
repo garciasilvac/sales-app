@@ -1,0 +1,54 @@
+<p>
+  <strong>Street:</strong>
+  <%= @adress.street %>
+</p>
+
+<p>
+  <strong>Str number:</strong>
+  <%= @adress.str_number %>
+</p>
+
+<p>
+  <strong>Adr unit:</strong>
+  <%= @adress.adr_unit %>
+</p>
+
+<p>
+  <strong>Adr other:</strong>
+  <%= @adress.adr_other %>
+</p>
+
+<p>
+  <strong>Adr zip:</strong>
+  <%= @adress.adr_zip %>
+</p>
+
+<p>
+  <strong>Adr county:</strong>
+  <%= @adress.adr_county %>
+</p>
+
+<p>
+  <strong>Adr state:</strong>
+  <%= @adress.adr_state %>
+</p>
+
+<p>
+  <strong>Adr country:</strong>
+  <%= @adress.adr_country %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= @adress.created_at %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @adress.updated_at %>
+</p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_client_adress_path(@client,@adress) %>
+<%= link_to 'Back', client_adresses_path(@client) %>
+</div>

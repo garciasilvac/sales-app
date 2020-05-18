@@ -1,0 +1,24 @@
+<%= form_with(model: [@type,subtype], local: true) do |form| %>
+  <% if subtype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subtype.errors.count, "error") %> prohibited this subtype from being saved:</h2>
+
+      <ul>
+        <% subtype.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Name</span>
+  </div>
+  <%= form.text_field :name, class: "form-control", placeholder: "Type name..." %>
+</div>
+<br>
+  <div class="btn-group">
+    <%= form.submit %>
+  
+<% end %>

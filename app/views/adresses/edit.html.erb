@@ -1,0 +1,7 @@
+<h3>Editing Adress for <%=@client.first_name%> <%=@client.last_name%></h3>
+
+<%= render 'form', adress: @adress %>
+
+<%= link_to 'Show', [@client,@adress] %>
+<%= link_to 'Back', client_adresses_path(@client) %>
+</div>

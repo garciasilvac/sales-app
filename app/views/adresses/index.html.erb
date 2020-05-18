@@ -1,0 +1,52 @@
+<h3>Adresses of <%=@client.first_name%> <%=@client.last_name%></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Street</th>
+      <th>Str number</th>
+      <th>Adr unit</th>
+      <th>Adr other</th>
+      <th>Adr zip</th>
+      <th>Adr county</th>
+      <th>Adr state</th>
+      <th>Adr country</th>
+      <th>Created At</th>
+      <th>Updated at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @adresses.empty? %>
+      <tr>
+        <td colspan="13"> No adresses yet for <%=@client.first_name%> <%=@client.last_name%> :) </td>
+      </tr>
+    <% else %>
+    <% @adresses.each do |adress| %>
+      <tr>
+        <td><%= adress.street %></td>
+        <td><%= adress.str_number %></td>
+        <td><%= adress.adr_unit %></td>
+        <td><%= adress.adr_other %></td>
+        <td><%= adress.adr_zip %></td>
+        <td><%= adress.adr_county %></td>
+        <td><%= adress.adr_state %></td>
+        <td><%= adress.adr_country %></td>
+        <td><%= adress.created_at %></td>
+        <td><%= adress.updated_at %></td>
+        <td><%= link_to 'Show', [@client,adress] %></td>
+        <td><%= link_to 'Edit', edit_client_adress_path(@client, adress) %></td>
+        <td><%= link_to 'Destroy', [@client,adress], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="btn-group">
+<%= link_to 'New Adress', new_client_adress_path(@client) %>
+<%= link_to 'Back to Clients', clients_path %>
+</div>

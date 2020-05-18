@@ -1,0 +1,19 @@
+<p>
+  <strong>Product:</strong>
+  <%= @sale.products.find(@shopping_cart.product_id).name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @shopping_cart.product_q %>
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @shopping_cart.subtotal %>
+</p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_sale_shopping_cart_path(@sale,@shopping_cart) %>
+<%= link_to 'Back', sale_shopping_carts_path(@sale) %>
+</div>

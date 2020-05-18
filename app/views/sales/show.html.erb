@@ -1,0 +1,39 @@
+<p>
+  <strong>Sale datetime:</strong>
+  <%= @sale.sale_datetime %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @sale.client_id %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @sale.total_amount %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @sale.paid %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @sale.payment_type_id %>
+</p>
+
+<p>
+  <strong>Delivery type:</strong>
+  <%= @sale.delivery_type_id %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @sale.deleted %>
+</p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_sale_path(@sale) %>
+<%= link_to 'Back', sales_path %>
+</div>

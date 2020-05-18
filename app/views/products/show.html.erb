@@ -1,0 +1,24 @@
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Subtype:</strong>
+  <%= @product.subtype_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @product.deleted %>
+</p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_product_path(@product) %>
+<%= link_to 'Back', products_path %>
+</div>

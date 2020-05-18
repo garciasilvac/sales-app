@@ -1,0 +1,81 @@
+  <table>
+  	<tr>
+  		<td>
+  			<%= label(:client, :first_name) %>
+  		</td>
+  		<td>
+  			<%= @client.first_name %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :middle_name) %>
+  		</td>
+  		<td>
+  			<%= @client.middle_name %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :last_name) %>
+  		</td>
+  		<td>
+  			<%= @client.last_name %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :phone_number) %>
+  		</td>
+  		<td>
+  			<%= @client.phone_countrycode %> <%= @client.phone_number %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :email) %>
+  		</td>
+  		<td>
+  			 <%= @client.email %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :age) %>
+  		</td>
+  		<td>
+  			 <%= @client.age %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>
+  			<%= label(:client, :sex) %>
+  		</td>
+  		<td>
+  			 <%= @client.sex %>
+  		</td>
+  	</tr>
+  	  	<tr>
+  		<td>
+  			<%= label(:client, :created_at) %>
+  		</td>
+  		<td>
+  			 <%= @client.created_at %>
+  		</td>
+  	</tr>
+  	  	<tr>
+  		<td>
+  			<%= label(:client, :updated_at) %>
+  		</td>
+  		<td>
+  			 <%= @client.updated_at%>
+  		</td>
+  	</tr>
+  </table>
+
+<div class="btn-group">
+<%= link_to 'Show Adresses', client_adresses_path(@client) %> 
+
+<%= link_to 'Edit', edit_client_path(@client) %>
+<%= link_to 'Back', clients_path %>
+</div>

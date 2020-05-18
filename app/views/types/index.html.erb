@@ -1,0 +1,38 @@
+<h3>Types</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Deleted</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @types.empty? %>
+      <tr>
+        <td colspan="8"> No types yet :) </td>
+      </tr>
+    <% else %>
+    <% @types.each do |type| %>
+      <tr>
+        <td><%= type.name %></td>
+        <td><%= type.created_at %></td>
+        <td><%= type.updated_at %></td>
+        <td><%= type.deleted %></td>
+		    <td><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type) %></td>
+        <td><%= link_to 'Show', type_path(type) %></td>
+        <td><%= link_to 'Edit', edit_type_path(type) %></td>
+        <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Type', new_type_path %>

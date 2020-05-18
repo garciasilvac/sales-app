@@ -1,0 +1,26 @@
+<%= form_with(model: delivery_type, local: true) do |form| %>
+  <% if delivery_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delivery_type.errors.count, "error") %> prohibited this delivery_type from being saved:</h2>
+
+      <ul>
+        <% delivery_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Name</span>
+  </div>
+  <%= form.text_field :name, class: "form-control", placeholder: " Delivery type Name..." %>
+</div>
+
+<br>
+
+  <div class="btn-group">
+    <%= form.submit %>
+
+<% end %>

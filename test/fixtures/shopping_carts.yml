@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale: one
+  product: one
+  product_q: 1
+  deleted: false
+  subtotal: 
+
+two:
+  sale: two
+  product: two
+  product_q: 1
+  deleted: false
+  subtotal: 

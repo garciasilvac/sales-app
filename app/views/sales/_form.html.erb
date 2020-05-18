@@ -1,0 +1,65 @@
+<%= form_with(model: sale, local: true) do |form| %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+        <% sale.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!--  <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">< :sale_datetime.to_s.humanize %></span>
+      </div>
+      < form.datetime_select :sale_datetime, class: "form-control", required: true %>
+    </div>
+-->
+                
+
+  <div class="container input-container">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-calendar-alt"> <%= :sale_datetime.to_s.humanize %></i></span>
+      </div>
+      <%= form.text_field :sale_datetime, class: "form-control datetimepicker-input", id: "datetimepicker5", data: { toggle: "datetimepicker", target: "#datetimepicker5"}, required: true %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= :client_id.to_s.humanize %></span>
+      </div>
+      <%= form.collection_select(:client_id, Client.order(:last_name), :id, :full_name, {:include_blank => 'Client..'}, {:class => 'custom-select'})  %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= :paid.to_s.humanize %></span>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= form.check_box :paid, class: "form-check-input"%><%= :paid.to_s.humanize %>
+        </label>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= :payment_type_id.to_s.humanize %></span>
+      </div>
+      <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= :payment_type_id.to_s.humanize %></span>
+      </div>
+      <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => 'Delivery type...'}, {:class => 'custom-select'})  %>
+    </div>
+  </div>
+
+<br>
+  <div class="btn-group">
+        <%= button_tag type: 'submit' do %>
+        <i class="far fa-save"> Save</i>
+    <% end %>
+<% end %>

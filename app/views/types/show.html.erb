@@ -1,0 +1,25 @@
+<p>
+  <strong>Name:</strong>
+  <%= @type.name %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= @type.created_at %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @type.updated_at %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @type.deleted %>
+</p>
+
+<div class="btn-group">
+
+<%= link_to 'Edit', edit_type_path(@type) %>
+<%= link_to 'Back', types_path %>
+</div>

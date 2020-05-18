@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  street: MyString
+  str_number: 1
+  adr_unit: MyString
+  adr_other: MyString
+  adr_zip: 1
+  adr_county: MyString
+  adr_state: MyString
+  adr_country: MyString
+
+two:
+  street: MyString
+  str_number: 1
+  adr_unit: MyString
+  adr_other: MyString
+  adr_zip: 1
+  adr_county: MyString
+  adr_state: MyString
+  adr_country: MyString

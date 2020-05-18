@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @delivery_type.name %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @delivery_type.deleted %>
+</p>
+
+<div class="btn-group">
+<%= link_to 'Edit', edit_delivery_type_path(@delivery_type) %>
+<%= link_to 'Back', delivery_types_path %>
+</div>

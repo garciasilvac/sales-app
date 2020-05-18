@@ -1,0 +1,63 @@
+<h3><i class="fas fa-chart-line"> Sales</i></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sale datetime</th>
+      <th>Client</th>
+      <th>Total amount</th>
+      <th>Paid</th>
+      <th>Payment type</th>
+      <th>Delivery type</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @sales.empty? %>
+      <tr>
+        <td colspan="13"> No sales yet :) </td>
+      </tr>
+    <% else %>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.sale_datetime %></td>
+        <td><%= sale.client.full_name %></td>
+        <td><%= sale.total_amount %></td>
+        <td><% if sale.paid %>
+          <i class="fas fa-check-circle fa-2x" style="color:DarkGreen"></i>
+          <% else %>
+          <i class="fas fa-times-circle fa-2x" style="color:Tomato"></i>
+          <% end %>
+        </td>
+        <td><%= PaymentType.find(sale.payment_type_id).name %></td>
+        <td><%= DeliveryType.find(sale.delivery_type_id).name %></td>
+        <td><%= sale.created_at %></td>
+        <td><%= sale.updated_at %></td>
+        <td><%= link_to sale_shopping_carts_path(sale) do%>
+          <i class="fas fa-cart-plus"></i>
+          <% end %>
+        </td>
+        <td><%= link_to sale do %>
+          <i class="far fa-eye"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_sale_path(sale) do%>
+          <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td><%= link_to sale, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+          <i class="far fa-trash-alt"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to new_sale_path do %>
+<i class="fas fa-plus"> Sale</i>
+<% end %>

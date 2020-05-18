@@ -1,0 +1,44 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container input-container">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Name</span>
+  </div>
+  <%= form.text_field :name, class: "form-control", placeholder: "Product name. Example: Mermelada 250 grs...", required: true %>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Subtype</span>
+  </div>
+
+ <!--  form.collection_select(:subtype_id, @sorted_st, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>-->
+  <%= form.collection_select(:subtype_id, Subtype.all.sort_by {|st| [st.type.name, st.name]}, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>
+
+
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Price</span>
+  </div>
+  <%= form.number_field :price %>
+</div>
+
+<br>
+  <div class="btn-group">
+    <%= form.submit do%>
+    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    <% end %>
+ 
+<% end %>

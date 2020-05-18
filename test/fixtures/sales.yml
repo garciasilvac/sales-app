@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale_datetime: 2020-05-14 01:35:43
+  client: one
+  total_amount: 
+  paid: false
+  payment_type: one
+  delivery_type: one
+  deleted: false
+
+two:
+  sale_datetime: 2020-05-14 01:35:43
+  client: two
+  total_amount: 
+  paid: false
+  payment_type: two
+  delivery_type: two
+  deleted: false

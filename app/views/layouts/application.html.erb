@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pbutter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%= render 'layouts/application_alert_modal' %>
+  
+  	<div id="welcomeBanner">PYME VENTA PB</div>
+
+    <%= render 'layouts/application_navbar' %>
+
+  	<div id="subBody">
+   	 	<%= yield %>
+   	</div>
+
+    <%= render 'layouts/application_footer' %>
+
+  </body>
+</html>

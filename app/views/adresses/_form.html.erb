@@ -1,0 +1,49 @@
+<%= form_with(model: [@client, adress], local: true, class:"needs-validation") do |form| %>
+  <% if adress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(adress.errors.count, "error") %> prohibited this adress from being saved:</h2>
+
+      <ul>
+        <% adress.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="container input-container">
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Adress</span>
+  </div>
+  <%= form.text_field :street, class: "form-control", placeholder: "Street name. Example: Av. Matta...", required: true %>
+  <%= form.text_field :str_number, class: "form-control", placeholder: "Street number. Example: 1234", required: true %>
+  <%= form.text_field :adr_unit, class: "form-control", placeholder: "Unit. Example: 54" %>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Adress (other)</span>
+  </div>
+  <%= form.text_field :adr_other, class: "form-control", placeholder: "Additional info. Example: Block B..." %>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">County &amp; Zip Code</span>
+  </div>
+  <%= form.text_field :adr_county, class: "form-control", placeholder: "County. Example: Providencia...", required: true %>
+  <%= form.text_field :adr_zip, class: "form-control", placeholder: "Zip Code. Example: 7550000..." %>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">State &amp; Country</span>
+  </div>
+  <%= form.text_field :adr_state, class: "form-control", placeholder: "State. Example: RM...", required: true %>
+  <%= form.text_field :adr_country, class: "form-control", placeholder: "Country. Example: Chile...", required: true %>
+</div>
+</div>
+
+<br>
+<div class="btn-group">
+    <%= form.submit %>
+<% end %>

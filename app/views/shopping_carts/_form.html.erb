@@ -1,0 +1,34 @@
+<%= form_with(model: [@sale,shopping_cart], local: true) do |form| %>
+  <% if shopping_cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shopping_cart.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
+
+      <ul>
+        <% shopping_cart.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container input-container">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><%= :product_id.to_s.humanize %></span>
+    </div>
+    <%= form.collection_select(:product_id, Product.all, :id, :name, {:include_blank => 'Product..'}, {:class => 'custom-select'})  %>
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><%= :product_q.to_s.humanize %></span>
+    </div>
+    <%= form.number_field :product_q %>
+  </div>
+</div>
+
+<br>
+  <div class="btn-group">
+        <%= button_tag type: 'submit' do %>
+        <i class="far fa-save"> Save</i>
+    <% end %>
+<% end %>

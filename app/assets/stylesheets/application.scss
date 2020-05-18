@@ -1,0 +1,94 @@
+@import "bootstrap/scss/bootstrap";
+@import "tempusdominus-bootstrap-4.css";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body{
+width: 100%;
+min-height: 100%;
+}
+a, input[type=submit], button[type=submit]{
+	@extend .btn;
+	@extend .btn-sm;
+	@extend .btn-outline-primary;
+}
+.deleteBtn{
+	@extend .btn;
+	@extend .btn-sm;
+	@extend .btn-outline-danger;
+}
+table{
+	@extend .table;
+	@extend .table-sm;
+	@extend .table-hover;
+	@extend .table-bordered;
+	font-size: x-small;
+	thead{
+		@extend .thead-dark;
+	}
+	a, a.deleteBtn{
+		font-size: x-small;
+	}
+}
+
+
+//////////////////////////////
+
+
+////////////////////////////
+#welcomeBanner{
+	text-align: center;
+	font-size: 40px;
+	background-color: chocolate;
+}
+#mainMenu{
+	padding:0px;
+	height:50px;
+}
+#mainMenu ul{
+	padding:0px;
+	height:100%;
+
+}
+#mainMenu ul li{
+	margin-right: 10px;
+	height:100%;
+	a:hover{
+		background: black;
+	}
+}
+#mainMenu ul li a{
+	color: white;
+	background: none;
+	border:none;
+	border-radius:0px;
+	height:100%;
+}
+#mainMenu ul li a:hover{
+	background: black;
+}
+#mainMenu .dropdown-menu{
+	@extend .bg-dark;
+	@extend .navbar-dark;
+	border-radius:0px;
+}
+
+
+#subBody{
+padding: 20px;
+}
+
+#footer{
+	clear: both;
+    position: relative;
+	width:100%;
+	text-align: left;
+	font-size: 15px;
+	padding: 20px;
+	color: lightgrey;
+	background-color: darkslategrey;
+}
+
+//////// LAYOUT ALERTS /////// 
+
+////////////////////////////////
