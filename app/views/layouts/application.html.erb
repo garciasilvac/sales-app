@@ -12,15 +12,19 @@
 
   <body>
 
-    <%= render 'layouts/application_alert_modal' %>
-  
-  	<div id="welcomeBanner">PYME VENTA PB</div>
+    <div id="minFullBrowserContainer">
+      <div id="overflowContainer">
+        <%= render 'layouts/application_alert_modal' %>
+      
+      	<div id="welcomeBanner">PYME VENTA PB</div>
 
-    <%= render 'layouts/application_navbar' %>
+        <%= render 'layouts/application_navbar' %>
 
-  	<div id="subBody">
-   	 	<%= yield %>
-   	</div>
+      	<div id="subBody">
+       	 	<%= yield %>
+       	</div>
+      </div>
+    </div>
 
     <%= render 'layouts/application_footer' %>
 
