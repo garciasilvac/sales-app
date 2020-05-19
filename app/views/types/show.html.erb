@@ -19,7 +19,11 @@
 </p>
 
 <div class="btn-group">
-
-<%= link_to 'Edit', edit_type_path(@type) %>
-<%= link_to 'Back', types_path %>
+<%= link_to "Subtypes (#{@type.subtypes.count})", type_subtypes_path(@type)%>
+<%= link_to edit_type_path(@type) do%>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
+<%= link_to types_path do%>
+  <i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

@@ -2,6 +2,10 @@
 
 <%= render 'form', subtype: @subtype %>
 
-<%= link_to 'Show', [@type,@subtype] %>
-<%= link_to 'Back', type_subtypes_path(@type) %>
+<%= link_to [@type,@subtype] do%>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to type_subtypes_path(@type) do%>
+<i class="fas fa-undo"> Back</i>
+<% end %>
 </div>

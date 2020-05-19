@@ -2,5 +2,7 @@
 
 <%= render 'form', delivery_type: @delivery_type %>
 
-<%= link_to 'Back', delivery_types_path %>
+<%= link_to delivery_types_path do%>
+<i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

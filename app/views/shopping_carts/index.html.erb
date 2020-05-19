@@ -1,5 +1,6 @@
 <h3>Items for this sale</h3>
 
+<div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
@@ -18,9 +19,18 @@
         <td><%= @sale.products.find(shopping_cart.product_id).price %></td>
         <td><%= shopping_cart.product_q %></td>
         <td><%= shopping_cart.subtotal %></td>
-        <td><%= link_to 'Show', [@sale,shopping_cart] %></td>
-        <td><%= link_to 'Edit', edit_sale_shopping_cart_path(@sale,shopping_cart) %></td>
-        <td><%= link_to 'Destroy', [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to [@sale,shopping_cart] do%>
+           <i class="far fa-info-circle" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart) do%>
+           <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td><%= link_to [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+             <i class="far fa-trash-alt"></i>
+            <% end %>
+        </td>
       </tr>
     <% end %>
     <tr>
@@ -31,10 +41,15 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 
 <br>
 <div class="btn-group">
-<%= link_to 'New Item', new_sale_shopping_cart_path %>
-<%= link_to 'Back to Sales', sales_path %>
+<%= link_to new_sale_shopping_cart_path do%>
+<i class="fa fa-plus" aria-hidden="true"> Item</i>
+      <% end %>
+<%= link_to sales_path do%>
+<i class="fas fa-undo"> Sales</i>
+<% end %>
 </div>

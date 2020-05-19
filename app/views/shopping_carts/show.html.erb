@@ -14,6 +14,10 @@
 </p>
 
 <div class="btn-group">
-<%= link_to 'Edit', edit_sale_shopping_cart_path(@sale,@shopping_cart) %>
-<%= link_to 'Back', sale_shopping_carts_path(@sale) %>
+<%= link_to edit_sale_shopping_cart_path(@sale,@shopping_cart) do%>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
+<%= link_to sale_shopping_carts_path(@sale) do%>
+  <i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

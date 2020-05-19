@@ -2,6 +2,10 @@
 
 <%= render 'form', adress: @adress %>
 
-<%= link_to 'Show', [@client,@adress] %>
-<%= link_to 'Back', client_adresses_path(@client) %>
+<%= link_to [@client,@adress] do%>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to client_adresses_path(@client) do%>
+<i class="fas fa-undo"> Back</i>
+<% end %>
 </div>

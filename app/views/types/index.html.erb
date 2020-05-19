@@ -1,5 +1,6 @@
 <h3>Types</h3>
 
+<div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
@@ -23,15 +24,25 @@
         <td><%= type.created_at %></td>
         <td><%= type.updated_at %></td>
         <td><%= type.deleted %></td>
-		    <td><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type) %></td>
-        <td><%= link_to 'Show', type_path(type) %></td>
-        <td><%= link_to 'Edit', edit_type_path(type) %></td>
-        <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		    <td><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type)%></td>
+        <td><%= link_to type_path(type) do%>
+           <i class="far fa-info-circle" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_type_path(type) do%>
+          <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td><%= link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+             <i class="far fa-trash-alt"></i>
+            <% end %>
+        </td>
       </tr>
     <% end %>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 

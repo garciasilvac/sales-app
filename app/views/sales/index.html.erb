@@ -1,5 +1,6 @@
 <h3><i class="fas fa-chart-line"> Sales</i></h3>
 
+<div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
@@ -37,11 +38,11 @@
         <td><%= sale.created_at %></td>
         <td><%= sale.updated_at %></td>
         <td><%= link_to sale_shopping_carts_path(sale) do%>
-          <i class="fas fa-cart-plus"></i>
+          <i class="fas fa-cart-plus"> (<%=sale.shopping_carts.count%>)</i>
           <% end %>
         </td>
         <td><%= link_to sale do %>
-          <i class="far fa-eye"></i>
+          <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
         <td><%= link_to edit_sale_path(sale) do%>
@@ -57,6 +58,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <%= link_to new_sale_path do %>
 <i class="fas fa-plus"> Sale</i>

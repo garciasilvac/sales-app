@@ -1,5 +1,6 @@
 <h3>Subtypes of <%=@type.name%></h3>
 
+<div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
@@ -18,15 +19,29 @@
         <td><%= subtype.created_at %></td>
         <td><%= subtype.updated_at %></td>
         <td><%= subtype.deleted %></td>
-        <td><%= link_to 'Show', [@type,subtype] %></td>
-        <td><%= link_to 'Edit', edit_type_subtype_path(@type,subtype) %></td>
-        <td><%= link_to 'Destroy', [@type,subtype], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to [@type,subtype] do%>
+           <i class="far fa-info-circle" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_type_subtype_path(@type,subtype) do%>
+          <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td><%= link_to [@type,subtype], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+            <i class="far fa-trash-alt"></i>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <div class="btn-group">
-<%= link_to 'New Subtype', new_type_subtype_path(@type) %>
-<%= link_to 'Back to Types', types_path %>
+<%= link_to new_type_subtype_path(@type) do%>
+<i class="fa fa-plus" aria-hidden="true"> Subtype</i>
+<%end%>
+<%= link_to types_path do%>
+<i class="fas fa-undo"> Types</i>
+<%end%>
 </div>  

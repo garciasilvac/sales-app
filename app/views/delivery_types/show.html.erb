@@ -11,6 +11,10 @@
 </p>
 
 <div class="btn-group">
-<%= link_to 'Edit', edit_delivery_type_path(@delivery_type) %>
-<%= link_to 'Back', delivery_types_path %>
+<%= link_to edit_delivery_type_path(@delivery_type) do %>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
+<%= link_to delivery_types_path do%>
+  <i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

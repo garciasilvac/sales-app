@@ -2,6 +2,10 @@
 
 <%= render 'form', delivery_type: @delivery_type %>
 
-<%= link_to 'Show', @delivery_type %>
-<%= link_to 'Back', delivery_types_path %>
+<%= link_to @delivery_type do%>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to delivery_types_path do%>
+<i class="fas fa-undo"> Back</i>
+<% end %>
 </div>

@@ -2,5 +2,7 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Back', products_path %>
+<%= link_to products_path do%>
+<i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

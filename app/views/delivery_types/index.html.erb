@@ -1,5 +1,6 @@
-<h1>Delivery Types</h1>
+<h3>Delivery Types</h3>
 
+<div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
@@ -12,12 +13,23 @@
     <% @delivery_types.each do |delivery_type| %>
       <tr>
         <td><%= delivery_type.name %></td>
-        <td><%= link_to 'Show', delivery_type %></td>
-        <td><%= link_to 'Edit', edit_delivery_type_path(delivery_type) %></td>
-        <td><%= link_to 'Destroy', delivery_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to delivery_type do%>
+            <i class="far fa-info-circle" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_delivery_type_path(delivery_type) do%>
+            <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td><%= link_to delivery_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+            <i class="far fa-trash-alt"></i>
+            <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Delivery Type', new_delivery_type_path %>
+</div>
+<%= link_to new_delivery_type_path do%>
+<i class="fa fa-plus" aria-hidden="true"> Delivery Type</i>
+      <% end %>

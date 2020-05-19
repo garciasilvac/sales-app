@@ -2,6 +2,10 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %>
-<%= link_to 'Back', products_path %>
+<%= link_to @product do%>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to products_path do%>
+<i class="fas fa-undo"> Back</i>
+<% end %>
 </div>

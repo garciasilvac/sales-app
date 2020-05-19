@@ -2,5 +2,7 @@
 
 <%= render 'form', adress: @adress %>
 
-<%= link_to 'Back', client_adresses_path(@client) %>
+<%= link_to client_adresses_path(@client) do%>
+<i class="fas fa-undo"> Back</i>
+<%end%>
 </div>

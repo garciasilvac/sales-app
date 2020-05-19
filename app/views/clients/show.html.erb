@@ -74,8 +74,14 @@
   </table>
 
 <div class="btn-group">
-<%= link_to 'Show Adresses', client_adresses_path(@client) %> 
+<%= link_to client_adresses_path(@client) do%> 
+<i class="fa fa-home" aria-hidden="true"> (<%=@client.adresses.count%>)</i>
+<%end%>
+<%= link_to edit_client_path(@client) do%>
+  <i class="fas fa-pencil-alt"></i>
+<% end %>
+<%= link_to clients_path do%>
+  <i class="fas fa-undo"> Back</i>
+<%end%>
 
-<%= link_to 'Edit', edit_client_path(@client) %>
-<%= link_to 'Back', clients_path %>
 </div>
