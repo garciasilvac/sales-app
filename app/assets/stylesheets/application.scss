@@ -1,7 +1,11 @@
 @import "bootstrap/scss/bootstrap";
-@import "tempusdominus-bootstrap-4.css";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.dark-mode {
+	@extend .bg-dark;
+  	color: white;
+ }
 
 html, body{
 height: 100%;
@@ -16,6 +20,9 @@ a, input[type=submit], button[type=submit]{
 	@extend .btn-sm;
 	@extend .btn-outline-danger;
 }
+.table-responsive-fixed{
+	overflow-x:scroll;
+}
 table{
 	@extend .table;
 	@extend .table-sm;
@@ -29,6 +36,11 @@ table{
 		font-size: x-small;
 	}
 }
+th,td{
+	@extend .align-middle;
+	display:table-cell;
+}
+
 
 
 //////////////////////////////
@@ -52,18 +64,15 @@ table{
 #mainMenu ul li{
 	margin-right: 10px;
 	height:100%;
-	a:hover{
-		background: black;
-	}
 }
-#mainMenu ul li a{
+#mainMenu a, #mainMenu label, #mainMenu .custom-switch{
 	color: white;
 	background: none;
 	border:none;
 	border-radius:0px;
 	height:100%;
 }
-#mainMenu ul li a:hover{
+#mainMenu a:hover{
 	background: black;
 }
 #mainMenu .dropdown-menu{
@@ -71,6 +80,10 @@ table{
 	@extend .navbar-dark;
 	border-radius:0px;
 }
+#mainMenu .nav-item-switch{
+	padding-left:40px;
+}
+
 #collapsibleNavbar{
 	background: #343a40 !important
 }
@@ -80,7 +93,7 @@ table{
 }
 
 #overflowContainer{
-	min-height:100%;
+	overflow: auto;
 	padding-bottom: 100px; /* FOOTER HEIGHT */
 }
 
