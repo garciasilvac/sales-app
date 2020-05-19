@@ -1,0 +1,10 @@
+es-CL:
+  layouts:
+    application_navbar:
+      sales_nav: Sales
+      clients_nav: Clients
+      products_nav: Products
+      tnst_nav: Types & Subtypes
+      pt_nav: Payment Types
+      dt_nav: Delivery Types
+      dm_nav: Dark Mode

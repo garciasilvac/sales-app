@@ -1,0 +1,15 @@
+es-CL:
+  activerecord:
+    models:
+      adress: Direccion
+    attributes:
+      adress:
+        created_at: Creado
+        updated_at: Modificado
+        street: Calle
+        adr_unit: Unidad/Depto/Casa
+        adr_other: Otro
+        adr_zip: Codigo Postal
+        adr_county: Comuna
+        adr_state: Region
+        adr_country: Pais

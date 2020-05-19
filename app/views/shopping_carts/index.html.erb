@@ -16,9 +16,9 @@
     <% @shopping_carts.each do |shopping_cart| %>
       <tr>
         <td><%= @sale.products.find(shopping_cart.product_id).name %></td>
-        <td><%= @sale.products.find(shopping_cart.product_id).price %></td>
-        <td><%= shopping_cart.product_q %></td>
-        <td><%= shopping_cart.subtotal %></td>
+        <td><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
+        <td><%= t shopping_cart.product_q %></td>
+        <td><%= number_to_currency(shopping_cart.subtotal) %></td>
         <td><%= link_to [@sale,shopping_cart] do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
@@ -36,7 +36,7 @@
     <tr>
       <th colspan="2"></th>
       <th><b>Total Amount<b></th>
-      <th><b><%= @sale.total_amount %><b></th>
+      <th><b><%= number_to_currency(@sale.total_amount) %><b></th>
       <th colspan="3"></th>
     </tr>
   </tbody>

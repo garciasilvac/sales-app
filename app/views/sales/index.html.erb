@@ -24,10 +24,10 @@
     <% else %>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.sale_datetime %></td>
+        <td><%= l sale.sale_datetime%></td>
         <td><%= sale.client.full_name %></td>
-        <td><%= sale.total_amount %></td>
-        <td><% if sale.paid %>
+        <td><%= number_to_currency(sale.total_amount) %></td>
+        <td class="text-center"><% if sale.paid %>
           <i class="fas fa-check-circle fa-2x" style="color:DarkGreen"></i>
           <% else %>
           <i class="fas fa-times-circle fa-2x" style="color:Tomato"></i>
@@ -35,8 +35,8 @@
         </td>
         <td><%= PaymentType.find(sale.payment_type_id).name %></td>
         <td><%= DeliveryType.find(sale.delivery_type_id).name %></td>
-        <td><%= sale.created_at %></td>
-        <td><%= sale.updated_at %></td>
+        <td><%= l sale.created_at %></td>
+        <td><%= l sale.updated_at %></td>
         <td><%= link_to sale_shopping_carts_path(sale) do%>
           <i class="fas fa-cart-plus"> (<%=sale.shopping_carts.count%>)</i>
           <% end %>

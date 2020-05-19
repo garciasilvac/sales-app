@@ -1,0 +1,10 @@
+es-CL:
+  layouts:
+    application_navbar:
+      sales_nav: Ventas
+      clients_nav: Clientes
+      products_nav: Productos
+      tnst_nav: Tipos y Subtipos
+      pt_nav: Opciones de Pago
+      dt_nav: Opciones de entrega
+      dm_nav: Modo Oscuro

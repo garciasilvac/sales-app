@@ -1,0 +1,22 @@
+es-CL:
+  activerecord:
+    models:
+      client: Cliente
+    attributes:
+      client:
+        created_at: Creado
+        updated_at: Modificado
+        first_name: Primer Nombre
+        middle_name: Segundo Nombre
+        last_name: Apellidos
+        phone_countrycode: Cod Pais
+        phone_number: Numero de telefono
+        email: Email
+        age: Edad
+        sex: Sexo
+        full_name: Nombre completo
+        name: Nombre
+
+
+
+      # will translate User attribute "login" as "Handle"

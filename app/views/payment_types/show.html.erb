@@ -3,6 +3,14 @@
   <%= @payment_type.name %>
 </p>
 
+<p>
+  <strong>Created at:</strong>
+  <%= l @payment_type.created_at %>
+</p>
+<p>
+  <strong>Updated at:</strong>
+  <%= l @payment_type.updated_at %>
+</p>
 
 <div class="btn-group">
 <%= link_to edit_payment_type_path(@payment_type) do%>

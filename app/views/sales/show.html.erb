@@ -1,42 +1,42 @@
 <p>
   <strong>Sale datetime:</strong>
-  <%= @sale.sale_datetime %>
+  <%= l @sale.sale_datetime %>
 </p>
 
 <p>
   <strong>Client:</strong>
-  <%= @sale.client_id %>
+  <%= Client.find(@sale.client_id).full_name %>
 </p>
 
 <p>
   <strong>Total amount:</strong>
-  <%= @sale.total_amount %>
+  <%= number_to_currency(@sale.total_amount) %>
 </p>
 
 <p>
   <strong>Paid:</strong>
-  <%= @sale.paid %>
+  <%= t @sale.paid %>
 </p>
 
 <p>
   <strong>Payment type:</strong>
-  <%= @sale.payment_type_id %>
+  <%= PaymentType.find(@sale.payment_type_id).name %>
 </p>
 
 <p>
   <strong>Delivery type:</strong>
-  <%= @sale.delivery_type_id %>
+  <%= DeliveryType.find(@sale.delivery_type_id).name %>
 </p>
 
 <p>
   <strong>Deleted:</strong>
-  <%= @sale.deleted %>
+  <%= t @sale.deleted %>
 </p>
 
 
 <div class="btn-group">
   <%= link_to sale_shopping_carts_path(@sale) do%> 
-<i class="fa fa-home" aria-hidden="true"> (<%=sale.shopping_carts.count%>)</i>
+<i class="fa fa-home" aria-hidden="true"> (<%=@sale.shopping_carts.count%>)</i>
 <%end%>
 <%= link_to edit_sale_path(@sale) do%>
   <i class="fas fa-pencil-alt"></i>

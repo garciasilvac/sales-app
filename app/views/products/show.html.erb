@@ -4,18 +4,23 @@
 </p>
 
 <p>
+  <strong>Type:</strong>
+  <%= @product.subtype.type.name %>
+</p>
+
+<p>
   <strong>Subtype:</strong>
-  <%= @product.subtype_id %>
+  <%= @product.subtype.name %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
+  <%= number_to_currency(@product.price) %>
 </p>
 
 <p>
   <strong>Deleted:</strong>
-  <%= @product.deleted %>
+  <%= t @product.deleted %>
 </p>
 
 <div class="btn-group">

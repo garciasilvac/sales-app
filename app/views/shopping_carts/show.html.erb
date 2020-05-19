@@ -4,13 +4,18 @@
 </p>
 
 <p>
+  <strong>Unit Price:</strong>
+  <%= number_to_currency(@sale.products.find(@shopping_cart.product_id).price) %>
+</p>
+
+<p>
   <strong>Quantity:</strong>
-  <%= @shopping_cart.product_q %>
+  <%= t @shopping_cart.product_q %>
 </p>
 
 <p>
   <strong>Subtotal:</strong>
-  <%= @shopping_cart.subtotal %>
+  <%= number_to_currency(@shopping_cart.subtotal) %>
 </p>
 
 <div class="btn-group">

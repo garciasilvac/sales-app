@@ -20,9 +20,9 @@
         <td><%= product.name %></td>
         <td><%= product.subtype.type.name %></td>
         <td><%= product.subtype.name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.created_at %></td>
-        <td><%= product.updated_at %></td>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= l product.created_at %></td>
+        <td><%= l product.updated_at %></td>
         <td><%= link_to product do%>
          <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>

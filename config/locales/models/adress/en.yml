@@ -1,0 +1,15 @@
+es-CL:
+  activerecord:
+    models:
+      adress: Adress
+    attributes:
+      adress:
+        created_at: Created
+        updated_at: Updated
+        street: Street
+        adr_unit: Unit
+        adr_other: Other
+        adr_zip: Zip Code
+        adr_county: County
+        adr_state: State
+        adr_country: Country

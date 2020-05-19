@@ -23,7 +23,7 @@
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Name</span>
+    <span class="input-group-text"><%=Client.human_attribute_name("name")%></span>
   </div>
   <%= form.text_field :first_name, class: "form-control", placeholder: :first_name, required: true %>
   <%= form.text_field :middle_name, class: "form-control", placeholder: :middle_name %>
@@ -40,7 +40,7 @@
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Age</span>
+    <span class="input-group-text"><%=Client.human_attribute_name("age")%></span>
   </div>
   <%= form.text_field :age, class: "form-control", placeholder: 'Enter age...', required: true %>
 </div>

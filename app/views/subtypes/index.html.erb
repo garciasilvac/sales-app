@@ -16,9 +16,9 @@
     <% @subtypes.each do |subtype| %>
       <tr>
         <td><%= subtype.name %></td>
-        <td><%= subtype.created_at %></td>
-        <td><%= subtype.updated_at %></td>
-        <td><%= subtype.deleted %></td>
+        <td><%= l subtype.created_at %></td>
+        <td><%= l subtype.updated_at %></td>
+        <td><%= t subtype.deleted %></td>
         <td><%= link_to [@type,subtype] do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>

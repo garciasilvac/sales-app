@@ -21,9 +21,9 @@
     <% @types.each do |type| %>
       <tr>
         <td><%= type.name %></td>
-        <td><%= type.created_at %></td>
-        <td><%= type.updated_at %></td>
-        <td><%= type.deleted %></td>
+        <td><%= l type.created_at %></td>
+        <td><%= l type.updated_at %></td>
+        <td><%= t type.deleted %></td>
 		    <td><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type)%></td>
         <td><%= link_to type_path(type) do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
