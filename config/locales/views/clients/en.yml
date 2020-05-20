@@ -2,3 +2,5 @@ en:
     clients: 
         index:
             title: "Clients"
+        edit:
+            title: "Edit Client"

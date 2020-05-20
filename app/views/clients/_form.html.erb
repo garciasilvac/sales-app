@@ -25,9 +25,9 @@
   <div class="input-group-prepend">
     <span class="input-group-text"><%=Client.human_attribute_name("name")%></span>
   </div>
-  <%= form.text_field :first_name, class: "form-control", placeholder: :first_name, required: true %>
-  <%= form.text_field :middle_name, class: "form-control", placeholder: :middle_name %>
-  <%= form.text_field :last_name, class: "form-control", placeholder: :last_name, required: true %>
+  <%= form.text_field :first_name, class: "form-control", placeholder: Client.human_attribute_name(:first_name), required: true %>
+  <%= form.text_field :middle_name, class: "form-control", placeholder: Client.human_attribute_name(:middle_name) %>
+  <%= form.text_field :last_name, class: "form-control", placeholder: Client.human_attribute_name(:last_name), required: true %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
@@ -35,14 +35,14 @@
       <i class="far fa-phone" aria-hidden="true"></i>
     </span>
   </div>
-  <%= form.text_field :phone_countrycode, class: "form-control", placeholder: :phone_countrycode, required: true %>
-  <%= form.text_field :phone_number, class: "form-control w-75", placeholder: :phone_number, required: true %>
+  <%= form.text_field :phone_countrycode, class: "form-control", placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
+  <%= form.text_field :phone_number, class: "form-control w-75", placeholder: Client.human_attribute_name(:phone_number), required: true %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text"><%=Client.human_attribute_name("age")%></span>
+    <span class="input-group-text"><%=Client.human_attribute_name(:age)%></span>
   </div>
-  <%= form.text_field :age, class: "form-control", placeholder: 'Enter age...', required: true %>
+  <%= form.text_field :age, class: "form-control", placeholder: Client.human_attribute_name(:age), required: true %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
@@ -50,7 +50,7 @@
       <i class="fas fa-venus-mars"></i>
     </span>
   </div>
-  <%= form.text_field :sex, class: "form-control", placeholder: 'Enter sex...', required: true %>
+  <%= form.text_field :sex, class: "form-control", placeholder: Client.human_attribute_name(:sex), required: true %>
 </div>
 </div>
 
