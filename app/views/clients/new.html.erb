@@ -1,8 +1,8 @@
-<h3>New Client</h3>
+<h3><%=t('.title')%></h3>
 
 <%= render 'form', client: @client %>
 
 <%= link_to clients_path do%>
-<i class="fas fa-undo"> Back</i>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
 </div>

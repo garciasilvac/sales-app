@@ -1,4 +1,9 @@
 es-CL:
     clients: 
         index:
-            title: "Clientes"
+            title: "Clientes (%{count})"
+            del_confirm: "Estas seguro? Eliminarias al usuario %{user}"
+        new:
+            title: "Nuevo Cliente"
+        edit:
+            title: "Editar Cliente"

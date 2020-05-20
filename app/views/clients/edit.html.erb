@@ -1,4 +1,4 @@
-<h3>Editing Client</h3>
+<h3><%=t('.title')%></h3>
 
 <%= render 'form', client: @client %>
 
@@ -6,6 +6,6 @@
 <i class="far fa-info-circle" aria-hidden="true"></i>
 <%end%>
 <%= link_to clients_path do %>
-<i class="fas fa-undo"> Back</i>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <% end %>
 </div>

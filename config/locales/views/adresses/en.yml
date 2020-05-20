@@ -1,0 +1,10 @@
+en:
+    adresses: 
+        index:
+            title: "%{client}'s Adresses (%{count})"
+            del_confirm: "Are you sure? You're about to destroy adress %{adress}"
+        new:
+            title: "New Adress for %{client}"
+        edit:
+            title: "Edit %{client}'s Adress"
+        destroy:

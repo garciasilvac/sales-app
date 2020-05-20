@@ -7,6 +7,7 @@ es-CL:
         created_at: Creado
         updated_at: Modificado
         street: Calle
+        str_number: Numero
         adr_unit: Unidad/Depto/Casa
         adr_other: Otro
         adr_zip: Codigo Postal

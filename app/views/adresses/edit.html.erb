@@ -1,4 +1,4 @@
-<h3>Editing Adress for <%=@client.first_name%> <%=@client.last_name%></h3>
+<h3><%=t('.title', client: @adress.client.full_name)%></h3>
 
 <%= render 'form', adress: @adress %>
 
@@ -6,6 +6,6 @@
 <i class="far fa-info-circle" aria-hidden="true"></i>
 <%end%>
 <%= link_to client_adresses_path(@client) do%>
-<i class="fas fa-undo"> Back</i>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <% end %>
 </div>

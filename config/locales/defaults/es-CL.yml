@@ -34,9 +34,17 @@ es-CL:
   'false': "Falso"
   'yes': "Si"
   'no': "No"
+  back: "Volver"
+  back_to_model: "Volver a %{model}"
   hello: "Hola Mundo"
-
   activerecord:
+    models:
+      client:
+        one: Cliente
+        other: Clientes
+      adress:
+        one: Dirección
+        other: Direcciones
     errors:
       messages:
         record_invalid: 'La validación falló: %{errors}'
@@ -181,6 +189,7 @@ es-CL:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
   helpers:
+    back: "Volver"
     select:
       prompt: Por favor seleccione
     submit:

@@ -30,8 +30,21 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  'true': "True"
+  'false': "False"
+  'yes': "Yes"
+  'no': "No"
+  back: "Back"
+  back_to_model: "Back to %{model}"
   hello: "Hello world"
   activerecord:
+    models:
+      client:
+        one: Client
+        other: Clients
+      Adress:
+        one: Adress
+        other: Adresses
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
@@ -180,8 +193,10 @@ en:
       prompt: Please select
     submit:
       create: Create %{model}
-      submit: Save %{model}
+      submit: Submit %{model}
       update: Update %{model}
+      user:
+        create: "Sign up"
   number:
     currency:
       format:
@@ -240,7 +255,7 @@ en:
   time:
     am: am
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
+      default: "%B/%d/%Y %H:%M %z"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm

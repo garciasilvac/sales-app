@@ -1,51 +1,51 @@
 <p>
-  <strong>Street:</strong>
+  <strong><%= label(:adress, :street) %></strong>
   <%= @adress.street %>
 </p>
 
 <p>
-  <strong>Str number:</strong>
+  <strong><%= label(:adress, :str_number) %></strong>
   <%= @adress.str_number %>
 </p>
 
 <p>
-  <strong>Adr unit:</strong>
+  <strong><%= label(:adress, :adr_unit) %></strong>
   <%= @adress.adr_unit %>
 </p>
 
 <p>
-  <strong>Adr other:</strong>
+  <strong><%= label(:adress, :adr_other) %></strong>
   <%= @adress.adr_other %>
 </p>
 
 <p>
-  <strong>Adr zip:</strong>
+  <strong><%= label(:adress, :adr_zip) %></strong>
   <%= @adress.adr_zip %>
 </p>
 
 <p>
-  <strong>Adr county:</strong>
+  <strong><%= label(:adress, :adr_county) %></strong>
   <%= @adress.adr_county %>
 </p>
 
 <p>
-  <strong>Adr state:</strong>
+  <strong><%= label(:adress, :adr_state) %></strong>
   <%= @adress.adr_state %>
 </p>
 
 <p>
-  <strong>Adr country:</strong>
+  <strong><%= label(:adress, :adr_country) %></strong>
   <%= @adress.adr_country %>
 </p>
 
 <p>
-  <strong>Created At:</strong>
-  <%= @adress.created_at %>
+  <strong><%= label(:adress, :created_at) %></strong>
+  <%= l @adress.created_at %>
 </p>
 
 <p>
-  <strong>Updated At:</strong>
-  <%= @adress.updated_at %>
+  <strong><%= label(:adress, :updated_at) %></strong>
+  <%= l @adress.updated_at %>
 </p>
 
 <div class="btn-group">
@@ -53,6 +53,6 @@
 <i class="fas fa-pencil-alt"></i>
 <% end %>
 <%= link_to client_adresses_path(@client) do%>
-  <i class="fas fa-undo"> Back</i>
+  <i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
 </div>

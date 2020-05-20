@@ -15,37 +15,35 @@
 <div class="container input-container">
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Adress</span>
+    <span class="input-group-text"><%=Adress.human_attribute_name("street")%></span>
   </div>
-  <%= form.text_field :street, class: "form-control", placeholder: "Street name. Example: Av. Matta...", required: true %>
-  <%= form.text_field :str_number, class: "form-control", placeholder: "Street number. Example: 1234", required: true %>
-  <%= form.text_field :adr_unit, class: "form-control", placeholder: "Unit. Example: 54" %>
+  <%= form.text_field :street, class: "form-control", placeholder: Adress.human_attribute_name("street") , required: true %>
+  <%= form.text_field :str_number, class: "form-control", placeholder: Adress.human_attribute_name("str_number"), required: true %>
+  <%= form.text_field :adr_unit, class: "form-control", placeholder: Adress.human_attribute_name("adr_unit") %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Adress (other)</span>
+    <span class="input-group-text"><%=Adress.human_attribute_name("adr_other")%></span>
   </div>
-  <%= form.text_field :adr_other, class: "form-control", placeholder: "Additional info. Example: Block B..." %>
+  <%= form.text_field :adr_other, class: "form-control", placeholder: Adress.human_attribute_name("adr_other") %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">County &amp; Zip Code</span>
+    <span class="input-group-text"><%=Adress.human_attribute_name("adr_county")%> &amp; <%=Adress.human_attribute_name("adr_zip")%></span>
   </div>
-  <%= form.text_field :adr_county, class: "form-control", placeholder: "County. Example: Providencia...", required: true %>
-  <%= form.text_field :adr_zip, class: "form-control", placeholder: "Zip Code. Example: 7550000..." %>
+  <%= form.text_field :adr_county, class: "form-control", placeholder: Adress.human_attribute_name("adr_county"), required: true %>
+  <%= form.text_field :adr_zip, class: "form-control", placeholder: Adress.human_attribute_name("adr_zip") %>
 </div>
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">State &amp; Country</span>
+    <span class="input-group-text"><%=Adress.human_attribute_name("adr_state")%> &amp; <%=Adress.human_attribute_name("adr_country")%></span>
   </div>
-  <%= form.text_field :adr_state, class: "form-control", placeholder: "State. Example: RM...", required: true %>
-  <%= form.text_field :adr_country, class: "form-control", placeholder: "Country. Example: Chile...", required: true %>
+  <%= form.text_field :adr_state, class: "form-control", placeholder: Adress.human_attribute_name("adr_state"), required: true %>
+  <%= form.text_field :adr_country, class: "form-control", placeholder: Adress.human_attribute_name("adr_country"), required: true %>
 </div>
 </div>
 
 <br>
 <div class="btn-group">
-    <%= button_tag type: 'submit' do %>
-        <i class="far fa-save"> Save</i>
-    <% end %>
+    <%= form.submit name: t('.submit') %>
 <% end %>

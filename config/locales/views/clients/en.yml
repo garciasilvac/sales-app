@@ -1,4 +1,11 @@
 en:
     clients: 
         index:
-            title: "Clients"
+            title: "Clients (%{count})"
+            del_confirm: "Are you sure? You're about to destroy user %{user}"
+        new:
+            title: "New Client"
+        edit:
+            title: "Edit Client"
+        destroy:
+            

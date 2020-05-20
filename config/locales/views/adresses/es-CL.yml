@@ -1,0 +1,9 @@
+es-CL:
+    adresses: 
+        index:
+            title: "Direcciones de %{client} (%{count})"
+            del_confirm: "Estas seguro? Eliminarias la direccion %{adress}"
+        new:
+            title: "Nueva Dirección para %{client}"
+        edit:
+            title: "Editar Dirección de %{client}"
