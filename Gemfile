@@ -49,6 +49,15 @@ gem 'font-awesome-sass', '~> 5.12.0'
 
 gem "rack-timeout"
 
+#### USER MANAGEMENT ########
+gem 'devise'
+
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+
+gem 'cancancan'
+
+#########################################
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

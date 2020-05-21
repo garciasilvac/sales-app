@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+
+  <%= link_to('Edit registration', edit_user_registration_path) %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+
+<% else %>
+	<div id=signInDiv class="d-flex flex-column justify-content-center text-center  flex-wrap align-content-center">
+  		<%= render "users/sessions/new"%>  
+	</div>
+<% end %>

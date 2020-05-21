@@ -14,15 +14,22 @@
 
     <div id="minFullBrowserContainer">
       <div id="overflowContainer">
-        <%= render 'layouts/application_alert_modal' %>
-      
-      	<div id="welcomeBanner">PYME VENTA PB</div>
 
-        <%= render 'layouts/application_navbar' %>
+        <% if user_signed_in? %>
+          <%= render 'layouts/application_devise_alerts' %>
+          <%= render 'layouts/application_alert_modal' %>
+        
+      	  <div id="welcomeBanner">PYME VENTA PB</div>
 
+          <%= render 'layouts/application_navbar' %>
+        
+        
       	<div id="subBody">
        	 	<%= yield %>
        	</div>
+        <% else %>
+        <%= yield %>
+        <% end %>
       </div>
     </div>
 

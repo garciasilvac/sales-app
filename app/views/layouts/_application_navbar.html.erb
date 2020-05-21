@@ -26,9 +26,9 @@
                 <i class="fas fa-cogs"></i>
               </a>
               <div class="dropdown-menu">
-                <%= link_to t('.tnst_nav'), types_path, class:"dropdown-item"%>
-                <%= link_to t('.pt_nav'), payment_types_path, class:"dropdown-item"%>
-                <%= link_to t('.dt_nav'), delivery_types_path, class:"dropdown-item"%>
+                <%= link_to t('.tnst_nav'), types_path, class: "dropdown-item"%>
+                <%= link_to t('.pt_nav'), payment_types_path, class: "dropdown-item"%>
+                <%= link_to t('.dt_nav'), delivery_types_path, class: "dropdown-item"%>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -36,8 +36,8 @@
                 <i class="fas fa-language fa-lg"></i>
               </a>
               <div class="dropdown-menu">
-                <%= link_to 'Español (CL)', locale: "es-CL", class:"dropdown-item"%>
-                <%= link_to 'English', locale: :en, class:"dropdown-item"%>
+                <%= link_to 'Español (CL)', locale: "es-CL", class: "dropdown-item"%>
+                <%= link_to 'English', locale: :en, class: "dropdown-item"%>
               </div>
             </li>
             <li class="nav-item nav-item-switch">
@@ -45,6 +45,24 @@
                 <input type="checkbox" class="custom-control-input" id="darkSwitch" onchange="changeLightDark()"/>
                 <label class="custom-control-label" for="darkSwitch"><i class="fas fa-adjust"></i></label>
               </div>
+            </li>
+            <% if current_user.nil? %>
+              <li class="nav-item">
+                 <%= link_to new_user_session_path, class:"nav-link" do%>
+                 <i class="fas fa-user-times"> Sign In</i>
+                 <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardropSession" data-toggle="dropdown">
+                  <i class="fas fa-user-check"> <%= current_user.email%></i>
+                </a>
+                <div class="dropdown-menu">
+                    <%= link_to edit_user_registration_path, class: "dropdown-item" do%>Edit user<% end %>
+                    <%= link_to destroy_user_session_path, class: "dropdown-item",  method: :delete do %>Log out<% end %>
+                </div>
+              </li>
+            <% end %>
     		  </ul>
         </div>
 		</nav>

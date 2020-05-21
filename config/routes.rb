@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
   scope "(:locale)", locale: /es-CL|en/ do
+    get '/:locale' => 'publics#home'
+    root 'publics#home'
+
+    devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      passwords: 'users/passwords',
+      registrations: 'users/registrations'
+    }
+
     resources :sales do
       resources :shopping_carts
     end
@@ -15,8 +24,6 @@ Rails.application.routes.draw do
     resources :clients do
       resources :adresses
     end
-    get '/:locale' => 'sales#index'
-    root 'sales#index'
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
