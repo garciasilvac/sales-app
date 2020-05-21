@@ -50,7 +50,7 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem "rack-timeout"
 
 #### USER MANAGEMENT ########
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 
