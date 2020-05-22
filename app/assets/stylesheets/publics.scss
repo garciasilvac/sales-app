@@ -52,7 +52,8 @@
 }
 
 /*To remove the outline that appears on clicking the input textbox*/
-#loginContainer input:focus {
+
+input:focus {
   outline: none;
 }
 
