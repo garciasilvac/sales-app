@@ -1,20 +1,17 @@
 
-<h2>Log in</h2>
+
+<h2 id="loginTitle">Welcome!</h2>
+
+<div id="loginContainer">
 
 <%= form_with model: @user, url: session_path(@user) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-<br>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formStyle", placeholder: "Email" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "formStyle", placeholder: "Password" %>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in",  class: "formButton" %>
   </div>
 <% end %>
+</div>
 
 

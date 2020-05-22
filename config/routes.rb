@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   scope "(:locale)", locale: /es-CL|en/ do
     get '/:locale' => 'publics#home'
     root 'publics#home'
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     resources :clients do
       resources :adresses
     end
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

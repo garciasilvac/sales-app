@@ -5,34 +5,38 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <% if controller = "publics" %>
+      <%= stylesheet_link_tag 'publics', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-
+    <% if user_signed_in? %>
     <div id="minFullBrowserContainer">
       <div id="overflowContainer">
+        <%= render 'layouts/application_devise_alerts' %>
+        <%= render 'layouts/application_alert_modal' %>
+      
+    	  <div id="welcomeBanner">PYME VENTA PB</div>
 
-        <% if user_signed_in? %>
-          <%= render 'layouts/application_devise_alerts' %>
-          <%= render 'layouts/application_alert_modal' %>
-        
-      	  <div id="welcomeBanner">PYME VENTA PB</div>
-
-          <%= render 'layouts/application_navbar' %>
+        <%= render 'layouts/application_navbar' %>
         
         
       	<div id="subBody">
        	 	<%= yield %>
        	</div>
-        <% else %>
-        <%= yield %>
-        <% end %>
       </div>
     </div>
-
+    <% else %>
+    <div id="minFullBrowserContainerLogin">
+      <div id="overflowContainerLogin">
+      <%= yield %>
+      </div>
+    </div>
+    <% end %>
     <%= render 'layouts/application_footer' %>
 
   </body>

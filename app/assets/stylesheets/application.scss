@@ -97,6 +97,17 @@ th,td{
 	padding-bottom: 100px; /* FOOTER HEIGHT */
 }
 
+#minFullBrowserContainerLogin{
+	min-height:100%;
+	background-color: #2ecc71;
+    font-family: source-sans-pro, sans-serif !important;
+}
+
+#overflowContainerLogin{
+	overflow: auto;
+	padding-bottom: 100px; /* FOOTER HEIGHT */
+}
+
 #subBody{
 	padding: 20px;
 }

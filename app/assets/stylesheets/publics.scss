@@ -1,0 +1,74 @@
+#loginTitle {
+  margin-top: 50px !important;
+  text-align: center !important;
+  font-weight: 100 !important;
+  font-size: 2.8em !important;
+  color: #ffffff !important;
+}
+
+#loginContainer {
+  width: 500px !important;
+  margin: auto !important;
+}
+
+.formStyle { 
+  background-color: #2ecc71 !important;
+  padding: 20px !important;
+  width: 400px !important;
+  margin-bottom: 20px !important; 
+  border-bottom-width: 1px !important; 
+  border-bottom-style: solid !important; 
+  border-bottom-color: #ecf0f1 !important; 
+  border-top-style: none !important;
+  border-right-style: none !important; 
+  border-left-style: none !important;
+  font-size: 1em !important;
+  font-weight: 100 !important;
+  color: #ffffff !important;
+}
+
+.formButton {
+  float: right !important;
+	background-color:#ffffff !important;
+	display:inline-block !important;
+	color:#2ecc71 !important;
+	font-size:28px !important;
+	font-weight: 500 !important;
+	padding:6px 24px !important;
+  margin-top: 15px !important;
+  margin-right: 60px !important;
+	text-decoration:none !important;
+  border-style: none !important;
+}
+
+.formButton:hover {
+	background-color: #27ae60 !important;
+  color:#ffffff !important;
+}
+
+.formButton:active {
+	position:relative !important;
+	top:3px !important;
+}
+
+/*To remove the outline that appears on clicking the input textbox*/
+#loginContainer input:focus {
+  outline: none;
+}
+
+/* To format the placeholder text color */
+::-webkit-input-placeholder {
+   color: #ecf0f1;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ecf0f1;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ecf0f1;  
+}
+
+:-ms-input-placeholder {  
+   color: #ecf0f1;  
+}
