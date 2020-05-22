@@ -1,26 +1,28 @@
 
-
+<div>
 <h2 id="loginTitle">Welcome!</h2>
 
 <%= form_with model: @user, url: session_path(@user) do |f| %>
-<div class="form-row justify-content-center">
-	<div class="col-md-6">
+<div class="form-row d-flex justify-content-center">
+	<div class="col-6 col-md-6">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formStyle", placeholder: "Email" %>
 	</div>
 </div>
-<div class="form-row justify-content-center">
-	<div class="col-md-6">
+<div class="form-row d-flex justify-content-center">
+	<div class="col-6 col-md-6">
     <%= f.password_field :password, autocomplete: "current-password", class: "formStyle", placeholder: "Password" %>
 	</div>
 </div>
-<div class="form-row justify-content-center">
-	<div class="col-md-6 justify-content-center">
-	  <div class="actions">
+<div class="form-row d-flex justify-content-center">
+	<div class="col-6 col-md-6">
+	  <div class="actions d-flex justify-content-center">
 	    <%= f.submit "Log in",  class: "formButton" %>
 	  </div>
 	</div>
 </div>
 <% end %>
+</div>
+
 
 
 

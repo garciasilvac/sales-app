@@ -1,9 +1,4 @@
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
 #loginTitle {
-  margin-top: 50px !important;
   text-align: center !important;
   font-weight: 100 !important;
   font-size: 2.8em !important;
@@ -17,6 +12,7 @@
 .formStyle { 
   background-color: #2ecc71 !important;
   padding: 20px !important;
+  width:100%;
   margin-bottom: 20px !important; 
   border-bottom-width: 1px !important; 
   border-bottom-style: solid !important; 
@@ -31,14 +27,13 @@
 
 .formButton {
 	background-color:#ffffff !important;
-	display:inline-block !important;
 	color:#2ecc71 !important;
 	font-size:28px !important;
 	font-weight: 500 !important;
 	padding:6px 24px !important;
-  margin-top: 15px !important;
 	text-decoration:none !important;
   border-style: none !important;
+  clear:both;
 }
 
 .formButton:hover {
