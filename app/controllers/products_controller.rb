@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :subtype_id, :price)
+      params.require(:product).permit(:name, :subtype_id, :price, :product_image)
     end
     def get_subtype
       @subtype = Subtype.find(params[:subtype_id])

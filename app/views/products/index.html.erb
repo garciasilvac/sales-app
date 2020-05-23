@@ -4,6 +4,7 @@
 <table>
   <thead>
     <tr>
+      <th>IMAGE</th>
       <th>Name</th>
       <th>Type</th>
       <th>Subtype</th>
@@ -17,6 +18,14 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td>
+          <% if product.product_image.attached? %>
+            <%= image_tag(product.product_image)%>
+            <!--< url_for(product.product_image) %>-->
+          <% else %>
+            <%= image_tag("default_product_image.jpg", height: '32', width: '32', class: "navbar-brand") %>
+          <% end %> 
+        </td>
         <td><%= product.name %></td>
         <td><%= product.subtype.type.name %></td>
         <td><%= product.subtype.name %></td>
