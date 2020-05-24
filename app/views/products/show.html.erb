@@ -1,3 +1,9 @@
+
+   <% if @product.product_image.attached? %>
+      <%= image_tag(@product.product_image , height: '150', width: '150')%>
+    <% else %>
+      <%= image_tag("default_product_image.jpg", height: '150', width: '150') %>
+    <% end %> 
 <p>
   <strong>Name:</strong>
   <%= @product.name %>

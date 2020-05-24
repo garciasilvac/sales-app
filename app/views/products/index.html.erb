@@ -18,12 +18,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td>
+        <td class="d-flex justify-content-center">
           <% if product.product_image.attached? %>
-            <%= image_tag(product.product_image)%>
-            <!--< url_for(product.product_image) %>-->
+            <%= image_tag(product.product_image , height: '50', width: '50')%>
           <% else %>
-            <%= image_tag("default_product_image.jpg", height: '32', width: '32', class: "navbar-brand") %>
+            <%= image_tag("default_product_image.jpg", height: '50', width: '50') %>
           <% end %> 
         </td>
         <td><%= product.name %></td>
