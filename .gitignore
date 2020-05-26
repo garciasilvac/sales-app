@@ -42,3 +42,4 @@ yarn-debug.log*
 
 #mailer test settings
 .env 
+/config/storage_allow_access.json
