@@ -89,6 +89,7 @@ end
 group :test, :production do
   # Adds support for Capybara system testing and selenium driver
   gem 'uglifier'
+  gem 'google-cloud-storage'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
