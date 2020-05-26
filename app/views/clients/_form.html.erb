@@ -1,64 +1,67 @@
+ <div class="row d-flex justify-content-center">
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-3">
+        <%= form_with(model: client, local: true, tabindex: autotab, class: "was-validated") do |form| %>
+          <% if client.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
-<%= form_with(model: client, local: true, class: "was-validated") do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+              <ul>
+                <% client.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
+      <div class="container input-container">
+        <div class="input-group d-flex justify-content-center">
+          <div class="form-group">
+            <%= form.label :email, class: "form-label"%>
+            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
+          </div>
+        </div>
+        <div class="input-group d-flex justify-content-center">
+          <div class="form-group">
+            <%= form.label :first_name, class: "form-label"%>
+            <%= form.text_field :first_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:first_name), required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :middle_name, class: "form-label"%>
+            <%= form.text_field :middle_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:middle_name), required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :last_name, class: "form-label"%>
+            <%= form.text_field :last_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:last_name), required: true %>
+          </div>
+        </div>
+        <div class="input-group d-flex justify-content-center">
+          <div class="form-group">
+            <%= form.label :phone_countrycode, class: "form-label"%>
+            <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :phone_number, class: "form-label"%>
+            <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true %>
+          </div>
+        </div>
+        <div class="input-group d-flex justify-content-center">
+          <div class="form-group">
+            <%= form.label :age, class: "form-label"%>
+            <%= form.text_field :age, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:age), required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :sex, class: "form-label"%>
+            <%= form.text_field :sex, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:sex), required: true %>
+          </div>
+        </div>
+      </div>
 
-      <ul>
-        <% client.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+      <br>
+
+      <div class="container d-flex justify-content-center">
+        <div class="btn-group">
+          <%= form.submit name: t('.submit'), tabindex: 0 %>
+          <!-- < button_tag type: 'submit' do%>
+            <i class="far fa-save"><t('.submit')%></i>
+           end %> -->
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-<div class="container input-container">
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">
-      <i class="far fa-envelope" aria-hidden="true"></i>
-    </span>
-  </div>
-  <%= form.text_field :email, class: "form-control", placeholder: :email, required: true %>
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text"><%=Client.human_attribute_name("name")%></span>
-  </div>
-  <%= form.text_field :first_name, class: "form-control", placeholder: Client.human_attribute_name(:first_name), required: true %>
-  <%= form.text_field :middle_name, class: "form-control", placeholder: Client.human_attribute_name(:middle_name) %>
-  <%= form.text_field :last_name, class: "form-control", placeholder: Client.human_attribute_name(:last_name), required: true %>
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">
-      <i class="far fa-phone" aria-hidden="true"></i>
-    </span>
-  </div>
-  <%= form.text_field :phone_countrycode, class: "form-control", placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
-  <%= form.text_field :phone_number, class: "form-control w-75", placeholder: Client.human_attribute_name(:phone_number), required: true %>
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text"><%=Client.human_attribute_name(:age)%></span>
-  </div>
-  <%= form.text_field :age, class: "form-control", placeholder: Client.human_attribute_name(:age), required: true %>
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">
-      <i class="fas fa-venus-mars"></i>
-    </span>
-  </div>
-  <%= form.text_field :sex, class: "form-control", placeholder: Client.human_attribute_name(:sex), required: true %>
-</div>
-</div>
-
-<br>
-
-<div class="btn-group">
-  <%= form.submit name: t('.submit') %>
-  <!-- < button_tag type: 'submit' do%>
-    <i class="far fa-save"><t('.submit')%></i>
-   end %> -->
-<% end %>

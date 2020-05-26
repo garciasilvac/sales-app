@@ -1,15 +1,26 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "products";
 
 .dark-mode {
 	@extend .bg-dark;
   	color: white;
+  	table{
+  		color:white;
+  		tr:hover{
+  			background:Gray;
+  		}
+  	}
+  	#mainMenu{
+  		background:Gray;
+  	}
  }
 
 html, body{
 height: 100%;
 }
+
 a, input[type=submit], button[type=submit]{
 	@extend .btn;
 	@extend .btn-sm;
@@ -27,8 +38,8 @@ table{
 	@extend .table;
 	@extend .table-sm;
 	@extend .table-hover;
-	@extend .table-bordered;
 	font-size: 0.8rem;
+	border-line:none;
 	thead{
 		@extend .thead-dark;
 	}
@@ -126,3 +137,38 @@ th,td{
 //////// LAYOUT ALERTS /////// 
 
 ////////////////////////////////
+
+////////// FORMS ///////////
+
+textarea {
+	resize: none;
+}
+.form-label {
+	font-size: 12px;
+	color: #5e9bfc;
+	margin: 0;
+	display: block;
+	opacity: 1;
+	-webkit-transition: .333s ease top, .333s ease opacity;
+	transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+	border-radius: 0;
+	border-color: #ccc;
+   	border-width: 0 0 2px 0;
+   	border-style: none none solid none;
+   	box-shadow: none;
+}
+.form-group {
+	margin:5px;
+}
+.form-control:focus {
+	box-shadow: none !important;
+	border-color: #5e9bfc;
+}
+.js-hide-label {
+	opacity: 0; 	
+}
+.js-unhighlight-label {
+	color: #999 
+}

@@ -1,0 +1,9 @@
+es-CL:
+    sales: 
+        index:
+            title: "Ventas"
+            del_confirm: "Estas seguro? Eliminarias la venta seleccionada"
+        new:
+            title: "Nueva Venta"
+        edit:
+            title: "Editar Venta"

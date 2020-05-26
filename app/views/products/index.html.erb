@@ -20,9 +20,9 @@
       <tr>
         <td class="d-flex justify-content-center">
           <% if product.product_image.attached? %>
-            <%= image_tag(product.product_image , height: '50', width: '50')%>
+            <%= image_tag(product.product_image, class: "product-img product-img-sm")%>
           <% else %>
-            <%= image_tag("default_product_image.jpg", height: '50', width: '50') %>
+            <%= image_tag("default_product_image.jpg", class: "product-img product-img-sm") %>
           <% end %> 
         </td>
         <td><%= product.name %></td>

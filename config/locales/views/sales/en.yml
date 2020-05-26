@@ -1,0 +1,9 @@
+en:
+    sales: 
+        index:
+            title: "Sales"
+            del_confirm: "Are you sure? You're about to destroy the selected sale"
+        new:
+            title: "New Sale"
+        edit:
+            title: "Edit Sale"

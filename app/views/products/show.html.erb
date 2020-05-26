@@ -1,8 +1,8 @@
 
    <% if @product.product_image.attached? %>
-      <%= image_tag(@product.product_image , height: '150', width: '150')%>
+      <%= image_tag(@product.product_image , class: "product-img product-img-lg")%>
     <% else %>
-      <%= image_tag("default_product_image.jpg", height: '150', width: '150') %>
+      <%= image_tag("default_product_image.jpg", class: "product-img product-img-lg") %>
     <% end %> 
 <p>
   <strong>Name:</strong>

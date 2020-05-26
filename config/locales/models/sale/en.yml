@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      sale: Sale
+    attributes:
+      sale:
+        created_at: Created
+        updated_at: Updated
+        sale_datetime: Sale Date & Time
+        client_id: Client
+        total_amount: Total Amount
+        paid: Paid?
+        payment_type_id: Payment Type
+        delivery_type_id: Delivery Type

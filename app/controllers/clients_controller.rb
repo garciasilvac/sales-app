@@ -4,8 +4,14 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
-    puts params[:locale]
+    if params[:search]
+      @search_results_clients = Client.search_by_name_and_email(params[:search])
+      respond_to do |format|
+        format.js {render partial: 'search-results'}
+      end
+    else
+      @clients = Client.all
+    end
   end
 
   # GET /clients/1

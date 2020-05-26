@@ -3,12 +3,16 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import 'bootstrap'
+
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+import 'bootstrap'
 import "../stylesheets/application"
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -22,24 +26,29 @@ import "../stylesheets/application"
 
 ////////// SWITCH LIGHT DARK MODE////////
 
-function changeLightDark() {
-   var element = document.getElementsById("minFullBrowserContainer");
-   element.classList.toggle("dark-mode");
-}
+/*  SET GLOBAL VAR  */
+var globalDarkMode = 0;
 
-
-/////////////////////////////////////////
-
-// SEARCH FOR CLIENTS TABLE
 $(document).ready(function(){
-  $("#searchClient").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#clientsTableBody tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
+      if (globalDarkMode == 1){
+      $("#darkSwitch").prop('checked', true);
+      document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
+    } 
 });
 
+$(document).on('turbolinks:load',function(){
+      if (globalDarkMode == 1){
+      $("#darkSwitch").prop('checked', true);
+      document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
+    }
+});
+
+$(document).on("change", "#darkSwitch",function(){
+     document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
+     globalDarkMode = 1 - globalDarkMode;
+});
+
+/////////////////////////////////////////
 
 // VALIDATION FORM FIELDS
 // Disable form submissions if there are invalid fields
@@ -61,13 +70,79 @@ $(document).ready(function(){
   }, false);
 })();
 
-///// DATETIME PICKER ///////
-
 ///// currency format /////
 $(document).ready(function(){
     $("#alertModal").modal();
 });
 
+////// FORM UI/UX /////
+
+$(document).ready(function() {
+  // Test for placeholder support
+    $.support.placeholder = (function(){
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    })();
+
+    // Hide labels by default if placeholders are supported
+    if($.support.placeholder) {
+        $('.form-label').each(function(){
+            $(this).addClass('js-hide-label');
+        });  
+
+        // Code for adding/removing classes here
+        $('.form-group').find('input, textarea').on('keyup blur focus', function(e){
+            
+            // Cache our selectors
+            var $this = $(this),
+                $label = $this.parent().find("label");
+          
+            switch(e.type) {
+              case 'keyup': {
+                 $label.toggleClass('js-hide-label', $this.val() == '');
+              } break;
+              case 'blur': {
+                if( $this.val() == '' ) {
+                    $label.addClass('js-hide-label');
+                } else {
+                    $label.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+              } break;
+              case 'focus': {
+                if( $this.val() !== '' ) {
+                    $label.removeClass('js-unhighlight-label');
+                }
+              } break;
+              default: break;
+            }
+            // previous implementation with ifs
+            /*if (e.type == 'keyup') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label'); 
+                } else {
+                    $parent.removeClass('js-hide-label');   
+                }                     
+            } 
+            else if (e.type == 'blur') {
+                if( $this.val() == '' ) {
+                    $parent.addClass('js-hide-label');
+                } 
+                else {
+                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
+                }
+            } 
+            else if (e.type == 'focus') {
+                if( $this.val() !== '' ) {
+                    $parent.removeClass('js-unhighlight-label');
+                }
+            }*/
+        });
+    } 
+});
+
+///////// DATETIME PICKER /////////
+
+///////////////////////
 
 
 

@@ -1,0 +1,14 @@
+es-CL:
+  activerecord:
+    models:
+      sale: Venta
+    attributes:
+      sale:
+        created_at: Creado
+        updated_at: Modificado
+        sale_datetime: Fecha y Hora de Venta
+        client_id: Cliente
+        total_amount: Total Venta
+        paid: Pagado?
+        payment_type_id: Tipo de Pago
+        delivery_type_id: Tipo de Entrega

@@ -4,7 +4,7 @@
 <table>
   <thead>
     <tr>
-      <th>Product</th>
+      <th colspan="2">Product</th>
       <th>Unit Price</th>
       <th>Quantity</th>
       <th>Subtotal</th>
@@ -15,6 +15,13 @@
   <tbody>
     <% @shopping_carts.each do |shopping_cart| %>
       <tr>
+        <td class="d-flex justify-content-center">
+           <% if @sale.products.find(shopping_cart.product_id).product_image.attached? %>
+              <%= image_tag(@sale.products.find(shopping_cart.product_id).product_image, class: "product-img product-img-sm")%>
+            <% else %>
+              <%= image_tag("default_product_image.jpg", class: "product-img product-img-sm") %>
+            <% end %>
+        </td>
         <td><%= @sale.products.find(shopping_cart.product_id).name %></td>
         <td><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
         <td><%= t shopping_cart.product_q %></td>
@@ -34,7 +41,7 @@
       </tr>
     <% end %>
     <tr>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
       <th><b>Total Amount<b></th>
       <th><b><%= number_to_currency(@sale.total_amount) %><b></th>
       <th colspan="3"></th>

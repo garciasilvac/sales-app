@@ -41,13 +41,13 @@ gem 'rails-i18n'
 
 gem 'awesome_print'
 
-gem 'momentjs-rails'
-
 gem 'bootstrap4-datetime-picker-rails'
 
 gem 'font-awesome-sass', '~> 5.12.0'
 
 gem "rack-timeout"
+
+gem "pg_search"
 
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'
