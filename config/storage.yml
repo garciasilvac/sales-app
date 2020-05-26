@@ -19,7 +19,7 @@ google:
   service: GCS
   project: Sales App
   credentials: <%= Rails.application.credentials.gcskey.to_json %>
-  bucket: salesapp
+  bucket: sales-app-images
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
