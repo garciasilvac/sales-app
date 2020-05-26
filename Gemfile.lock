@@ -181,7 +181,7 @@ GEM
       activesupport (>= 5.2)
     popper_js (1.16.0)
     public_suffix (4.0.5)
-    puma (4.3.3)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-pjax (1.1.0)
@@ -306,7 +306,7 @@ DEPENDENCIES
   pg
   pg_search
   popper_js (~> 1.16)
-  puma (~> 4.1)
+  puma (~> 4.3)
   rack-timeout
   rails (~> 6.0.3)
   rails-i18n
