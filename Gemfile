@@ -49,6 +49,8 @@ gem "rack-timeout"
 
 gem "pg_search"
 
+gem "simple_form"
+
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'
 

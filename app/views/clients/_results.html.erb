@@ -6,7 +6,8 @@
       <th><%=Client.human_attribute_name("last_name")%></th>
       <th colspan="2"><%=Client.human_attribute_name("phone_number")%></th>
       <th><%=Client.human_attribute_name("email")%></th>
-      <th><%=Client.human_attribute_name("age")%></th>
+      <th><%=Client.human_attribute_name("birthdate")%></th>
+      <th>Age</th>
       <th><%=Client.human_attribute_name("sex")%></th>
       <th><%=Client.human_attribute_name("created_at")%></th>
       <th><%=Client.human_attribute_name("updated_at")%></th>
@@ -17,7 +18,7 @@
   <tbody id="clientsTableBody">
     <% if @search_results_clients.empty? %>
       <tr>
-        <td colspan="14"> No clients yet :) </td>
+        <td colspan="14"> No clients found :) </td>
       </tr>
     <% else %>
     <% @search_results_clients.each do |client| %>
@@ -28,6 +29,7 @@
       	<td><%= client.phone_countrycode %></td>
       	<td><%= client.phone_number %></td>
       	<td><%= client.email %></td>
+        <td><%= client.birthdate %></td>
       	<td><%= client.age %></td>
       	<td><%= client.sex %></td>
       	<td><%= l client.created_at %></td>

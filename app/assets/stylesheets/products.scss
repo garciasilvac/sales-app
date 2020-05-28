@@ -1,16 +1,13 @@
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
 
-.product-img{
-	@extend .img-thumbnail;
-	@extend .rounded-circle;
-	&-sm{
+.product-img {
+	@extend .img-thumbnail !optional;
+	@extend .rounded-circle !optional;
+	&-sm {
 		height:50px;
 		width:50px;
 	}
-	&-lg{
-		height:150px;
-		width:150px;
+	&-lg {
+		height:50px;
+		width:50px;
 	}
 }

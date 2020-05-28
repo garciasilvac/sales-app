@@ -3,8 +3,6 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -13,7 +11,8 @@ require("channels")
 import 'bootstrap'
 import "../stylesheets/application"
 
-
+import $ from 'jquery';
+global.$ = jQuery;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -29,19 +28,16 @@ import "../stylesheets/application"
 /*  SET GLOBAL VAR  */
 var globalDarkMode = 0;
 
-$(document).ready(function(){
-      if (globalDarkMode == 1){
-      $("#darkSwitch").prop('checked', true);
-      document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
-    } 
-});
-
-$(document).on('turbolinks:load',function(){
-      if (globalDarkMode == 1){
+var checkAndSetDMVar = function(){
+    if (globalDarkMode == 1){
       $("#darkSwitch").prop('checked', true);
       document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
     }
-});
+    return
+}
+
+$(document).on('load',checkAndSetDMVar);
+$(document).on('turbolinks:load',checkAndSetDMVar);
 
 $(document).on("change", "#darkSwitch",function(){
      document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
@@ -49,6 +45,14 @@ $(document).on("change", "#darkSwitch",function(){
 });
 
 /////////////////////////////////////////
+//////    TOOL TIP ////////////
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+
+
+///////////////////////////
 
 // VALIDATION FORM FIELDS
 // Disable form submissions if there are invalid fields
@@ -77,7 +81,7 @@ $(document).ready(function(){
 
 ////// FORM UI/UX /////
 
-$(document).ready(function() {
+var formUiUx = function() {
   // Test for placeholder support
     $.support.placeholder = (function(){
         var i = document.createElement('input');
@@ -138,11 +142,10 @@ $(document).ready(function() {
             }*/
         });
     } 
-});
+}
+
+$(document).on('load',formUiUx);
+$(document).on('turbolinks:load',formUiUx);
 
 ///////// DATETIME PICKER /////////
-
-///////////////////////
-
-
 

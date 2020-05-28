@@ -5,12 +5,13 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     if params[:search]
-      @search_results_clients = Client.search_by_name_and_email(params[:search])
-      respond_to do |format|
-        format.js {render partial: 'search-results'}
-      end
+      @search_results_clients = Client.all.search_by_name_and_email(params[:search][:search_word])
     else
       @clients = Client.all
+    end
+    respond_to do |format|
+        format.html
+        format.js {render partial: 'search-results', layout: false}
     end
   end
 
@@ -76,6 +77,6 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit!
+      params.require(:client).permit(:email, :first_name, :middle_name, :last_name, :phone_countrycode, :phone_number, :birthdate, :sex)
     end
 end

@@ -16,18 +16,12 @@
       <div class="container input-container">
         <div class="input-group d-flex justify-content-center">
           <div class="form-group">
-            <%= form.label :email, class: "form-label"%>
-            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
-          </div>
-        </div>
-        <div class="input-group d-flex justify-content-center">
-          <div class="form-group">
             <%= form.label :first_name, class: "form-label"%>
             <%= form.text_field :first_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:first_name), required: true %>
           </div>
           <div class="form-group">
             <%= form.label :middle_name, class: "form-label"%>
-            <%= form.text_field :middle_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:middle_name), required: true %>
+            <%= form.text_field :middle_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:middle_name) %>
           </div>
           <div class="form-group">
             <%= form.label :last_name, class: "form-label"%>
@@ -35,6 +29,10 @@
           </div>
         </div>
         <div class="input-group d-flex justify-content-center">
+          <div class="form-group">
+            <%= form.label :email, class: "form-label"%>
+            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
+          </div>
           <div class="form-group">
             <%= form.label :phone_countrycode, class: "form-label"%>
             <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
@@ -45,13 +43,20 @@
           </div>
         </div>
         <div class="input-group d-flex justify-content-center">
-          <div class="form-group">
-            <%= form.label :age, class: "form-label"%>
-            <%= form.text_field :age, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:age), required: true %>
+          <div class="form-group align-items-center">
+            <%= form.label :birthdate%>
+            <%= form.date_select :birthdate, class: "form-control", start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab, placeholder: Client.human_attribute_name(:birthdate), required: true %>
           </div>
           <div class="form-group">
-            <%= form.label :sex, class: "form-label"%>
-            <%= form.text_field :sex, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:sex), required: true %>
+            <%= form.label :sex%>
+            <div class="btn-group custom-control custom-radio custom-control-inline">
+            <%= form.radio_button :sex, "F", html: {class: "custom-control-input"}, :checked => true %>
+            <%= form.label :sex, "Fem", :value => "F"  %>
+            </div>
+            <div class="btn-group custom-control custom-radio custom-control-inline">
+            <%= form.radio_button :sex, "M", html: {class: "custom-control-input"}%>
+            <%= form.label :sex, "Masc", :value => "M" %>
+            </div>
           </div>
         </div>
       </div>
