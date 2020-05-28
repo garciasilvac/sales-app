@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  require 'mini_magick'
 
   # GET /products
   # GET /products.json
@@ -26,6 +27,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    comp_image = MiniMagick::Image.new(product_params[:product_image].tempfile.path)
+    comp_image.resize '150x150!'
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_path, notice: 'Product was successfully created.' }
@@ -40,6 +44,12 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+
+    if product_params[:product_image] != Product.find(@product.id).product_image
+      comp_image = MiniMagick::Image.new(product_params[:product_image].tempfile.path)
+      comp_image.resize '150x150!'
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
