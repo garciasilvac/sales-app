@@ -6,7 +6,6 @@ $: 'jquery',
 jQuery: 'jquery',
 jquery: 'jquery',
 Popper: ['popper.js', 'default']
-moment: 'moment/moment'
 }))
 
 module.exports = environment

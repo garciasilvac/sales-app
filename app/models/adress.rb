@@ -1,4 +1,6 @@
 class Adress < ApplicationRecord
+geocoded_by :full_adress
+after_validation :geocode
 belongs_to :client
 
 validates :client_id, presence: true
