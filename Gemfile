@@ -28,20 +28,13 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# Bootstrap 4  
-gem 'bootstrap', '~> 4.4.1' 
- 
-# Poper_js
-gem 'popper_js', '~> 1.16' 
- 
-# Jquery-rails
-gem 'jquery-rails', '~> 4.3.5'
+gem 'jquery-rails'
+
+gem 'popper_js'
 
 gem 'rails-i18n'
 
 gem 'awesome_print'
-
-gem 'bootstrap4-datetime-picker-rails'
 
 gem 'font-awesome-sass', '~> 5.12.0'
 
@@ -50,6 +43,10 @@ gem "rack-timeout"
 gem "pg_search"
 
 gem "simple_form"
+
+gem 'moment-timezone-rails'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
 
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'
@@ -66,7 +63,21 @@ gem 'mini_magick'
 
 gem 'dotenv-rails'
 
+###### GEOCODER
+
+gem 'activerecord-postgis-adapter', '~> 6.0'
+
+gem 'rgeo', '~> 2.1', '>= 2.1.1'
+
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+
+
+
 ##############################
+
+
+
+
 
 
 group :development, :test do

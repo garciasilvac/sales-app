@@ -17,6 +17,12 @@
   </div>
   <%= form.text_field :name, class: "form-control", placeholder: " Delivery type Name..." %>
 </div>
+<div class="input-group">
+  <div class="custom-control custom-checkbox">
+    <%= form.check_box :requires_delivery, class: "custom-control-input"%>
+    <%= form.label :requires_delivery, class: "custom-control-label"%>
+  </div>
+</div>
 
 <br>
 

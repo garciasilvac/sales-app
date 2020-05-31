@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @timeblock.name %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @timeblock.deleted %>
+</p>
+
+<%= link_to 'Edit', edit_timeblock_path(@timeblock) %> |
+<%= link_to 'Back', timeblocks_path %>

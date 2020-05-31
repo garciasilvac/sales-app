@@ -11,18 +11,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!-- DATEPICKER LIBRARY -->
-
-     <!-- VIEWPORT (MOBILE) LIBRARY -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
+    <%= render 'layouts/application_devise_alerts' %>
+    <%= render 'layouts/application_alert_modal' %>
     <% if user_signed_in? %>
     <div id="minFullBrowserContainer">
       <div id="overflowContainer">
-        <%= render 'layouts/application_devise_alerts' %>
-        <%= render 'layouts/application_alert_modal' %>
+
       
     	  <div id="welcomeBanner">PYME VENTA PB</div>
 

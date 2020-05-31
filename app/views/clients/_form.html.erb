@@ -43,19 +43,20 @@
           </div>
         </div>
         <div class="input-group d-flex justify-content-center">
-          <div class="form-group align-items-center">
+          <div class="form-group date" data-target-input="nearest">
             <%= form.label :birthdate%>
+            <!-- form.text_field :birthdate, class: "form-control datetimepicker-input", data: {toggle: 'datetimepicker', target: "#client_birthdate"}, required: true -->
             <%= form.date_select :birthdate, class: "form-control", start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab, placeholder: Client.human_attribute_name(:birthdate), required: true %>
           </div>
           <div class="form-group">
             <%= form.label :sex%>
-            <div class="btn-group custom-control custom-radio custom-control-inline">
-            <%= form.radio_button :sex, "F", html: {class: "custom-control-input"}, :checked => true %>
-            <%= form.label :sex, "Fem", :value => "F"  %>
+            <div class="custom-control custom-radio custom-control-inline">
+            <%= form.radio_button :sex, "F", :checked => true %>
+            <%= form.label :sex, " Fem", :value => "F", class: "custom-control-label" %>
             </div>
-            <div class="btn-group custom-control custom-radio custom-control-inline">
+            <div class="custom-control custom-radio custom-control-inline">
             <%= form.radio_button :sex, "M", html: {class: "custom-control-input"}%>
-            <%= form.label :sex, "Masc", :value => "M" %>
+            <%= form.label :sex, " Masc", :value => "M" %>
             </div>
           </div>
         </div>

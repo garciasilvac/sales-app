@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Timeblocks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timeblocks.each do |timeblock| %>
+      <tr>
+        <td><%= timeblock.name %></td>
+        <td><%= l timeblock.start_time, format: :only_time  %></td>
+        <td><%= l timeblock.end_time, format: :only_time %></td>
+        <td><%= link_to 'Show', timeblock %></td>
+        <td><%= link_to 'Edit', edit_timeblock_path(timeblock) %></td>
+        <td><%= link_to 'Destroy', timeblock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timeblock', new_timeblock_path %>

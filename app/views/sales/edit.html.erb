@@ -2,7 +2,11 @@
 <h3><%=t('.title')%></h3>
 </div>
 
-<%= render 'form', sale: @sale %>
+<% if action_name == 'edit_step_2'%>
+	<%= render 'form_step_2', sale: @sale %>
+<% else %>
+	<%= render 'form', sale: @sale %>
+<% end %>
 
 <%= link_to sales_path do%>
 <i class="fas fa-undo"> <%= t('back') %></i>

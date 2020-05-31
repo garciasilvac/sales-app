@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_161949) do
+ActiveRecord::Schema.define(version: 2020_05_30_223105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,11 +64,29 @@ ActiveRecord::Schema.define(version: 2020_05_27_161949) do
     t.date "birthdate"
   end
 
+  create_table "deliveries", force: :cascade do |t|
+    t.bigint "sale_id", null: false
+    t.date "sched_date"
+    t.integer "sched_timeblock"
+    t.boolean "delivered"
+    t.date "real_date"
+    t.integer "real_timeblock"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "successful"
+    t.text "driver_comment"
+    t.bigint "adress_id"
+    t.index ["adress_id"], name: "index_deliveries_on_adress_id"
+    t.index ["sale_id"], name: "index_deliveries_on_sale_id"
+  end
+
   create_table "delivery_types", force: :cascade do |t|
     t.string "name"
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "requires_delivery"
   end
 
   create_table "payment_types", force: :cascade do |t|
@@ -93,8 +111,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_161949) do
     t.bigint "client_id", null: false
     t.bigint "total_amount"
     t.boolean "paid"
-    t.bigint "payment_type_id", null: false
-    t.bigint "delivery_type_id", null: false
+    t.bigint "payment_type_id"
+    t.bigint "delivery_type_id"
     t.boolean "deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -125,6 +143,15 @@ ActiveRecord::Schema.define(version: 2020_05_27_161949) do
     t.index ["type_id"], name: "index_subtypes_on_type_id"
   end
 
+  create_table "timeblocks", force: :cascade do |t|
+    t.string "name"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.time "start_time"
+    t.time "end_time"
+  end
+
   create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "modif_date"
@@ -152,6 +179,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_161949) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "adresses", "clients"
+  add_foreign_key "deliveries", "adresses"
+  add_foreign_key "deliveries", "sales"
   add_foreign_key "products", "subtypes"
   add_foreign_key "sales", "clients"
   add_foreign_key "sales", "delivery_types"

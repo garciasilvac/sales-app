@@ -4,7 +4,6 @@
           <% if sale.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
-
               <ul>
                 <% sale.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
@@ -17,48 +16,42 @@
             <div class="input-group d-flex justify-content-left">
               <div class="row w-100">
                 <div class="col d-flex justify-content-left align-items-center">
-              <div class="form-group w-100">
-              <%= form.label :sale_datetime, class: "form-label"%>
-              <%= form.datetime_select :sale_datetime, class: "form-control datetimepicker-input",  placeholder: Client.human_attribute_name(:sale_datetime), required: true %>
-              </div>
-            </div>
-            </div>
-            </div>
-            <div class="input-group d-flex justify-content-left">
-              <div class="row w-100">
-                <div class="col d-flex justify-content-left align-items-center">
-              <div class="form-group w-100">
-              <%= form.label :client_id, class: "form-label"%>
-              <%= form.collection_select(:client_id, Client.order(:last_name), :id, :full_name, {:include_blank => 'Client..'}, {:class => 'custom-select'})  %>
-              </div>
-            </div>
-                <div class="col d-flex justify-content-left align-items-center">
-              <div class="form-group w-100">
-                <%= form.label :delivery_type_id, class: "form-label"%>
-                <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => 'Delivery type...'}, {:class => 'custom-select'})  %>
-              </div>
-            </div>
-          </div>
-            </div>
-            <div class="input-group d-flex justify-content-left">
-              <div class="row w-100">
-                <div class="col d-flex justify-content-left align-items-center">
-              <div class="form-group w-100">
-                <div class="custom-control custom-checkbox">
-                    <%= form.check_box :paid, class: "custom-control-input"%>
-                    <%= form.label :paid, class: "custom-control-label"%>
+                  <div class="form-group w-100">
+                    <%= form.label :sale_datetime, class: "form-label"%>
+                    <%= form.datetime_select :sale_datetime, class: "form-control datetimepicker-input",  placeholder: Client.human_attribute_name(:sale_datetime), required: true %>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="input-group d-flex justify-content-left">
+              <div class="row w-100">
                 <div class="col d-flex justify-content-left align-items-center">
-              <div class="form-group w-100">
-                <%= form.label :payment_type_id, class: "form-label"%>
-                <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+                  <div class="form-group w-100">
+                    <%= form.label :client_id, class: "form-label"%>
+                    <%= form.collection_select(:client_id, Client.order(:last_name), :id, :full_name, {:include_blank => 'Client..'}, {:class => 'custom-select'})  %>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div class="input-group d-flex justify-content-left">
+              <div class="row w-100">
+                <div class="col d-flex justify-content-left align-items-center">
+                  <div class="form-group w-100">
+                    <div class="custom-control custom-checkbox">
+                        <%= form.check_box :paid, class: "custom-control-input"%>
+                        <%= form.label :paid, class: "custom-control-label"%>
+                    </div>
+                  </div>
+                </div>
+                <div class="col d-flex justify-content-left align-items-center">
+                  <div class="form-group w-100">
+                    <%= form.label :payment_type_id, class: "form-label"%>
+                    <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
         <br>
 

@@ -20,12 +20,12 @@
 
 <p>
   <strong><%= label(:sale, :payment_type_id) %>:</strong>
-  <%= PaymentType.find(@sale.payment_type_id).name %>
+  <%= @sale.payment_type_id.nil? ? @sale.payment_type_id : PaymentType.find(@sale.payment_type_id).name %>
 </p>
 
 <p>
   <strong><%= label(:sale, :delivery_type_id) %>:</strong>
-  <%= DeliveryType.find(@sale.delivery_type_id).name %>
+  <%= @sale.delivery_type_id.nil? ? @sale.delivery_type_id : DeliveryType.find(@sale.delivery_type_id).name %>
 </p>
 
 

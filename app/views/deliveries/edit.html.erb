@@ -1,0 +1,10 @@
+<h1>Editing Delivery</h1>
+
+<% if action_name == 'edit_step_2'%>
+	<%= render 'form_step_2', delivery: @delivery %>
+<% else %>
+	<%= render 'form', delivery: @delivery %>
+<% end %>
+
+<%= link_to 'Show', [@sale,@delivery] %> |
+<%= link_to 'Back', sale_deliveries_path %>

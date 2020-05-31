@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sched date:</strong>
+  <%= @delivery.sched_date %>
+</p>
+
+<p>
+  <strong>Sched timeblock:</strong>
+  <%= @delivery.sched_timeblock %>
+</p>
+
+<p>
+  <strong>Delivered:</strong>
+  <%= @delivery.delivered %>
+</p>
+
+<p>
+  <strong>Real date:</strong>
+  <%= @delivery.real_date %>
+</p>
+
+<p>
+  <strong>Real timeblock:</strong>
+  <%= @delivery.real_timeblock %>
+</p>
+
+<%= link_to 'Edit', edit_sale_delivery_path(@sale,@delivery) %> |
+<%= link_to 'Back', sale_deliveries_path(@sale) %>

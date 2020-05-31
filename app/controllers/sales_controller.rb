@@ -1,10 +1,10 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :update, :destroy]
+  before_action :set_sale, only: [:show, :edit, :edit_step_2, :update, :update_step_2, :destroy]
 
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = Sale.all.order(sale_datetime: :desc)
   end
 
   # GET /sales/1
@@ -21,6 +21,11 @@ class SalesController < ApplicationController
   def edit
   end
 
+  # GET /sales/1/edit_step_2
+  def edit_step_2
+    render :edit
+  end
+
   # POST /sales
   # POST /sales.json
   def create
@@ -28,7 +33,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to sales_path, notice: 'Sale was successfully created.' }
+        format.html { redirect_to sale_shopping_carts_path(@sale), notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new }
@@ -42,8 +47,31 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
+        puts "////////\n\n///// update original //////\n\n//////////////"
         format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
+      else
+        format.html { render :edit }
+        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /sales/1
+  # PATCH/PUT /sales/1.json
+
+  def update_step_2
+    respond_to do |format|
+      if @sale.update(sale_params)
+        ## if sale requires delivery, then render deliveries path. O/W, render sales path as sale finished
+        "////////\n\n///// update step 2 //////\n\n//////////////"
+        if @sale.delivery_type.requires_delivery?
+          format.html { redirect_to new_sale_delivery_path(@sale), notice: 'Ok! Schedule delivery :)' }
+          format.json { render :show, status: :ok, location: @sale }
+        else
+          format.html { redirect_to sales_path, notice: 'The order is finished!' }
+          format.json { render :show, status: :ok, location: @sale }
+        end
       else
         format.html { render :edit }
         format.json { render json: @sale.errors, status: :unprocessable_entity }

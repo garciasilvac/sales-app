@@ -1,4 +1,6 @@
-<h3>Items for this sale</h3>
+<div class="row d-flex align-items-center mb-3">
+  <div class="col-3 block"><h3>Items for <%= @sale.client.full_name %></h3> <span class="font-italic font-weight-light"><%= l @sale.sale_datetime %></span> </div>
+</div>
 
 <div class="table-responsive-fixed">
 <table>
@@ -51,12 +53,15 @@
 </div>
 
 
-<br>
 <div class="btn-group">
-<%= link_to new_sale_shopping_cart_path do%>
-<i class="fa fa-plus" aria-hidden="true"> Item</i>
-      <% end %>
-<%= link_to sales_path do%>
-<i class="fas fa-undo"> Sales</i>
-<% end %>
+  <%= link_to new_sale_shopping_cart_path do%>
+    <i class="fa fa-plus" aria-hidden="true"> Item</i>
+  <% end %>
+  <%= link_to sales_path do%>
+    <i class="fas fa-undo"> Sales</i>
+  <% end %>
 </div>
+
+<%= link_to edit_step_2_sale_path(@sale) do%>
+    <i class="fas fa-forward"> Continue</i>
+<% end %>

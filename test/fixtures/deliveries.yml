@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale: one
+  sched_date: 2020-05-28
+  sched_timeblock: 1
+  delivered: false
+  real_date: 2020-05-28
+  real_timeblock: 1
+  deleted: false
+
+two:
+  sale: two
+  sched_date: 2020-05-28
+  sched_timeblock: 1
+  delivered: false
+  real_date: 2020-05-28
+  real_timeblock: 1
+  deleted: false

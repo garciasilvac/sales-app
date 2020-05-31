@@ -261,7 +261,8 @@ es-CL:
     am: am
     formats:
       default: "%d/%m/%Y %H:%M"
-      orig-default: "%A, %d de %B de %Y %H:%M:%S %z"
+      orig_default: "%A, %d de %B de %Y %H:%M:%S %z"
       long: "%A %d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
+      only_time: "%H:%M"
     pm: pm
