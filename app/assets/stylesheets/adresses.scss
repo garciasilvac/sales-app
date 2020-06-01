@@ -1,3 +1,15 @@
 // Place all the styles related to the Adresses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+#map {
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    a{
+    	background:none;
+    	border:none;
+    	padding:0px;
+    }
+}

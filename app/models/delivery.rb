@@ -11,8 +11,8 @@ class Delivery < ApplicationRecord
 		self.sched_timeblock.nil? ? "Not Defined" : Timeblock.find(self.sched_timeblock).name
 	end
 
-	def get_full_adress
-		self.adress_id.nil? ? "Not Defined" : Adress.find(self.adress_id).full_adress
+	def get_adress
+		self.adress_id.nil? ? "Not Defined" : Adress.find(self.adress_id)
 	end
 
 	def get_realtb_name

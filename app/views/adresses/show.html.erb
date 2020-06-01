@@ -1,3 +1,23 @@
+<% provide :head_tags do %>
+    <script>
+    $(document).on('turbolinks:load', function(){
+      mapDiv = document.getElementById('map');
+      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv)
+    });
+    $(document).on('load', function(){
+      mapDiv = document.getElementById('map');
+      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv)
+    });
+        
+    </script>
+<% end %>
+
+<p>
+<div id='map'></div>
+</p>
+ <%= link_to "Open in Maps", @adress.gmap_show , target: "_blank"%>
+
+ <%= link_to "Directions", @adress.gmap_dir , target: "_blank"%>
 <p>
   <strong><%= label(:adress, :street) %></strong>
   <%= @adress.street %>

@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Directions</th>
       <th>Sched date</th>
       <th>Adress</th>
       <th>Delivered</th>
@@ -18,9 +19,12 @@
   <tbody>
     <% @sale.deliveries.each do |delivery| %>
       <tr>
-        <td><%= delivery.sched_date %> | 
-        <%= delivery.get_schedtb_name %></td>
-        <td><%= delivery.get_full_adress %></td>
+        <td><%= link_to delivery.get_adress.gmap_dir , target: "_blank" do%>
+            <i class="fas fa-directions"></i>
+          <%end%>
+        </td>
+        <td><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
+        <td><%= delivery.get_adress.full_adress %></td>
         <td><%= delivery.delivered %></td>
         <td><%= delivery.real_date %> | <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : delivery.get_realtb_name %></td>
         <td><%= delivery.successful %></td>

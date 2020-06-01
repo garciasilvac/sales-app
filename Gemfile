@@ -34,7 +34,7 @@ gem 'popper_js'
 
 gem 'rails-i18n'
 
-gem 'awesome_print'
+gem 'amazing_print'
 
 gem 'font-awesome-sass', '~> 5.12.0'
 
