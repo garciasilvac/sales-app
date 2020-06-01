@@ -88,7 +88,7 @@ class DeliveriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def delivery_params
-      params.require(:delivery).permit(:sale_id, :sched_date, :sched_timeblock, :delivered, :real_date, :real_timeblock, :successful, :driver_comment)
+      params.require(:delivery).permit(:sale_id, :sched_date, :sched_timeblock, :delivered, :real_date, :real_timeblock, :successful, :driver_comment, :adress_id)
     end
 
     def get_sale

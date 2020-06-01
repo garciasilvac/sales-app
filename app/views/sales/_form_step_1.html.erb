@@ -31,6 +31,9 @@
                     <%= form.collection_select(:client_id, Client.order(:last_name), :id, :full_name, {:include_blank => 'Client..'}, {:class => 'custom-select'})  %>
                   </div>
                 </div>
+                <div class="col d-flex justify-content-left align-items-center">
+                  <%= link_to "New Client", new_client_sales_path %>
+                </div>
               </div>
             </div>
           </div>

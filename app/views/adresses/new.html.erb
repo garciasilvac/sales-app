@@ -1,6 +1,10 @@
 <h3><%=t('.title', client: @adress.client.full_name)%></h3>
 
-<%= render 'form', adress: @adress %>
+<% if controller_name == 'sales'%>
+	<%= render 'adresses/form', adress: @adress %>
+<% else %>
+	<%= render 'form', adress: @adress %>
+<% end %>
 
 <%= link_to client_adresses_path(@client) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>

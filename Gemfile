@@ -44,9 +44,9 @@ gem "pg_search"
 
 gem "simple_form"
 
-gem 'moment-timezone-rails'
-gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.47'
+gem "momentjs-rails"
+gem "moment-timezone-rails"
+gem 'bootstrap4-datetime-picker-rails', '~> 0.3.1'
 
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'

@@ -2,7 +2,11 @@
 <h3><%=t('.title')%></h3>
 </div>
 
-<%= render 'form', client: @client %>
+<% if controller_name == 'sales'%>
+	<%= render 'clients/form', client: @client %>
+<% else %>
+	<%= render 'form', client: @client %>
+<% end %>
 
 <%= link_to clients_path, tabindex: autotab do%>
 <i class="fas fa-undo"> <%= t('back') %></i>

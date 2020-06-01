@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :edit_step_2, :update, :update_step_2, :destroy]
+  before_action :set_sale, only: [:show, :new_adress, :create_adress, :edit, :edit_step_2, :update, :update_step_2, :destroy]
 
   # GET /sales
   # GET /sales.json
@@ -10,11 +10,24 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
+    puts 'action: new_adress' 
   end
 
   # GET /sales/new
   def new
     @sale = Sale.new
+  end
+
+  # GET /sales/1/new_adress
+  def new_adress
+    @client = @sale.client
+    @adress = @client.adresses.new
+    render 'adresses/new'
+  end
+
+   def new_client
+    @client = Client.new
+    render 'clients/new'
   end
 
   # GET /sales/1/edit
@@ -38,6 +51,37 @@ class SalesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /sales
+  # POST /sales.json
+  def create_adress
+    @client = @sale.client
+    @adress = @client.adresses.new(adress_params)
+
+    respond_to do |format|
+      if @adress.save
+        format.html { redirect_to new_sale_delivery_path(@sale), notice: 'Adress was successfully created.' }
+        format.json { render :show, status: :created, location: @adress }
+      else
+        format.html { render :new }
+        format.json { render json: @adress.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_client
+    @client = Client.new(client_params)
+
+    respond_to do |format|
+      if @client.save
+        format.html { redirect_to new_sale_path, notice: 'Client was successfully created.' }
+        format.json { render :show, status: :created, location: @client }
+      else
+        format.html { render :new, alert: 'Ooops! There is a problem creating' }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -98,5 +142,13 @@ class SalesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def sale_params
       params.require(:sale).permit(:sale_datetime, :client_id,:total_amount ,:paid, :payment_type_id, :delivery_type_id)
+    end
+
+    def adress_params
+      params.require(:adress).permit(:street, :str_number, :adr_unit, :adr_other, :adr_zip, :adr_county, :adr_state, :adr_country)
+    end
+
+    def client_params
+      params.require(:client).permit(:email, :first_name, :middle_name, :last_name, :phone_countrycode, :phone_number, :birthdate, :sex)
     end
 end

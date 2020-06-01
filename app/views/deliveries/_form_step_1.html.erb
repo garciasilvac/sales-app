@@ -10,17 +10,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="row mb-3">
+  <div class="field col">
+    <%= form.label :adress_id %>
+    <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => 'Select adress..', required: true}, {:class => 'custom-select'}) %>
+  </div>
+    <div class="col">
+    
+    <%= link_to "New adress", new_adress_sale_path(@sale) %>
+  </div>
+</div>
+
+  <div class="row mb-3">
+    <div class="field col">
     <%= form.label :sched_date %>
     <%= form.date_select :sched_date, required: true%>
   </div>
 
-  <div class="field">
+  <div class="field col">
     <%= form.label :sched_timeblock %>
     <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..', required: true}, {:class => 'custom-select'}) %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
   </div>
+  
+<div class="btn-group">
+
+    <%= form.submit %>
+
 <% end %>

@@ -19,6 +19,12 @@ Rails.application.routes.draw do
       member do
         get 'edit_step_2'
         patch 'update_step_2'
+        get 'new_adress'
+        post 'create_adress'
+      end
+      collection do
+        get 'new_client'
+        post 'create_client'
       end
       resources :shopping_carts
       resources :deliveries do
@@ -27,9 +33,7 @@ Rails.application.routes.draw do
           patch 'update_step_2'
         end
       end
-      
     end
-
     
 
     #### APP CONFIGURABLE OPTIONS
