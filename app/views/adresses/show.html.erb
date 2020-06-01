@@ -2,11 +2,11 @@
     <script>
     $(document).on('turbolinks:load', function(){
       mapDiv = document.getElementById('map');
-      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv)
+      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv, '<%=@adress.full_adress%>')
     });
     $(document).on('load', function(){
       mapDiv = document.getElementById('map');
-      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv)
+      initMap(<%=@adress.latitude%>, <%=@adress.longitude%>, mapDiv, '<%=@adress.full_adress%>')
     });
         
     </script>
