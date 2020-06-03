@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'jquery-rails'
 
+gem 'bootstrap'
+
 gem 'popper_js'
 
 gem 'rails-i18n'
@@ -44,9 +46,7 @@ gem "pg_search"
 
 gem "simple_form"
 
-gem "momentjs-rails"
-gem "moment-timezone-rails"
-gem 'bootstrap4-datetime-picker-rails', '~> 0.3.1'
+gem 'bootstrap-select-rails', '~> 1.13', '>= 1.13.8'
 
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'

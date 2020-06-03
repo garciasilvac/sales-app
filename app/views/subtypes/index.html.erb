@@ -19,15 +19,15 @@
         <td><%= l subtype.created_at %></td>
         <td><%= l subtype.updated_at %></td>
         <td><%= t subtype.deleted %></td>
-        <td><%= link_to [@type,subtype] do%>
+        <td class="buttons"><%= link_to [@type,subtype] do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_type_subtype_path(@type,subtype) do%>
+        <td class="buttons"><%= link_to edit_type_subtype_path(@type,subtype) do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to [@type,subtype], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to [@type,subtype], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
             <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

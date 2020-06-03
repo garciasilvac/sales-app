@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <% if controller = "publics" %>
+    <% if controller == "publics" %>
       <%= stylesheet_link_tag 'publics', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=weekly&key='+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]%>
@@ -18,18 +18,16 @@
   </head>
 
   <body>
-    <%= render 'layouts/application_devise_alerts' %>
-    <%= render 'layouts/application_alert_modal' %>
+
     <% if user_signed_in? %>
     <div id="minFullBrowserContainer">
       <div id="overflowContainer">
-
-      
-    	  <div id="welcomeBanner">PYME VENTA PB</div>
-
+        <%= render 'layouts/application_devise_alerts' %>
+        <%= render 'layouts/application_alert_modal' %>
+    	  <div id="welcomeBanner">
+          <%= image_tag("banners/mainbanner.png") %>
+        </div>
         <%= render 'layouts/application_navbar' %>
-        
-        
       	<div id="subBody">
        	 	<%= yield %>
        	</div>
@@ -38,6 +36,8 @@
     <% else %>
     <div id="minFullBrowserContainerLogin">
       <div id="overflowContainerLogin">
+        <%= render 'layouts/application_devise_alerts' %>
+        <%= render 'layouts/application_alert_modal' %>
         <div id="subBody">
           <%= yield %>
         </div>

@@ -1,29 +1,12 @@
   <table>
   	<tr>
   		<td>
-  			<%= label(:client, :first_name) %>
+  			<%= label(:client, :full_name) %>
   		</td>
   		<td>
-  			<%= @client.first_name %>
+  			<%= @client.formatted_name(:full_name) %>
   		</td>
   	</tr>
-  	<tr>
-  		<td>
-  			<%= label(:client, :middle_name) %>
-  		</td>
-  		<td>
-  			<%= @client.middle_name %>
-  		</td>
-  	</tr>
-  	<tr>
-  		<td>
-  			<%= label(:client, :last_name) %>
-  		</td>
-  		<td>
-  			<%= @client.last_name %>
-  		</td>
-  	</tr>
-  	<tr>
   		<td>
   			<%= label(:client, :phone_number) %>
   		</td>

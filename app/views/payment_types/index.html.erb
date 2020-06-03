@@ -14,15 +14,15 @@
     <% @payment_types.each do |payment_type| %>
       <tr>
         <td><%= payment_type.name %></td>
-        <td><%= link_to payment_type do%>
+        <td class="buttons"><%= link_to payment_type do%>
             <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_payment_type_path(payment_type) do%>
+        <td class="buttons"><%= link_to edit_payment_type_path(payment_type) do%>
            <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to payment_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to payment_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

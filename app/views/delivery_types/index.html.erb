@@ -15,15 +15,15 @@
       <tr>
         <td><%= delivery_type.name %></td>
         <td><%= delivery_type.requires_delivery %></td>
-        <td><%= link_to delivery_type do%>
+        <td class="buttons"><%= link_to delivery_type do%>
             <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_delivery_type_path(delivery_type) do%>
+        <td class="buttons"><%= link_to edit_delivery_type_path(delivery_type) do%>
             <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to delivery_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to delivery_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
             <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

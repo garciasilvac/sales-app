@@ -1,6 +1,6 @@
 <h3><i class="fas fa-chart-line"> <%=t('.title')%></i></h3>
 
-<div class="table-responsive-fixed">
+<div class="table-responsive">
 <table>
   <thead>
     <tr>
@@ -25,7 +25,7 @@
     <% @sales.each do |sale| %>
       <tr>
         <td><%= l sale.sale_datetime%></td>
-        <td><%= sale.client.full_name %></td>
+        <td><%= sale.client.formatted_name(:reverse) %></td>
         <td><%= number_to_currency(sale.total_amount) %></td>
         <td><%= sale.delivery_type_id.nil? ? sale.delivery_type_id : DeliveryType.find(sale.delivery_type_id).name %></td>
         <td class="text-center"><% if sale.paid %>
@@ -37,23 +37,23 @@
         <td><%= sale.payment_type_id.nil? ? sale.payment_type_id : PaymentType.find(sale.payment_type_id).name %></td>
         <td><%= l sale.created_at %></td>
         <td><%= l sale.updated_at %></td>
-        <td><%= link_to sale_shopping_carts_path(sale) do%>
+        <td class="buttons"><%= link_to sale_shopping_carts_path(sale) do%>
           <i class="fas fa-cart-plus"> (<%=sale.shopping_carts.count%>)</i>
           <% end %>
         </td>
-        <td><%= link_to sale_deliveries_path(sale) do%>
+        <td class="buttons"><%= link_to sale_deliveries_path(sale) do%>
           <i class="fas fa-truck"> (<%=sale.deliveries.count%>)</i>
           <% end %>
         </td>
-        <td><%= link_to sale do %>
+        <td class="buttons"><%= link_to sale do %>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_sale_path(sale) do%>
+        <td class="buttons"><%= link_to edit_sale_path(sale) do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "deleteBtn" do%>
           <i class="far fa-trash-alt"></i>
           <% end %>
         </td>

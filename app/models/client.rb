@@ -17,8 +17,21 @@ pg_search_scope :search_by_name_and_email, :against => [:first_name, :middle_nam
  validates :birthdate, presence: true
  validates :sex, presence: true
  
-def full_name
-	"#{first_name.first}. #{last_name}"
+def formatted_name(input = :reverse)
+	case input
+	when :compact
+		"#{first_name.first}. #{last_name}"
+	when :reverse
+		"#{last_name}, #{first_name}"
+	when :full
+		if middle_name.nil? || middle_name.blank?
+			"#{first_name} #{last_name}"
+		else
+			"#{first_name} #{middle_name} #{last_name}"
+		end
+	else
+		"Not a valid format :("
+	end
 end
 
 def age

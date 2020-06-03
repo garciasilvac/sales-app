@@ -1,16 +1,11 @@
-<h3><%=t('.title', count: @client.adresses.count, client: @client.full_name)%></h3>
+<h3><%=t('.title', count: @client.adresses.count, client: @client.formatted_name(:compact))%></h3>
 
 <div class="table-responsive-fixed">
 <table>
   <thead>
     <tr>
       <th><%=Adress.human_attribute_name("street")%></th>
-      <th><%=Adress.human_attribute_name("str_number")%></th>
       <th><%=Adress.human_attribute_name("adr_unit")%></th>
-      <th><%=Adress.human_attribute_name("adr_other")%></th>
-      <th><%=Adress.human_attribute_name("adr_zip")%></th>
-      <th><%=Adress.human_attribute_name("adr_county")%></th>
-      <th><%=Adress.human_attribute_name("adr_state")%></th>
       <th><%=Adress.human_attribute_name("adr_country")%></th>
       <th><%=Adress.human_attribute_name("created_at")%></th>
       <th><%=Adress.human_attribute_name("updated_at")%></th>
@@ -26,13 +21,8 @@
     <% else %>
     <% @adresses.each do |adress| %>
       <tr>
-        <td><%= adress.street %></td>
-        <td><%= adress.str_number %></td>
+        <td><%= adress.full_adress %></td>
         <td><%= adress.adr_unit %></td>
-        <td><%= adress.adr_other %></td>
-        <td><%= adress.adr_zip %></td>
-        <td><%= adress.adr_county %></td>
-        <td><%= adress.adr_state %></td>
         <td><%= adress.adr_country %></td>
         <td><%= l adress.created_at %></td>
         <td><%= l adress.updated_at %></td>

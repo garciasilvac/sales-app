@@ -24,16 +24,16 @@
         <td><%= l type.created_at %></td>
         <td><%= l type.updated_at %></td>
         <td><%= t type.deleted %></td>
-		    <td><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type)%></td>
-        <td><%= link_to type_path(type) do%>
+		    <td class="buttons"><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type)%></td>
+        <td class="buttons"><%= link_to type_path(type) do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_type_path(type) do%>
+        <td class="buttons"><%= link_to edit_type_path(type) do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

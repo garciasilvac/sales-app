@@ -4,8 +4,7 @@
 <table>
   <thead>
     <tr>
-      <th>IMAGE</th>
-      <th>Name</th>
+      <th colspan="2">Product</th>
       <th>Type</th>
       <th>Subtype</th>
       <th>Price</th>
@@ -18,7 +17,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td class="d-flex justify-content-center">
+        <td>
           <% if product.product_image.attached? %>
             <%= image_tag(product.product_image, class: "product-img product-img-sm")%>
           <% else %>
@@ -31,15 +30,15 @@
         <td><%= number_to_currency(product.price) %></td>
         <td><%= l product.created_at %></td>
         <td><%= l product.updated_at %></td>
-        <td><%= link_to product do%>
+        <td class="buttons"><%= link_to product do%>
          <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_product_path(product) do%>
+        <td class="buttons"><%= link_to edit_product_path(product) do%>
          <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

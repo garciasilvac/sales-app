@@ -12,6 +12,7 @@ import 'bootstrap'
 import "../stylesheets/application"
 import { initMap } from '../adresses/gmaps';
 global.initMap = initMap;
+import 'bootstrap-select'
 
 import $ from 'jquery';
 global.$ = jQuery;
@@ -33,7 +34,8 @@ var globalDarkMode = 0;
 var checkAndSetDMVar = function(){
     if (globalDarkMode == 1){
       $("#darkSwitch").prop('checked', true);
-      document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
+      /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
+      document.body.classList.toggle("dark-mode");
     }
     return
 }
@@ -42,7 +44,8 @@ $(document).on('load',checkAndSetDMVar);
 $(document).on('turbolinks:load',checkAndSetDMVar);
 
 $(document).on("change", "#darkSwitch",function(){
-     document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");
+     /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
+     document.body.classList.toggle("dark-mode");
      globalDarkMode = 1 - globalDarkMode;
 });
 
@@ -151,4 +154,11 @@ $(document).on('turbolinks:load',formUiUx);
 
 ///////// DATETIME PICKER /////////
 
+
+
+$(function() {
+  $('#sale_client_id').selectpicker({
+      dropupAuto: false
+    });
+});
 
