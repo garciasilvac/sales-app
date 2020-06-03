@@ -5,7 +5,7 @@
 
 <p>
   <strong><%= label(:sale, :client_id) %>:</strong>
-  <%= Client.find(@sale.client_id).full_name %>
+  <%= Client.find(@sale.client_id).formatted_name(:full) %>
 </p>
 
 <p>

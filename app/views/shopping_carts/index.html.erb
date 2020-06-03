@@ -1,5 +1,5 @@
 <div class="row d-flex align-items-center mb-3">
-  <div class="col-3 block"><h3>Items for <%= @sale.client.full_name %></h3> <span class="font-italic font-weight-light"><%= l @sale.sale_datetime %></span> </div>
+  <div class="col-3 block"><h3>Items for <%= @sale.client.formatted_name(:full) %></h3> <span class="font-italic font-weight-light"><%= l @sale.sale_datetime %></span> </div>
 </div>
 
 <div class="table-responsive-fixed">

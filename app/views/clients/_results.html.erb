@@ -1,9 +1,7 @@
 <table id="clientsTable">
   <thead>
     <tr>
-      <th><%=Client.human_attribute_name("first_name")%></th>
-      <th><%=Client.human_attribute_name("middle_name")%></th>
-      <th><%=Client.human_attribute_name("last_name")%></th>
+      <th><%=Client.human_attribute_name("full_name")%></th>
       <th colspan="2"><%=Client.human_attribute_name("phone_number")%></th>
       <th><%=Client.human_attribute_name("email")%></th>
       <th><%=Client.human_attribute_name("birthdate")%></th>
@@ -23,9 +21,7 @@
     <% else %>
     <% @search_results_clients.each do |client| %>
       <tr>
-      	<td><%= client.first_name %></td>
-      	<td><%= client.middle_name %></td>
-      	<td><%= client.last_name %></td>
+      	<td><%= client.formatted_name(:reverse) %></td>
       	<td><%= client.phone_countrycode %></td>
       	<td><%= client.phone_number %></td>
       	<td><%= client.email %></td>
@@ -46,7 +42,7 @@
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.full_name) } , class: "deleteBtn" do%>
+        <td><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "deleteBtn" do%>
               <i class="far fa-trash-alt"></i>
             <% end %>
         </td>
