@@ -234,7 +234,6 @@ textarea {
    	border-style: none none solid none;
    	box-shadow: none;
    	background:none;
-   	font-size:12px;
    	&:focus{
    		background:none;
    		box-shadow: none !important;
@@ -249,16 +248,22 @@ textarea {
 	@extend .col-12;
 }
 .input-position{
-	@extend .col-8;
-	@extend .col-sm-5;
-	@extend .col-md-4;
-	@extend .col-lg-3;
+	@extend .col-10;
+	@extend .col-sm-8;
+	@extend .col-md-6;
+	@extend .col-lg-4;
+	@extend .col-xl-3;
+	padding-left:0px;
+	padding-right:0px;
 	margin-bottom:10px;
 	&-double{
-		@extend .col-8;
+		@extend .col-10;
 		@extend .col-sm-8;
 		@extend .col-md-6;
 		@extend .col-lg-6;
+		@extend .col-xl-6;
+		padding-left:0px;
+		padding-right:0px;
 		.col-{
 			&4,&8{padding:0px;}
 		}
