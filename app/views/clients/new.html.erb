@@ -3,9 +3,9 @@
 </div>
 
 <% if controller_name == 'sales'%>
-	<%= render 'clients/form', client: @client %>
+	<%= render 'clients/form', client: @client, url_method: create_client_sales_url %>
 <% else %>
-	<%= render 'form', client: @client %>
+	<%= render 'form', client: @client, url_method: clients_path %>
 <% end %>
 
 <%= link_to clients_path, tabindex: autotab do%>
@@ -14,4 +14,4 @@
 </div>
 </div>
 </div>
-</div>
+

@@ -1,4 +1,5 @@
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap.scss";
 @import "bootstrap-select";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -211,7 +212,7 @@ table{
 
 ////////// FORMS ///////////
 .input-container{
-	margin-bottom:100px;
+	margin-bottom:50px;
 }
 
 textarea {
@@ -233,6 +234,7 @@ textarea {
    	border-style: none none solid none;
    	box-shadow: none;
    	background:none;
+   	font-size:12px;
    	&:focus{
    		background:none;
    		box-shadow: none !important;
@@ -243,8 +245,37 @@ textarea {
 .custom-select {
    	background-color:none;
 }
+.form-position{
+	@extend .col-12;
+}
+.input-position{
+	@extend .col-8;
+	@extend .col-sm-5;
+	@extend .col-md-4;
+	@extend .col-lg-3;
+	margin-bottom:10px;
+	&-double{
+		@extend .col-8;
+		@extend .col-sm-8;
+		@extend .col-md-6;
+		@extend .col-lg-6;
+		.col-{
+			&4,&8{padding:0px;}
+		}
+	}
+}
+
+.row{
+	@extend .d-flex;
+	@extend .justify-content-center;
+	margin:0px;
+}
+
 .form-group {
 	margin:5px;
+}
+.form-label-special{
+	font-size:12px;
 }
 .js-hide-label {
 	opacity: 0; 	

@@ -1,10 +1,7 @@
- 
-<% if controller_name == 'sales' %>
- <div class="row d-flex justify-content-center">
-      <div class="col-10">
-        <%= form_with(model: client, local: true, url: create_client_sales_url, tabindex: autotab, class: "was-validated") do |form| %>
+      <div class="form-position">
+        <%= form_with(model: client, local: true, url: url_method, class: "was-validated") do |form| %>
           <% if client.errors.any? %>
-            <div id="error_explanation">
+            <div id="error_explanation bg-danger text-white">
               <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
               <ul>
@@ -15,43 +12,47 @@
             </div>
           <% end %>
           
-      <div class="container input-container">
+      <div class="input-container">
         <div class="row input-group">
-          <div class="col-3 form-group">
+          <div class="input-position form-group">
             <%= form.label :first_name, class: "form-label"%>
             <%= form.text_field :first_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:first_name), required: true %>
           </div>
-          <div class="col-3 form-group">
+          <div class="input-position form-group">
             <%= form.label :middle_name, class: "form-label"%>
             <%= form.text_field :middle_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:middle_name) %>
           </div>
-          <div class="col-3 form-group">
+          <div class="input-position form-group">
             <%= form.label :last_name, class: "form-label"%>
             <%= form.text_field :last_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:last_name), required: true %>
           </div>
         </div>
         <div class="row input-group">
-          <div class="col-3 form-group">
+          <div class="input-position form-group">
             <%= form.label :email, class: "form-label"%>
             <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
           </div>
-          <div class="col-2 form-group">
-            <%= form.label :phone_countrycode, class: "form-label"%>
-            <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
-          </div>
-          <div class="col-3 form-group">
-            <%= form.label :phone_number, class: "form-label"%>
-            <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true %>
+          <div class="input-position-double form-group">
+            <div class="row">
+              <div class="col-4">
+                <%= form.label :phone_countrycode, class: "form-label"%>
+                <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
+              </div>
+              <div class="col-8">
+                <%= form.label :phone_number, class: "form-label"%>
+                <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true %>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row input-group">
-          <div class="col-3 form-group date" data-target-input="nearest">
-            <%= form.label :birthdate%>
+          <div class="input-position form-group input-special-width" data-target-input="nearest">
+            <%= form.label :birthdate, class: "form-label-special d-flex block text-secondary"%>
             <!-- form.text_field :birthdate, class: "form-control datetimepicker-input", data: {toggle: 'datetimepicker', target: "#client_birthdate"}, required: true -->
             <%= form.date_select :birthdate, class: "form-control", start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab, placeholder: Client.human_attribute_name(:birthdate), required: true %>
           </div>
-          <div class="col-3 form-group">
-            <%= form.label :sex, class: "d-flex block text-secondary"%>
+          <div class="input-position form-group input-special-width">
+            <%= form.label :sex, class: "form-label-special d-flex block text-secondary"%>
             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
               <label class="btn btn-outline-success active">
                 <%= form.radio_button :sex, "F", :checked => true %> Mujer
@@ -73,81 +74,3 @@
             <i class="far fa-save"><t('.submit')%></i>
            end %> -->
         <% end %>
-
-<% else %>
-
- <div class="row d-flex justify-content-center">
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-3">
-        <%= form_with(model: client, local: true, tabindex: autotab, class: "was-validated") do |form| %>
-          <% if client.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-              <ul>
-                <% client.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          
-       <div class="container input-container">
-        <div class="row input-group d-flex justify-content-center">
-          <div class="col-3 form-group">
-            <%= form.label :first_name, class: "form-label"%>
-            <%= form.text_field :first_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:first_name), required: true %>
-          </div>
-          <div class="col-3 form-group">
-            <%= form.label :middle_name, class: "form-label"%>
-            <%= form.text_field :middle_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:middle_name) %>
-          </div>
-          <div class="col-3 form-group">
-            <%= form.label :last_name, class: "form-label"%>
-            <%= form.text_field :last_name, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:last_name), required: true %>
-          </div>
-        </div>
-        <div class="row input-group d-flex justify-content-center">
-          <div class="col-3 form-group">
-            <%= form.label :email, class: "form-label"%>
-            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
-          </div>
-          <div class="col-2 form-group">
-            <%= form.label :phone_countrycode, class: "form-label"%>
-            <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
-          </div>
-          <div class="col-3 form-group">
-            <%= form.label :phone_number, class: "form-label"%>
-            <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true %>
-          </div>
-        </div>
-        <div class="row input-group d-flex justify-content-center">
-          <div class="col form-group" data-target-input="nearest">
-            <%= form.label :birthdate, class: "d-flex block text-secondary"%>
-            <!-- form.text_field :birthdate, class: "form-control datetimepicker-input", data: {toggle: 'datetimepicker', target: "#client_birthdate"}, required: true -->
-            <%= form.date_select :birthdate, start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab, placeholder: Client.human_attribute_name(:birthdate), required: true %>
-          </div>
-          <div class="col form-group">
-            <%= form.label :sex, class: "d-flex block text-secondary"%>
-            <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-              <label class="btn btn-outline-success active">
-                <%= form.radio_button :sex, "F", :checked => true %> Mujer
-              </label>
-              <label class="btn btn-outline-success">
-                <%= form.radio_button :sex, "M"%> Hombre
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="container d-flex justify-content-center">
-        <div class="btn-group">
-          <%= form.submit name: t('.submit'), tabindex: 0 %>
-          <!-- < button_tag type: 'submit' do%>
-            <i class="far fa-save"><t('.submit')%></i>
-           end %> -->
-        <% end %>
-
-<% end %>
