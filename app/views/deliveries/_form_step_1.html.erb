@@ -1,41 +1,40 @@
-<%= form_with(model: [@sale,delivery], local: true) do |form| %>
-  <% if delivery.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
-      <ul>
-        <% delivery.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="form-position">
+<%= form_with(model: [@sale,delivery], class: "was-validated", local: true) do |form| %>
+  <%= render partial: 'layouts/form_errors',locals: {object: delivery} %>
+
+    <div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :adress_id %>
+            <div class="input-group">
+              <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => 'Select adress..', required: true}, {:class => 'custom-select'}) %>
+              <div class="input-group-append">
+                <%= link_to new_adress_sale_path(@sale) do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :sched_date, class: "form-label-special d-flex block text-secondary"%>
+            <div class="row">
+              <%= form.date_select :sched_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab},{class: "custom-select col", required: true}%>
+            </div>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :sched_timeblock, class: "form-label" %>
+            <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {include_blank: 'Time Block..', required: true}, {class: 'custom-select'}) %>
+          </div>
+        </div>
     </div>
-  <% end %>
-
-<div class="row mb-3">
-  <div class="field col">
-    <%= form.label :adress_id %>
-    <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => 'Select adress..', required: true}, {:class => 'custom-select'}) %>
-  </div>
-    <div class="col">
-    
-    <%= link_to "New adress", new_adress_sale_path(@sale) %>
-  </div>
-</div>
-
-  <div class="row mb-3">
-    <div class="field col">
-    <%= form.label :sched_date %>
-    <%= form.date_select :sched_date, required: true%>
-  </div>
-
-  <div class="field col">
-    <%= form.label :sched_timeblock %>
-    <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..', required: true}, {:class => 'custom-select'}) %>
-  </div>
-
-  </div>
   
-<div class="btn-group">
+    <br>
 
-    <%= form.submit %>
-
-<% end %>
+    <div class="container d-flex justify-content-center">
+      <div class="btn-group">
+          <%= form.submit name: t('.submit'), tabindex: 0 %>
+    <% end %>

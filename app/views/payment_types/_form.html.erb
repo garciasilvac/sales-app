@@ -1,25 +1,16 @@
-<%= form_with(model: payment_type, local: true) do |form| %>
-  <% if payment_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(payment_type.errors.count, "error") %> prohibited this payment_type from being saved:</h2>
+<div class="form-position">
+	<%= form_with(model: payment_type, local: true, class: "was-validated") do |form| %>
+		<%= render partial: 'layouts/form_errors',locals: {object: payment_type} %>
 
-      <ul>
-        <% payment_type.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Name</span>
-  </div>
-  <%= form.text_field :name, class: "form-control", placeholder: " Payment type Name..." %>
-</div>
-<br>
-  <div class="btn-group">
-    <%= button_tag type: 'submit' do %>
-        <i class="far fa-save"> Save</i>
+ 		<div class="input-container">
+	        <div class="row input-group">
+	          	<div class="input-position form-group">
+				  	<%= form.text_field :name, class: "form-control", placeholder: " Payment type Name..." %>
+				</div>
+			</div>
+		</div>
+		<br>
+  		<div class="container d-flex justify-content-center">
+        	<div class="btn-group">
+          		<%= form.submit name: t('.submit'), tabindex: 0 %>
     <% end %>
-<% end %>

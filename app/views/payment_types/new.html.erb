@@ -1,8 +1,12 @@
-<h1>New Payment Type</h1>
+<div class="title container d-flex justify-content-center">
+<h3><%=t('.title')%></h3>
+</div>
 
 <%= render 'form', payment_type: @payment_type %>
 
-<%= link_to  payment_types_path do%>
-<i class="fas fa-undo"> Back</i>
+<%= link_to payment_types_path do%>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
+</div>
+</div>
 </div>

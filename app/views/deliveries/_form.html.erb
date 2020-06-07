@@ -1,42 +1,44 @@
-<%= form_with(model: [@sale,delivery], local: true) do |form| %>
-  <% if delivery.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
+<div class="form-position">
+<%= form_with(model: [@sale,delivery], local: true, class: "was-validated" ) do |form| %>
+    <%= render partial: 'layouts/form_errors',locals: {object: delivery} %>
 
-      <ul>
-        <% delivery.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  <div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :sched_date, class: "form-label-special d-flex block text-secondary"%>
+            <%= form.date_select :sched_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab},{class: "custom-select col", required: true}%>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :sched_timeblock, class: "form-label" %>
+            <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {include_blank: 'Time Block..', required: true}, {class: 'custom-select'}) %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-control">
+            <%= form.check_box :delivered, class: "custom-control-input" %>
+            <%= form.label :delivered, class: "custom-control-label" %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :real_date, class: "form-label-special d-flex block text-secondary"%>
+            <%= form.date_select :real_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab, include_blank: true, default: nil},{class: "custom-select col", required: true}%>
+          </div>
+        </div>
+
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :real_timeblock %>
+            <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..',required: true}, {class: 'custom-select'})  %>
+          </div>
+        </div>
+      </div>
+
+        <br>
+
+         <div class="container d-flex justify-content-center">
+          <div class="btn-group">
+            <%= form.submit name: t('.submit'), tabindex: 0 %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :sched_date %>
-    <%= form.date_select :sched_date, required: true%>
-  </div>
-
-  <div class="field">
-    <%= form.label :sched_timeblock %>
-    <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..', required: true}, {:class => 'custom-select'}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivered %>
-    <%= form.check_box :delivered %>
-  </div>
-
-  <div class="field">
-    <%= form.label :real_date %>
-    <%= form.date_select :real_date, {include_blank: true, default: nil} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :real_timeblock %>
-    <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..'}, {:class => 'custom-select'})  %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

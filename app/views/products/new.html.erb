@@ -1,8 +1,12 @@
-<h3>New Product</h3>
+<div class="title container d-flex justify-content-center">
+<h3><%=t('.title')%></h3>
+</div>
 
 <%= render 'form', product: @product %>
 
 <%= link_to products_path do%>
-<i class="fas fa-undo"> Back</i>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
+</div>
+</div>
 </div>

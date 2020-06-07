@@ -1,58 +1,45 @@
-
-<% if controller_name == 'sales' %>
- <div class="row d-flex justify-content-center">
-      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-3">
-  <%= form_with(model: [@client, adress], local: true, url: create_adress_sale_path, class: "was-validated") do |form| %>
-    <% if adress.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(adress.errors.count, "error") %> prohibited this adress from being saved:</h2>
-
-        <ul>
-          <% adress.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+ <div class="form-position">
+  <%= form_with(model: [@client, adress], local: true, url: url_method, class: "was-validated") do |form| %>
+    <%= render partial: 'layouts/form_errors',locals: {object: adress} %>
 
 
-<div class="container input-container">
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
+<div class="input-container">
+  <div class="row input-group">
+    <div class="input-position form-group">
       <%= form.label :street, class: "form-label"%>
       <%= form.text_field :street, class: "form-control", placeholder: Adress.human_attribute_name("street") , required: true %>
     </div>
-    <div class="form-group">
+    <div class="input-position form-group">
       <%= form.label :str_number, class: "form-label"%>
       <%= form.text_field :str_number, class: "form-control", placeholder: Adress.human_attribute_name("str_number"), required: true %>
     </div>
   </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
+  <div class="row input-group">
+    <div class="input-position form-group">
       <%= form.label :adr_unit, class: "form-label"%>
       <%= form.text_field :adr_unit, class: "form-control", placeholder: Adress.human_attribute_name("adr_unit") %>
     </div>
-    <div class="form-group">
+    <div class="input-position form-group">
       <%= form.label :adr_other, class: "form-label"%>
       <%= form.text_field :adr_other, class: "form-control", placeholder: Adress.human_attribute_name("adr_other") %>
     </div>
   </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
+  <div class="row input-group">
+    <div class="input-position form-group">
       <%= form.label :adr_county, class: "form-label"%>
       <%= form.text_field :adr_county, class: "form-control", placeholder: Adress.human_attribute_name("adr_county"), required: true %>
     </div>
-    <div class="form-group">
+    <div class="input-position form-group">
       <%= form.label :adr_zip, class: "form-label"%>
       <%= form.text_field :adr_zip, class: "form-control", placeholder: Adress.human_attribute_name("adr_zip") %>
     </div>
   </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
+  <div class="row input-group">
+    <div class="input-position form-group">
       <%= form.label :adr_state, class: "form-label"%>
       <%= form.text_field :adr_state, class: "form-control", placeholder: Adress.human_attribute_name("adr_state"), required: true %>
     </div>
-    <div class="form-group">
+    <div class="input-position form-group">
       <%= form.label :adr_country, class: "form-label"%>
       <%= form.text_field :adr_country, class: "form-control", placeholder: Adress.human_attribute_name("adr_country"), required: true %>
     </div>
@@ -65,72 +52,3 @@
   <div class="btn-group">
       <%= form.submit name: t('.submit') %>
   <% end %>
-
-<% else %>
-
-<div class="row d-flex justify-content-center">
-  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-3">
-  <%= form_with(model: [@client, adress], local: true, class: "was-validated") do |form| %>
-    <% if adress.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(adress.errors.count, "error") %> prohibited this adress from being saved:</h2>
-
-        <ul>
-          <% adress.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-
-  <div class="container input-container">
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
-      <%= form.label :street, class: "form-label"%>
-      <%= form.text_field :street, class: "form-control", placeholder: Adress.human_attribute_name("street") , required: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label :str_number, class: "form-label"%>
-      <%= form.text_field :str_number, class: "form-control", placeholder: Adress.human_attribute_name("str_number"), required: true %>
-    </div>
-  </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
-      <%= form.label :adr_unit, class: "form-label"%>
-      <%= form.text_field :adr_unit, class: "form-control", placeholder: Adress.human_attribute_name("adr_unit") %>
-    </div>
-    <div class="form-group">
-      <%= form.label :adr_other, class: "form-label"%>
-      <%= form.text_field :adr_other, class: "form-control", placeholder: Adress.human_attribute_name("adr_other") %>
-    </div>
-  </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
-      <%= form.label :adr_county, class: "form-label"%>
-      <%= form.text_field :adr_county, class: "form-control", placeholder: Adress.human_attribute_name("adr_county"), required: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label :adr_zip, class: "form-label"%>
-      <%= form.text_field :adr_zip, class: "form-control", placeholder: Adress.human_attribute_name("adr_zip") %>
-    </div>
-  </div>
-  <div class="input-group d-flex justify-content-center">
-    <div class="form-group">
-      <%= form.label :adr_state, class: "form-label"%>
-      <%= form.text_field :adr_state, class: "form-control", placeholder: Adress.human_attribute_name("adr_state"), required: true %>
-    </div>
-    <div class="form-group">
-      <%= form.label :adr_country, class: "form-label"%>
-      <%= form.text_field :adr_country, class: "form-control", placeholder: Adress.human_attribute_name("adr_country"), required: true %>
-    </div>
-  </div>
-</div>
-
-  <br>
-
-<div class="container d-flex justify-content-center">
-  <div class="btn-group">
-      <%= form.submit name: t('.submit') %>
-  <% end %>
-<% end %>

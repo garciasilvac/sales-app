@@ -1,8 +1,12 @@
-<h3>New Item</h3>
+<div class="title container d-flex justify-content-center">
+<h3><%=t('.title')%></h3>
+</div>
 
 <%= render 'form', shopping_cart: @shopping_cart %>
 
 <%= link_to sale_shopping_carts_path(@sale) do%>
-<i class="fas fa-undo"> Back</i>
+<i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
+</div>
+</div>
 </div>

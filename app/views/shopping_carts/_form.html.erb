@@ -1,34 +1,24 @@
-<%= form_with(model: [@sale,shopping_cart], local: true) do |form| %>
-  <% if shopping_cart.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(shopping_cart.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
+<div class="form-position">
+  <%= form_with(model: [@sale,shopping_cart], local: true, class: "was-validated") do |form| %>
+    <%= render partial: 'layouts/form_errors',locals: {object: shopping_cart} %>
 
-      <ul>
-        <% shopping_cart.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :product_id, class: "form-label-special"%>
+            <%= form.collection_select(:product_id, Product.all, :id, :name, {:include_blank => 'Product..'}, {:class => 'custom-select'})  %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :product_q, class: "form-label-special"%>
+            <%= form.number_field :product_q, class: "form-control" %>
+          </div>
+        </div>
     </div>
-  <% end %>
-
-<div class="container input-container">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><%= :product_id.to_s.humanize %></span>
-    </div>
-    <%= form.collection_select(:product_id, Product.all, :id, :name, {:include_blank => 'Product..'}, {:class => 'custom-select'})  %>
-  </div>
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text"><%= :product_q.to_s.humanize %></span>
-    </div>
-    <%= form.number_field :product_q %>
-  </div>
-</div>
 
 <br>
+<div class="container d-flex justify-content-center">
   <div class="btn-group">
-        <%= button_tag type: 'submit' do %>
-        <i class="far fa-save"> Save</i>
-    <% end %>
+        <%= form.submit name: t('.submit'), tabindex: 0 %>
 <% end %>

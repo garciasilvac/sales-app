@@ -1,53 +1,32 @@
-<table id="clientsTable">
-  <thead>
-    <tr>
-      <th><%=Client.human_attribute_name("full_name")%></th>
-      <th colspan="2"><%=Client.human_attribute_name("phone_number")%></th>
-      <th><%=Client.human_attribute_name("email")%></th>
-      <th><%=Client.human_attribute_name("birthdate")%></th>
-      <th>Age</th>
-      <th><%=Client.human_attribute_name("sex")%></th>
-      <th><%=Client.human_attribute_name("created_at")%></th>
-      <th><%=Client.human_attribute_name("updated_at")%></th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody id="clientsTableBody">
-    <% if @search_results_clients.empty? %>
+  <% if @clients.nil? || @clients.empty? %>
       <tr>
-        <td colspan="14"> No clients found :) </td>
+        <td colspan="14"> No clients yet :) </td>
       </tr>
-    <% else %>
-    <% @search_results_clients.each do |client| %>
-      <tr>
-      	<td><%= client.formatted_name(:reverse) %></td>
-      	<td><%= client.phone_countrycode %></td>
-      	<td><%= client.phone_number %></td>
-      	<td><%= client.email %></td>
-        <td><%= client.birthdate %></td>
-      	<td><%= client.age %></td>
-      	<td><%= client.sex %></td>
-      	<td><%= l client.created_at %></td>
-      	<td><%= l client.updated_at %></td>
-      	<td><%= link_to client_adresses_path(client) do%>
+  <% else %>
+    <% @clients.each do |client| %>
+      <tr tabindex="<%=autotab%>">
+        <td><%= client.formatted_name(:reverse) %></td>
+        <td><%= client.phone_countrycode %></td>
+        <td><%= client.phone_number %></td>
+        <td><%= client.email %></td>
+        <td><%= l client.created_at %></td>
+        <td><%= l client.updated_at %></td>
+        <td class="buttons"><%= link_to client_adresses_path(client) do%>
          <i class="fa fa-home" aria-hidden="true"> (<%=client.adresses.count%>)</i>
           <% end %>
         </td>
-        <td><%= link_to client_path(client) do%>
+        <td class="buttons"><%= link_to client_path(client) do%>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_client_path(client) do%>
+        <td class="buttons"><%= link_to edit_client_path(client) do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "deleteBtn" do%>
               <i class="far fa-trash-alt"></i>
             <% end %>
         </td>
       </tr>
     <% end %>
-    <% end %>
-  </tbody>
-</table>
+  <% end %>

@@ -1,50 +1,37 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="form-position">
+    <%= form_with(model: product, local: true, class: "was-validated") do |form| %>
+    <%= render partial: 'layouts/form_errors',locals: {object: product} %>
 
-      <ul>
-        <% product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <div class="input-container">
+    <div class="row input-group">
+      <div class="input-position form-group">
+        <%= form.label :name, class: "form-label"%>
+        <%= form.text_field :name, class: "form-control", placeholder: "Product name...", required: true %>
+      </div>
     </div>
-  <% end %>
-
-<div class="container input-container">
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Name</span>
+    <div class="row input-group">
+      <div class="input-position form-group">
+        <%= form.label :subtype_id, class: "form-label"%>
+        <%= form.collection_select(:subtype_id, Subtype.all.sort_by {|st| [st.type.name, st.name]}, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>
+      </div>
+    </div>
+    <div class="row input-group">
+      <div class="input-position form-group">
+        <%= form.label :price, class: "form-label"%>
+        <%= form.number_field :price, class: "form-control", placeholder: "Price" %>
+      </div>
+    </div>
+    <div class="row input-group">
+      <div class="input-position form-group custom-file">
+        <%= form.file_field :product_image, class: "custom-file-input" %>
+        <%= form.label :product_image, class: "custom-file-label"%>
+      </div>
+    </div>
   </div>
-  <%= form.text_field :name, class: "form-control", placeholder: "Product name. Example: Mermelada 250 grs...", required: true %>
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Subtype</span>
-  </div>
 
- <!--  form.collection_select(:subtype_id, @sorted_st, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>-->
-  <%= form.collection_select(:subtype_id, Subtype.all.sort_by {|st| [st.type.name, st.name]}, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>
+    <br>
 
-
-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Price</span>
-  </div>
-  <%= form.number_field :price %>
-</div>
-
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Image</span>
-  </div>
-  <%= form.file_field :product_image %>
-</div>
-
-<br>
-  <div class="btn-group">
-  <%= button_tag type: 'submit' do %>
-        <i class="far fa-save"> Save</i>
+    <div class="container d-flex justify-content-center">
+      <div class="btn-group">
+        <%= form.submit name: t('.submit'), tabindex: 0 %>
     <% end %>
-<% end %>

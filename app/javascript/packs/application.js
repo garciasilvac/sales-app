@@ -10,12 +10,14 @@ require("channels")
 
 import 'bootstrap'
 import "../stylesheets/application"
+
 import { initMap } from '../adresses/gmaps';
 global.initMap = initMap;
-import 'bootstrap-select'
 
 import $ from 'jquery';
 global.$ = jQuery;
+
+import "../sales/sales"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -61,7 +63,7 @@ $(document).ready(function(){
 
 // VALIDATION FORM FIELDS
 // Disable form submissions if there are invalid fields
-(function() {
+var disableSubmit = function() {
   'use strict';
   window.addEventListener('load', function() {
     // Get the forms we want to add validation styles to
@@ -77,7 +79,11 @@ $(document).ready(function(){
       }, false);
     });
   }, false);
-})();
+}
+
+$(document).on('load',disableSubmit);
+$(document).on('turbolinks:load',disableSubmit);
+
 
 ///// currency format /////
 $(document).ready(function(){
@@ -124,27 +130,6 @@ var formUiUx = function() {
               } break;
               default: break;
             }
-            // previous implementation with ifs
-            /*if (e.type == 'keyup') {
-                if( $this.val() == '' ) {
-                    $parent.addClass('js-hide-label'); 
-                } else {
-                    $parent.removeClass('js-hide-label');   
-                }                     
-            } 
-            else if (e.type == 'blur') {
-                if( $this.val() == '' ) {
-                    $parent.addClass('js-hide-label');
-                } 
-                else {
-                    $parent.removeClass('js-hide-label').addClass('js-unhighlight-label');
-                }
-            } 
-            else if (e.type == 'focus') {
-                if( $this.val() !== '' ) {
-                    $parent.removeClass('js-unhighlight-label');
-                }
-            }*/
         });
     } 
 }
@@ -152,13 +137,25 @@ var formUiUx = function() {
 $(document).on('load',formUiUx);
 $(document).on('turbolinks:load',formUiUx);
 
-///////// DATETIME PICKER /////////
+///////// SELECT PICKER /////////
+
+///////  SEARCH BOX FOCUS ////////
+
+var focusSearch = function(){
+  $('#search_search_word').focus();
+}
+
+$(document).on('load',focusSearch);
+$(document).on('turbolinks:load',focusSearch);
 
 
-
-$(function() {
-  $('#sale_client_id').selectpicker({
-      dropupAuto: false
-    });
+var fileInputText = function(){
+  $(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html("<i class='fas fa-file-upload'></i> " + fileName);
 });
+}
+
+$(document).on('load',fileInputText);
+$(document).on('turbolinks:load',fileInputText);
 

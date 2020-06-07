@@ -1,8 +1,12 @@
-<h3>New Type</h3>
+<div class="title container d-flex justify-content-center">
+<h3><%=t('.title')%></h3>
+</div>
 
 <%= render 'form', type: @type %>
 
 <%= link_to types_path do%>
-<i class="fas fa-undo"> Back</i>
-<% end %>
+<i class="fas fa-undo"> <%= t('back') %></i>
+<%end%>
+</div>
+</div>
 </div>

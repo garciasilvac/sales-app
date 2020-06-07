@@ -1,38 +1,34 @@
- <div class="row d-flex justify-content-center">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-xs-offset-3">
+      <div class="form-position">
         <%= form_with(model: sale, local: true , class: "was-validated") do |form| %>
-          <% if sale.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
-              <ul>
-                <% sale.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>     
+          <%= render partial: 'layouts/form_errors',locals: {object: sale} %>   
 
-          <div class="container input-container">
-            <div class="input-group d-flex justify-content-left">
-              <div class="row w-100">
-                <div class="col d-flex justify-content-left align-items-center">
-                  <div class="form-group w-100">
-                    <%= form.label :sale_datetime, class: "form-label"%>
-                    <%= form.datetime_select :sale_datetime, class: "form-control datetimepicker-input",  placeholder: Client.human_attribute_name(:sale_datetime), required: true %>
-                  </div>
-                </div>
+      <div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :sale_datetime, class: "form-label-special d-flex block text-secondary"%>
+              <div class="row">
+                <%= form.datetime_select :sale_datetime, {required: true}, {class: "custom-select col"} %>    
+              </div>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :client_id %>
+            <div class="input-group">
+              <%= form.collection_select(:client_id, Client.all.order(:last_name), :id, :formatted_name, {:include_blank => 'Select client..', required: true}, {:class => 'custom-select'}) %>
+              <div class="input-group-append">
+                <%= link_to new_client_path do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
               </div>
             </div>
-            <div class="input-group d-flex justify-content-left">
-              <div class="row w-100">
-                <div class="col d-flex justify-content-left align-items-center">
-                  <div class="form-group w-100">
-                    <%= form.label :client_id, class: "form-label"%>
-                    <%= form.collection_select(:client_id, Client.order(:last_name), :id, :formatted_name, {:include_blank => 'Client..'}, {:class => 'custom-select'})  %>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+
+        <div class="row input-group">
+          <div class="input-position form-group">
+                 
+
             <div class="input-group d-flex justify-content-left">
               <div class="row w-100">
                 <div class="col d-flex justify-content-left align-items-center">
@@ -55,7 +51,7 @@
 
         <br>
 
-        <div class="container d-flex justify-content-center">
+         <div class="container d-flex justify-content-center">
           <div class="btn-group">
                 <%= form.submit name: t('.submit'), tabindex: 0 %>
         <% end %>

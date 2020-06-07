@@ -1,6 +1,17 @@
-<h1>Editing Timeblock</h1>
+<div class="title container d-flex justify-content-center">
+<h3><%=t('.title')%></h3>
+</div>
 
 <%= render 'form', timeblock: @timeblock %>
 
-<%= link_to 'Show', @timeblock %> |
-<%= link_to 'Back', timeblocks_path %>
+<div class="btn-group">
+<%= link_to @timeblock do%>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to timeblocks_path do%>
+<i class="fas fa-undo"> <%= t('back') %></i>
+<% end %>
+</div>
+</div>
+</div>
+</div>

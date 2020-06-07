@@ -1,38 +1,47 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Deliveries</h1>
 
+<div class="table-responsive">
 <table>
   <thead>
     <tr>
       <th>Directions</th>
+      <th>Executed</th>
       <th>Sched date</th>
       <th>Adress</th>
       <th>Delivered</th>
       <th>Real date</th>
       <th>Successful</th>
       <th>Driver Comments</th>
-      <th colspan="4"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @sale.deliveries.each do |delivery| %>
       <tr>
-        <td><%= link_to delivery.get_adress.gmap_dir , target: "_blank" do%>
+        <td class="buttons"><%= link_to delivery.get_adress.gmap_dir , target: "_blank",class: "btn-warning" do%>
             <i class="fas fa-directions"></i>
           <%end%>
+        </td>
+        <td class="buttons"><%= link_to edit_step_2_sale_delivery_path(@sale,delivery), class: "btn-success" do%>
+            <i class="far fa-check-circle"></i></i>
+          <% end %>
         </td>
         <td><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
         <td><%= delivery.get_adress.full_adress %></td>
         <td><%= delivery.delivered %></td>
-        <td><%= delivery.real_date %> | <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : delivery.get_realtb_name %></td>
+        <td><%= delivery.real_date %> <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : " | " + delivery.get_realtb_name %></td>
         <td><%= delivery.successful %></td>
         <td><%= delivery.driver_comment %></td>
-        <td><%= link_to 'Mark Delivered', edit_step_2_sale_delivery_path(@sale,delivery) %></td>
-        <td><%= link_to 'Show', [@sale,delivery] %></td>
-        <td><%= link_to 'Edit', edit_sale_delivery_path(@sale,delivery) %></td>
-        <td><%= link_to [@sale,delivery], method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+        <td class="buttons"><%= link_to [@sale,delivery] do%>
+          <i class="far fa-info-circle" aria-hidden="true"></i>
+          <% end %>
+        </td>
+        <td class="buttons"><%= link_to edit_sale_delivery_path(@sale,delivery) do%>
+          <i class="fas fa-pencil-alt"></i>
+          <% end %>
+        </td>
+        <td class="buttons"><%= link_to [@sale,delivery], method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
           <i class="far fa-trash-alt"></i>
           <%end%>
         </td>
@@ -40,7 +49,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <div class="btn-group">

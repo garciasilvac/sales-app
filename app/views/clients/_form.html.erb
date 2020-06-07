@@ -1,16 +1,6 @@
       <div class="form-position">
-        <%= form_with(model: client, local: true, url: url_method, class: "was-validated") do |form| %>
-          <% if client.errors.any? %>
-            <div id="error_explanation bg-danger text-white">
-              <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-              <ul>
-                <% client.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+        <%= form_with(model: client, local: true, url: url_method, class: "needs-validation") do |form| %>
+          <%= render partial: 'layouts/form_errors',locals: {object: client} %>
           
       <div class="input-container">
         <div class="row input-group">
@@ -48,8 +38,9 @@
         <div class="row input-group">
           <div class="input-position form-group input-special-width" data-target-input="nearest">
             <%= form.label :birthdate, class: "form-label-special d-flex block text-secondary"%>
-            <!-- form.text_field :birthdate, class: "form-control datetimepicker-input", data: {toggle: 'datetimepicker', target: "#client_birthdate"}, required: true -->
-            <%= form.date_select :birthdate, class: "form-control", start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab, placeholder: Client.human_attribute_name(:birthdate), required: true %>
+            <div class="row">
+              <%= form.date_select :birthdate, {start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab},{class: "custom-select col"}%>
+            </div>
           </div>
           <div class="input-position form-group input-special-width">
             <%= form.label :sex, class: "form-label-special d-flex block text-secondary"%>
@@ -70,7 +61,4 @@
       <div class="container d-flex justify-content-center">
         <div class="btn-group">
           <%= form.submit name: t('.submit'), tabindex: 0 %>
-          <!-- < button_tag type: 'submit' do%>
-            <i class="far fa-save"><t('.submit')%></i>
-           end %> -->
         <% end %>

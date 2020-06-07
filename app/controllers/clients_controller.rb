@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     if params[:search]
-      @search_results_clients = Client.all.search_by_name_and_email(params[:search][:search_word])
+      @clients = Client.all.search_by_name_and_email(params[:search][:search_word])
     else
       @clients = Client.all
     end

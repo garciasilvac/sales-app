@@ -1,33 +1,35 @@
-<%= form_with(model: timeblock, local: true) do |form| %>
-  <% if timeblock.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(timeblock.errors.count, "error") %> prohibited this timeblock from being saved:</h2>
+<div class="form-position">
+<%= form_with(model: timeblock, local: true, class: "was-validated") do |form| %>
+  <%= render partial: 'layouts/form_errors',locals: {object: timeblock} %>
 
-      <ul>
-        <% timeblock.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  <div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :name, class: "form-label" %>
+            <%= form.text_field :name, class: "form-control", tabindex: autotab, placeholder: :name, required: true %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :start_time, class: "form-label-special d-flex block text-secondary" %>
+            <div class="row">
+              <%= form.time_select :start_time,{}, {class: "custom-select col"} %>
+            </div>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :end_time , class: "form-label-special d-flex block text-secondary"%>
+            <div class="row">
+              <%= form.time_select :end_time, {}, {class: "custom-select col"} %>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+<br>
+
+<div class="container d-flex justify-content-center">
+        <div class="btn-group">
+          <%= form.submit name: t('.submit'), tabindex: 0 %>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.time_select :start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.time_select :end_time %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

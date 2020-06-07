@@ -1,15 +1,16 @@
+<div class="title container d-flex justify-content-center">
 <h3><%=t('.title', client: @adress.client.formatted_name(:compact))%></h3>
+</div>
 
 <% if controller_name == 'sales'%>
-	<%= render 'adresses/form', adress: @adress %>
+	<%= render 'adresses/form', adress: @adress, url_method: create_adress_sale_url  %>
 <% else %>
-	<%= render 'form', adress: @adress %>
+	<%= render 'form', adress: @adress, url_method: client_adresses_path %>
 <% end %>
 
 <%= link_to client_adresses_path(@client) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
-</div>
 </div>
 </div>
 </div>

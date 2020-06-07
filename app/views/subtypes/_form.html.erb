@@ -1,26 +1,18 @@
-<%= form_with(model: [@type,subtype], local: true) do |form| %>
-  <% if subtype.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subtype.errors.count, "error") %> prohibited this subtype from being saved:</h2>
+<div class="form-position">
+<%= form_with(model: [@type,subtype], local: true, class: "was-validated") do |form| %>
+  <%= render partial: 'layouts/form_errors',locals: {object: subtype} %>
 
-      <ul>
-        <% subtype.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Name</span>
-  </div>
-  <%= form.text_field :name, class: "form-control", placeholder: "Type name..." %>
+<div class="input-container">
+    <div class="row input-group">
+        <div class="input-position form-group">
+        	<%= form.label :first_name, class: "form-label"%>
+    		<%= form.text_field :name, class: "form-control", placeholder: "Type name..." %>
+		</div>
+	</div>
 </div>
+
 <br>
-  <div class="btn-group">
-    <%= button_tag type: 'submit' do %>
-        <i class="far fa-save"> Save</i>
-    <% end %>
-  
-<% end %>
+<div class="container d-flex justify-content-center">
+        <div class="btn-group">
+          <%= form.submit name: t('.submit'), tabindex: 0 %>
+        <% end %>
