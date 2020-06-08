@@ -4,11 +4,11 @@
 <table>
   <thead>
     <tr>
+      <th><%=Sale.human_attribute_name(:paid)%></th>
       <th><%=Sale.human_attribute_name(:sale_datetime)%></th>
       <th><%=Sale.human_attribute_name(:client_id)%></th>
       <th><%=Sale.human_attribute_name(:total_amount)%></th>
       <th><%=Sale.human_attribute_name(:delivery_type_id)%></th>
-      <th><%=Sale.human_attribute_name(:paid)%></th>
       <th><%=Sale.human_attribute_name(:payment_type_id)%></th>
       <th><%=Sale.human_attribute_name(:created_at)%></th>
       <th><%=Sale.human_attribute_name(:updated_at)%></th>
@@ -24,16 +24,20 @@
     <% else %>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= l sale.sale_datetime%></td>
+        <td class="buttons text-center">
+          <% if sale.paid? %>
+            <i class="far fa-check-circle" style="color:Green"></i>
+          <% else %>
+            <%= link_to edit_step_3_sale_path(sale), class: "btn-warning" do%>
+            <i class="far fa-check-circle"></i>
+          <%end%>
+          <% end %>
+          
+        </td>
+        <td><%= (sale.sale_datetime.nil? or sale.sale_datetime.blank?) ? "Undefined" : l(sale.sale_datetime) %></td>
         <td><%= sale.client.formatted_name(:reverse) %></td>
         <td><%= number_to_currency(sale.total_amount) %></td>
         <td><%= sale.delivery_type_id.nil? ? sale.delivery_type_id : DeliveryType.find(sale.delivery_type_id).name %></td>
-        <td class="text-center"><% if sale.paid %>
-          <i class="fas fa-check-circle fa-2x" style="color:DarkGreen"></i>
-          <% else %>
-          <i class="fas fa-times-circle fa-2x" style="color:Tomato"></i>
-          <% end %>
-        </td>
         <td><%= sale.payment_type_id.nil? ? sale.payment_type_id : PaymentType.find(sale.payment_type_id).name %></td>
         <td><%= l sale.created_at %></td>
         <td><%= l sale.updated_at %></td>

@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :new_adress, :create_adress, :edit, :edit_step_2, :update, :update_step_2, :destroy]
+  before_action :set_sale, only: [:show, :new_adress, :create_adress, :edit, :edit_step_2, :edit_step_3, :update, :update_step_2, :update_step_3, :destroy]
 
   # GET /sales
   # GET /sales.json
@@ -39,6 +39,15 @@ class SalesController < ApplicationController
     render :edit
   end
 
+  def edit_step_3
+    respond_to do |format|
+      if @sale.paid?
+          format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
+      else
+          format.html {render :edit}
+      end
+    end
+  end
   # POST /sales
   # POST /sales.json
   def create
@@ -91,7 +100,6 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
-        puts "////////\n\n///// update original //////\n\n//////////////"
         format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
       else
@@ -108,7 +116,6 @@ class SalesController < ApplicationController
     respond_to do |format|
       if @sale.update(sale_params)
         ## if sale requires delivery, then render deliveries path. O/W, render sales path as sale finished
-        "////////\n\n///// update step 2 //////\n\n//////////////"
         if @sale.delivery_type.requires_delivery?
           format.html { redirect_to new_sale_delivery_path(@sale), notice: 'Ok! Schedule delivery :)' }
           format.json { render :show, status: :ok, location: @sale }
@@ -116,6 +123,23 @@ class SalesController < ApplicationController
           format.html { redirect_to sales_path, notice: 'The order is finished!' }
           format.json { render :show, status: :ok, location: @sale }
         end
+      else
+        format.html { render :edit }
+        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /sales/1
+  # PATCH/PUT /sales/1.json
+
+  def update_step_3
+    respond_to do |format|
+      if @sale.update(sale_params)
+        ## comments
+        @sale.update(paid: true)
+        format.html { redirect_to sales_path, notice: 'Marked paid!' }
+        format.json { render :show, status: :ok, location: @sale }
       else
         format.html { render :edit }
         format.json { render json: @sale.errors, status: :unprocessable_entity }

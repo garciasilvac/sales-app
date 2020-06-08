@@ -13,7 +13,7 @@
         </div>
         <div class="row input-group">
           <div class="input-position form-group">
-            <%= form.label :client_id %>
+            <%= form.label :client_id, class: "form-label-special d-flex block text-secondary" %>
             <div class="input-group">
               <%= form.collection_select(:client_id, Client.all.order(:last_name), :id, :formatted_name, {:include_blank => 'Select client..', required: true}, {:class => 'custom-select'}) %>
               <div class="input-group-append">
@@ -24,30 +24,31 @@
             </div>
           </div>
         </div>
-
         <div class="row input-group">
           <div class="input-position form-group">
-                 
-
-            <div class="input-group d-flex justify-content-left">
-              <div class="row w-100">
-                <div class="col d-flex justify-content-left align-items-center">
-                  <div class="form-group w-100">
-                    <div class="custom-control custom-checkbox">
-                        <%= form.check_box :paid, class: "custom-control-input"%>
-                        <%= form.label :paid, class: "custom-control-label"%>
-                    </div>
-                  </div>
-                </div>
-                <div class="col d-flex justify-content-left align-items-center">
-                  <div class="form-group w-100">
-                    <%= form.label :payment_type_id, class: "form-label"%>
-                    <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <%= form.label :total_amount, class: "form-label-special d-flex block text-secondary"%>
+            <%= number_to_currency(sale.total_amount) %>
           </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :delivery_type_id, class: "form-label-special d-flex block text-secondary"%>
+            <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => 'Delivery type...'}, {:class => 'custom-select'})  %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-control custom-checkbox">
+            <%= form.check_box :paid, class: "custom-control-input"%>
+            <%= form.label :paid, class: "custom-control-label"%>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-control custom-checkbox">
+            <%= form.label :payment_type_id, class: "form-label-special d-flex block text-secondary"%>
+            <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+          </div>
+        </div>
+      </div>
 
         <br>
 

@@ -1,6 +1,5 @@
-<div class="title container mb-3">
-  <div class="block"><h3>Items for <%= @sale.client.formatted_name(:full) %></h3> <span class="font-italic font-weight-light"><%= l @sale.sale_datetime %></span> </div>
-</div>
+<h3>Items for <%= @sale.client.formatted_name(:full)%></h3> 
+<span class="font-italic font-weight-light mb-3"><%= l @sale.sale_datetime %></span>
 
 <div class="table-responsive">
 <table>

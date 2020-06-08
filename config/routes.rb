@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       member do
         get 'edit_step_2'
         patch 'update_step_2'
+        get 'edit_step_3'
+        patch 'update_step_3'
         get 'new_adress'
         post 'create_adress'
       end
