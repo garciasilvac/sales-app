@@ -16,7 +16,12 @@
   </thead>
 
   <tbody>
-    <% @sale.deliveries.each do |delivery| %>
+    <% if @deliveries.nil? || @deliveries.empty? %>
+      <tr>
+        <td colspan="14"> No deliveries yet :) </td>
+      </tr>
+    <% else %>
+    <% @deliveries.each do |delivery| %>
       <tr>
         <% if delivery.delivered? %>
           <td colspan="2" class="text-center">
@@ -28,7 +33,7 @@
               <i class="fas fa-directions"></i>
             <%end%>
           </td>
-        <td class="buttons"><%= link_to edit_step_2_sale_delivery_path(@sale,delivery), class: "btn-success" do%>
+        <td class="buttons"><%= link_to edit_step_2_sale_delivery_path(delivery.sale_id,delivery), class: "btn-success" do%>
             <i class="far fa-check-circle"></i></i>
           <% end %>
         </td>
@@ -47,28 +52,33 @@
           <%end%>
         </td>
         <td><%= delivery.driver_comment %></td>
-        <td class="buttons"><%= link_to [@sale,delivery] do%>
-          <i class="far fa-info-circle" aria-hidden="true"></i>
-          <% end %>
-        </td>
-        <td class="buttons"><%= link_to edit_sale_delivery_path(@sale,delivery) do%>
-          <i class="fas fa-pencil-alt"></i>
-          <% end %>
-        </td>
-        <td class="buttons"><%= link_to [@sale,delivery], method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
-          <i class="far fa-trash-alt"></i>
-          <%end%>
-        </td>
+        <% if action_name == 'index'%>
+            <td class="buttons"><%= link_to [@sale,delivery] do%>
+              <i class="far fa-info-circle" aria-hidden="true"></i>
+              <% end %>
+            </td>
+            <td class="buttons"><%= link_to edit_sale_delivery_path(@sale,delivery) do%>
+              <i class="fas fa-pencil-alt"></i>
+              <% end %>
+            </td>
+            <td class="buttons"><%= link_to [@sale,delivery], method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+              <i class="far fa-trash-alt"></i>
+              <%end%>
+            </td>
+        <% end %>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
 
+<% if action_name == 'index'%>
 <div class="btn-group">
 <%= link_to 'New Delivery', new_sale_delivery_path %>
 <%= link_to sales_path do%>
 <i class="fas fa-undo"> Sales</i>
 <% end %>
 </div>
+<%end%>

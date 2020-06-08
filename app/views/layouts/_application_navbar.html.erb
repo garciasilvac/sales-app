@@ -12,6 +12,11 @@
                 <i class="fas fa-chart-line"> <%= t('.sales_nav') %> </i>
               <% end %>
     		  </li>
+          <li class="nav-item">
+             <%= link_to driver_index_path, class: "nav-link" do%>
+                <i class="fas fa-truck"></i> Repartos</i>
+             <% end %>
+          </li>
     		  <li class="nav-item">
       			 <%= link_to clients_path, class: "nav-link" do%>
                 <i class="fas fa-user-friends"> <%= t('.clients_nav') %></i>

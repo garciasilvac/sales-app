@@ -1,11 +1,18 @@
 class DeliveriesController < ApplicationController
-  before_action :get_sale
+  before_action :get_sale, except: :driver_index
   before_action :set_delivery, only: [:show, :edit, :edit_step_2, :update, :update_step_2, :destroy]
 
   # GET /deliveries
   # GET /deliveries.json
   def index
     @deliveries = @sale.deliveries.order(sched_date: :desc)
+  end
+
+  # GET /deliveries
+  # GET /deliveries.json
+  def driver_index
+    @deliveries = Delivery.where({ delivered: [false,nil] }).order(sched_date: :desc)
+    render :index
   end
 
   # GET /deliveries/1
@@ -61,7 +68,7 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.update(delivery_params)
         @delivery.update(delivered: true)
-        format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully updated.' }
+        format.html { redirect_to driver_index_path, notice: 'Delivery was successfully executed' }
         format.json { render :show, status: :ok, location: @delivery }
       else
         format.html { render :edit }

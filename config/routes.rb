@@ -36,6 +36,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    get 'driver_index', controller: :deliveries, action: :driver_index
     
 
     #### APP CONFIGURABLE OPTIONS

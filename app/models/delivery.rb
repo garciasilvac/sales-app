@@ -22,6 +22,7 @@ class Delivery < ApplicationRecord
  private
   def set_defaults
     self.sched_date = Time.now.utc.to_date if self.sched_date.nil?
+    self.delivered = false if self.sched_date.nil?
   end
 
 end
