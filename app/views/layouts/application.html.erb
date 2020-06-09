@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <% if controller_name == "publics" %>
+    <% if controller_name == ("publics" || "users") %>
       <%= stylesheet_link_tag 'publics', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=weekly&key='+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]%>
