@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_215857) do
+ActiveRecord::Schema.define(version: 2020_06_09_164941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,11 @@ ActiveRecord::Schema.define(version: 2020_05_31_215857) do
     t.string "adr_country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "client_id"
     t.float "longitude"
     t.float "latitude"
-    t.index ["client_id"], name: "index_adresses_on_client_id"
+    t.string "adressable_type"
+    t.bigint "adressable_id"
+    t.index ["adressable_type", "adressable_id"], name: "index_adresses_on_adressable_type_and_adressable_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -180,7 +181,6 @@ ActiveRecord::Schema.define(version: 2020_05_31_215857) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "adresses", "clients"
   add_foreign_key "deliveries", "adresses"
   add_foreign_key "deliveries", "sales"
   add_foreign_key "products", "subtypes"

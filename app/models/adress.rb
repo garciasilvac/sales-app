@@ -1,9 +1,9 @@
 class Adress < ApplicationRecord
 geocoded_by :full_adress
 after_validation :geocode, if: :adress_changed?
-belongs_to :client
+belongs_to :adressable, polymorphic: true
 
-validates :client_id, presence: true
+
 
 def full_adress
 	self.street+" "+self.str_number.to_s+", "+self.adr_county+", "+self.adr_state

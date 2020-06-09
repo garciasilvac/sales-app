@@ -1,6 +1,6 @@
 class Client < ApplicationRecord
 include PgSearch::Model
-has_many :adresses, dependent: :destroy
+has_many :adresses, as: :adressable, dependent: :destroy
 has_many :sales
 after_initialize :set_defaults, unless: :persisted?
 

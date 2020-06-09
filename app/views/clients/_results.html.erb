@@ -4,7 +4,7 @@
       </tr>
   <% else %>
     <% @clients.each do |client| %>
-      <tr tabindex="<%=autotab%>">
+      <tr>
         <td><%= client.formatted_name(:reverse) %></td>
         <td><%= client.phone_countrycode %></td>
         <td><%= client.phone_number %></td>
