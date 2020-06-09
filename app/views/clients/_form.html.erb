@@ -20,7 +20,7 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :email, class: "form-label"%>
-            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true %>
+            <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true, inputmode: "email" %>
           </div>
           <div class="input-position-double form-group">
             <div class="row">
