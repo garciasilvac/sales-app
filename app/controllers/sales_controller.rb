@@ -42,7 +42,7 @@ class SalesController < ApplicationController
   def edit_step_3
     respond_to do |format|
       if @sale.paid?
-          format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
+          format.html { redirect_to sales_path, notice: 'Already paid!' }
       else
           format.html {render :edit}
       end
