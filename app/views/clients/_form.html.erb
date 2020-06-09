@@ -26,11 +26,11 @@
             <div class="row">
               <div class="col-4">
                 <%= form.label :phone_countrycode, class: "form-label"%>
-                <%= form.text_field :phone_countrycode, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
+                <%= form.text_field :phone_countrycode, class: "form-control", tabindex: "-1", placeholder: Client.human_attribute_name(:phone_countrycode), required: true %>
               </div>
               <div class="col-8">
                 <%= form.label :phone_number, class: "form-label"%>
-                <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true %>
+                <%= form.text_field :phone_number, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:phone_number), required: true, pattern:"[0-9]*", inputmode: "numeric" %>
               </div>
             </div>
           </div>

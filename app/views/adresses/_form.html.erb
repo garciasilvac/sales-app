@@ -11,7 +11,7 @@
     </div>
     <div class="input-position form-group">
       <%= form.label :str_number, class: "form-label"%>
-      <%= form.text_field :str_number, class: "form-control", placeholder: Adress.human_attribute_name("str_number"), required: true %>
+      <%= form.text_field :str_number, class: "form-control", placeholder: Adress.human_attribute_name("str_number"), required: true, pattern:"[0-9]*", inputmode: "numeric" %>
     </div>
   </div>
   <div class="row input-group">
@@ -31,7 +31,7 @@
     </div>
     <div class="input-position form-group">
       <%= form.label :adr_zip, class: "form-label"%>
-      <%= form.text_field :adr_zip, class: "form-control", placeholder: Adress.human_attribute_name("adr_zip") %>
+      <%= form.text_field :adr_zip, class: "form-control", placeholder: Adress.human_attribute_name("adr_zip"), pattern:"[0-9]*", inputmode: "numeric" %>
     </div>
   </div>
   <div class="row input-group">

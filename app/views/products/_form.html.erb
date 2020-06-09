@@ -18,7 +18,7 @@
     <div class="row input-group">
       <div class="input-position form-group">
         <%= form.label :price, class: "form-label"%>
-        <%= form.number_field :price, class: "form-control", placeholder: "Price" %>
+        <%= form.number_field :price, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "numeric"%>
       </div>
     </div>
     <div class="row input-group">
