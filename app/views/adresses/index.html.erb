@@ -1,4 +1,4 @@
-<h3><%=t('.title', count: @client.adresses.count, client: @client.formatted_name(:compact))%></h3>
+<h3><%=t('.title', count:@parent.adresses.count, client: @parent.formatted_name(:compact))%></h3>
 
 <div class="table-responsive">
 <table>
@@ -16,7 +16,7 @@
   <tbody>
     <% if @adresses.empty? %>
       <tr>
-        <td colspan="13"> No adresses yet for <%=@client.first_name%> <%=@client.last_name%> :) </td>
+        <td colspan="13"> No adresses yet for <%=@parent.formatted_name(:compact)%> :( </td>
       </tr>
     <% else %>
     <% @adresses.each do |adress| %>
@@ -26,15 +26,15 @@
         <td><%= adress.adr_country %></td>
         <td><%= l adress.created_at %></td>
         <td><%= l adress.updated_at %></td>
-        <td><%= link_to [@client,adress] do%>
+        <td><%= link_to polymorphic_path([@parent,adress]) do%>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_client_adress_path(@client, adress) do%>
+        <td><%= link_to edit_polymorphic_path([@parent, adress]) do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to [@client,adress], method: :delete, data: { confirm: t('.del_confirm', adress: adress.full_adress) }, class: "deleteBtn" do%>
+        <td><%= link_to polymorphic_path([@parent,adress]), method: :delete, data: { confirm: t('.del_confirm', adress: adress.full_adress) }, class: "deleteBtn" do%>
           <i class="far fa-trash-alt"></i>
           <% end %>
         </td>
@@ -47,11 +47,11 @@
 <br>
 
 <div class="btn-group">
-<%= link_to new_client_adress_path(@client) do %>
+<%= link_to new_polymorphic_path([@parent,Adress]) do %>
 <i class="fa fa-plus" aria-hidden="true"></i>
 <i class="fa fa-home" aria-hidden="true"></i>
 <%end%>
-<%= link_to clients_path do%>
-<i class="fas fa-undo"> <%= t('back_to_model', model: Client.model_name.human(count: 2)) %></i>
+<%= link_to controller: @parent.class.to_s.pluralize.underscore, action: :index do%>
+<i class="fas fa-undo"> <%= t('back_to_model', model: @parent.model_name.human(count: 2)) %></i>
 <%end%>
 </div>

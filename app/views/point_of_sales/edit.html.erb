@@ -1,0 +1,13 @@
+<h1>Editing Point Of Sale</h1>
+
+<%= render 'form', point_of_sale: @point_of_sale %>
+
+<%= link_to @point_of_sale do %>
+<i class="far fa-info-circle" aria-hidden="true"></i>
+<%end%>
+<%= link_to point_of_sales_path do%>
+<i class="fas fa-undo"> <%= t('back') %></i>
+<% end %>
+</div>
+</div>
+</div>

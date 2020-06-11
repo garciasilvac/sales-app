@@ -5,10 +5,10 @@
 <% if controller_name == 'sales'%>
 	<%= render 'adresses/form', adress: @adress, url_method: create_adress_sale_url  %>
 <% else %>
-	<%= render 'form', adress: @adress, url_method: client_adresses_path %>
+	<%= render 'form', adress: @adress, url_method: polymorphic_path([@parent,Adress]) %>
 <% end %>
 
-<%= link_to client_adresses_path(@client) do%>
+<%= link_to polymorphic_path([@parent,Adress]) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>
 <%end%>
 </div>

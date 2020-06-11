@@ -1,11 +1,11 @@
-<h3><%=t('.title', client: @adress.client.formatted_name(:compact))%></h3>
+<h3><%=t('.title', client: @adress.adressable.formatted_name(:compact))%></h3>
 
-<%= render 'form', adress: @adress %>
+<%= render 'form', adress: @adress, url_method: polymorphic_path([@parent,@adress]) %>
 
-<%= link_to [@client,@adress] do%>
+<%= link_to [@parent,@adress] do%>
 <i class="far fa-info-circle" aria-hidden="true"></i>
 <%end%>
-<%= link_to client_adresses_path(@client) do%>
+<%= link_to polymorphic_path([@parent,Adress]) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>
 <% end %>
 </div>

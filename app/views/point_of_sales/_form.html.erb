@@ -1,0 +1,17 @@
+<div class="form-position">
+<%= form_with(model: point_of_sale, local: true) do |form| %>
+<%= render partial: 'layouts/form_errors',locals: {object: point_of_sale} %>
+
+  <div class="input-container">
+  <div class="row input-group">
+    <div class="input-position form-group">
+    <%= form.label :name , class: "form-label"%>
+    <%= form.text_field :name, class: "form-control", placeholder: Adress.human_attribute_name("street") , required: true  %>
+  </div>
+</div>
+</div>
+
+<div class="container d-flex justify-content-center">
+  <div class="btn-group">
+      <%= form.submit name: t('.submit') %>
+  <% end %>

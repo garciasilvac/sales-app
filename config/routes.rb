@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  
   scope "(:locale)", locale: /es-CL|en/ do
     get '/:locale' => 'publics#home'
     root 'publics#home'
@@ -41,6 +40,9 @@ Rails.application.routes.draw do
     
 
     #### APP CONFIGURABLE OPTIONS
+    resources :point_of_sales do
+      resources :adresses
+    end
     resources :delivery_types
     resources :payment_types
     resources :products

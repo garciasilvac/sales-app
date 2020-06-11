@@ -1,5 +1,5 @@
  <div class="form-position">
-  <%= form_with(model: [@client, adress], local: true, url: url_method, class: "was-validated") do |form| %>
+  <%= form_with(model: [@parent, adress], local: true, url: url_method, class: "was-validated") do |form| %>
     <%= render partial: 'layouts/form_errors',locals: {object: adress} %>
 
 
@@ -50,5 +50,5 @@
 
 <div class="container d-flex justify-content-center">
   <div class="btn-group">
-      <%= form.submit name: t('.submit') %>
+      <%= form.submit %>
   <% end %>
