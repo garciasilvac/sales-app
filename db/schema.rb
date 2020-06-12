@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_154502) do
+ActiveRecord::Schema.define(version: 2020_06_12_151610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_154502) do
     t.float "latitude"
     t.string "adressable_type"
     t.bigint "adressable_id"
+    t.boolean "deleted"
     t.index ["adressable_type", "adressable_id"], name: "index_adresses_on_adressable_type_and_adressable_id"
   end
 
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_154502) do
     t.string "email"
     t.string "sex"
     t.date "birthdate"
+    t.boolean "deleted"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -183,6 +185,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_154502) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "deleted"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
