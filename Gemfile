@@ -48,6 +48,8 @@ gem "simple_form"
 
 gem 'bootstrap-select-rails', '~> 1.13', '>= 1.13.8'
 
+gem 'groupdate'
+
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'
 

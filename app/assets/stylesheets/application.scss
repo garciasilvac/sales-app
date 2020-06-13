@@ -1,6 +1,5 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap.scss";
-@import "bootstrap-select";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "products";
@@ -100,6 +99,7 @@ table{
 	}
 	td.buttons, td.img-sm{
 			min-width:50px;
+			min-height:50px;
 			padding:0px;
 	}
 	tr:focus{
@@ -127,6 +127,7 @@ table{
 
 .buttons{
 	min-width:50px;
+	min-height:50px;
 	padding:0px;
 }
 
