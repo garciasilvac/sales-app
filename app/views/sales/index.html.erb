@@ -1,16 +1,16 @@
 <h3><i class="fas fa-chart-line"> <%=t('.title')%></i></h3>
 
-<%= link_to new_sale_path do %>
+<%= link_to new_sale_path, class: "mb-3" do %>
 <i class="fas fa-plus"> <%=Sale.model_name.human%></i>
 <% end %>
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs mt-3" role="tablist">
+<ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dashboard">Dashboard</a>
+    <a class="nav-link navtab active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#data">Data</a>
+    <a class="nav-link navtab" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="false">Data</a>
   </li>
 </ul>
 
