@@ -9,8 +9,9 @@
       <%= stylesheet_link_tag 'publics', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=weekly&key='+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]%>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="font-awesome-animation.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
