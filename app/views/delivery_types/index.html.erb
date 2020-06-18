@@ -1,11 +1,11 @@
-<h3>Delivery Types</h3>
+<h3><%=DeliveryType.model_name.human.pluralize%></h3>
 
 <div class="table-responsive">
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Requires Delivery</th>
+      <th><%=DeliveryType.human_attribute_name(:name)%></th>
+      <th><%=DeliveryType.human_attribute_name(:requires_delivery)%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,17 +13,17 @@
   <tbody>
     <% @delivery_types.each do |delivery_type| %>
       <tr>
-        <td><%= delivery_type.name %></td>
-        <td><%= delivery_type.requires_delivery %></td>
-        <td class="buttons"><%= link_to delivery_type do%>
+        <td class="tText"><%= delivery_type.name %></td>
+        <td class="tText"><%= delivery_type.requires_delivery %></td>
+        <td class="buttonsPrim"><%= link_to delivery_type, class: "tButton" do%>
             <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_delivery_type_path(delivery_type) do%>
+        <td class="buttonsPrim"><%= link_to edit_delivery_type_path(delivery_type), class: "tButton" do%>
             <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to delivery_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to delivery_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "tButton" do%>
             <i class="far fa-trash-alt"></i>
             <% end %>
         </td>
@@ -33,5 +33,5 @@
 </table>
 </div>
 <%= link_to new_delivery_type_path do%>
-<i class="fa fa-plus" aria-hidden="true"> Delivery Type</i>
+<i class="fa fa-plus" aria-hidden="true"></i> <%=DeliveryType.model_name.human%>
       <% end %>

@@ -1,48 +1,48 @@
  
 <h3><%=t('.title')%></h3>
 
-<%= link_to new_point_of_sale_path, class: "mb-1" do%>
+<%= link_to new_point_of_sale_path do%>
   <i class="fas fa-plus"> <%=PointOfSale.model_name.human%></i>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%=PointOfSale.human_attribute_name("name")%></th>
-      <th><%=Adress.human_attribute_name("full_adress")%></th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @point_of_sales.each do |point_of_sale| %>
+<div class="table-responsive mt-1 mb-3">
+  <table>
+    <thead>
       <tr>
-        <td><%= point_of_sale.name %></td>
-        <td><%= point_of_sale.adresses.empty? ? "Not defined" : point_of_sale.adresses.last.full_adress %>
-        </td>
-        <td class="buttons"><%= link_to point_of_sale_adresses_path(point_of_sale) do%>
-         <i class="fa fa-home" aria-hidden="true"> (<%=point_of_sale.adresses.count%>)</i>
-          <% end %>
-        </td>
-        <td class="buttons"><%= link_to point_of_sale do%>
-          <i class="far fa-info-circle" aria-hidden="true"></i>
-          <% end %>
-        </td>
-        <td class="buttons">
-          <%= link_to edit_point_of_sale_path(point_of_sale) do%>
-            <i class="fas fa-pencil-alt"></i>
-          <% end %>
-          </td>
-        <td class="buttons"><%= link_to point_of_sale, method: :delete, data: { confirm: t('.del_confirm')} , class: "deleteBtn" do%>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-        </td>
+        <th><%=PointOfSale.human_attribute_name("name")%></th>
+        <th><%=Adress.human_attribute_name("full_adress")%></th>
+        <th colspan="4"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @point_of_sales.each do |point_of_sale| %>
+        <tr>
+          <td class="tText"><%= point_of_sale.name %></td>
+          <td class="tText"><%= point_of_sale.adresses.empty? ? "Not defined" : point_of_sale.adresses.last.full_adress %>
+          </td>
+          <td class="buttonsPrim"><%= link_to point_of_sale_adresses_path(point_of_sale), class: "tButton" do%>
+           <i class="fa fa-home" aria-hidden="true"></i><span class="badge badge-pill badge-light"> <%=point_of_sale.adresses.count%></span>
+            <% end %>
+          </td>
+          <td class="buttonsPrim"><%= link_to point_of_sale, class: "tButton" do%>
+            <i class="far fa-info-circle" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <td class="buttonsPrim">
+            <%= link_to edit_point_of_sale_path(point_of_sale), class: "tButton" do%>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            </td>
+          <td class="buttonsDel"><%= link_to point_of_sale, method: :delete, data: { confirm: t('.del_confirm')} , class: "tButton" do%>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= link_to new_point_of_sale_path do%>
   <i class="fas fa-plus"> <%=PointOfSale.model_name.human%></i>

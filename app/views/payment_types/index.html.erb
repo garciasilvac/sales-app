@@ -1,11 +1,10 @@
-
 <h3>Payment Types</h3>
 
 <div class="table-responsive">
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%=PaymentType.human_attribute_name(:name)%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,16 +12,16 @@
   <tbody>
     <% @payment_types.each do |payment_type| %>
       <tr>
-        <td><%= payment_type.name %></td>
-        <td class="buttons"><%= link_to payment_type do%>
+        <td class="tText"><%= payment_type.name %></td>
+        <td class="buttonsPrim"><%= link_to payment_type, class: "tButton" do%>
             <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_payment_type_path(payment_type) do%>
+        <td class="buttonsPrim"><%= link_to edit_payment_type_path(payment_type), class: "tButton" do%>
            <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to payment_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to payment_type, method: :delete, data: { confirm: 'Are you sure?' } , class: "tButton" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

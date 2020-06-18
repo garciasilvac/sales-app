@@ -3,5 +3,10 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .searchSubmit{
+	display:inline-flex;
+	text-decoration:none !important;
 	border-width: 0px !important; 
+	align-items:center;
+	justify-content:center;
+	min-width:50px;
 }

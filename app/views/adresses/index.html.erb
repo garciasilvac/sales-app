@@ -21,20 +21,20 @@
     <% else %>
     <% @adresses.each do |adress| %>
       <tr>
-        <td><%= adress.full_adress %></td>
-        <td><%= adress.adr_unit %></td>
-        <td><%= adress.adr_country %></td>
-        <td><%= l adress.created_at %></td>
-        <td><%= l adress.updated_at %></td>
-        <td><%= link_to polymorphic_path([@parent,adress]) do%>
+        <td class="tText"><%= adress.full_adress %></td>
+        <td class="tText"><%= adress.adr_unit %></td>
+        <td class="tText"><%= adress.adr_country %></td>
+        <td class="tText"><%= l adress.created_at %></td>
+        <td class="tText"><%= l adress.updated_at %></td>
+        <td class="buttonsPrim"><%= link_to polymorphic_path([@parent,adress]), class: "tButton" do%>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_polymorphic_path([@parent, adress]) do%>
+        <td class="buttonsPrim"><%= link_to edit_polymorphic_path([@parent, adress]), class: "tButton" do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to polymorphic_path([@parent,adress]), method: :delete, data: { confirm: t('.del_confirm', adress: adress.full_adress) }, class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to polymorphic_path([@parent,adress]), method: :delete, data: { confirm: t('.del_confirm', adress: adress.full_adress) }, class: "tButton" do%>
           <i class="far fa-trash-alt"></i>
           <% end %>
         </td>

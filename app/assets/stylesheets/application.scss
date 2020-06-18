@@ -42,33 +42,16 @@ html, body{
 	transition: background 0.4s, color 0.4s;
 }
 
-a, input[type=submit], button[type=submit]{
+a:not([class]), input[type=submit], button[type=submit]{
 	@extend .btn;
 	@extend .btn-outline-primary;
 	white-space:nowrap;
 }
+.navtab{
+	white-space:nowrap;
+}
 h1, h2, h3{
 	margin-bottom:20px;
-}
-.deleteBtn{
-	@extend .btn;
-	@extend .btn-outline-danger;
-	i:focus{
-	animation: shake 0.5s;
-	}
-	@keyframes shake {
-	  0% { transform: translate(1px, 1px) rotate(0deg); }
-	  10% { transform: translate(-1px, -1px) rotate(-1deg); }
-	  20% { transform: translate(-1px, 0px) rotate(1deg); }
-	  30% { transform: translate(1px, 1px) rotate(0deg); }
-	  40% { transform: translate(1px, -1px) rotate(1deg); }
-	  50% { transform: translate(-1px, 1px) rotate(-1deg); }
-	  60% { transform: translate(-1px, 1px) rotate(0deg); }
-	  70% { transform: translate(1px, 1px) rotate(-1deg); }
-	  80% { transform: translate(-1px, -1px) rotate(1deg); }
-	  90% { transform: translate(1px, 1px) rotate(0deg); }
-	  100% { transform: translate(1px, -1px) rotate(-1deg); }
-	}
 }
 
 #error_explanation{
@@ -88,49 +71,67 @@ table{
 	@extend .table-hover;
 	font-size: 0.8rem;
 	border-line:none;
-	thead{
+	
+	& thead{
 		background:Darkgray;
-	}
-	th{
-	padding:5px;
-	}
-	td{
-		@extend .font-weight-light;
-		padding:0px 5px;
-	}
-	td.buttons, td.img-sm{
-			min-width:50px;
-			min-height:50px;
-			padding:0px;
-	}
-	tr:focus{
-		-webkit-direct-focus:none;
-		td{
-			font-weight:bold !important;
-		}
 		
-	}
-	th,td{
-		@extend .align-middle;
-		white-space:nowrap;
-	}
-	a, a.deleteBtn{
-		font-size: medium;
-		border-radius:0px;
-		width:100%;
-		text-align:center;
-		i{
-			margin:auto;
+		& th{
+			@extend .align-middle;
+			white-space:nowrap;
+			padding:5px;
 		}
 	}
+	& tbody{
 
+		& td{
+			@extend .font-weight-light;
+			padding:0px 5px;
+			@extend .align-middle;
+
+			&.tText{
+				white-space:nowrap;
+			}
+			&.tIcon{
+				@extend .text-center;
+				white-space:nowrap;
+			}
+			& a.tButton{
+				display: inline-flex;
+  				align-items: center;
+  				text-decoration:none;
+				font-size: medium;
+				width:100%;
+				height:100%;
+				color:inherit;
+				justify-content:center;
+			}
+			&.buttons, &.img-sm{
+				@extend .border;
+				border-color: lightgray;
+				min-width:50px;
+				height:50px;
+				padding:0px;
+				text-align:center;
+
+				&Prim{
+					@extend .buttons;
+					@extend .btn-primary;
+				}
+				&Del{
+					@extend .buttons;
+					@extend .btn-danger;
+				}
+				&Warn{
+					@extend .buttons;
+					@extend .btn-warning;
+				}
+			}
+
+		}
+	}
 }
 
-.buttons{
-	min-width:50px;
-	min-height:50px;
-	padding:0px;
-}
+
 
 //////////////////////////////
 
@@ -159,6 +160,9 @@ table{
 		height:100%;
 		li{
 			height:100%;
+			&.active{
+				border-bottom: 3px solid black;
+			}
 		}
 		a:hover{background: lightgray;}
 	}

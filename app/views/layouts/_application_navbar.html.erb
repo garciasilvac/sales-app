@@ -1,4 +1,4 @@
-  <nav id="mainMenu">
+  <nav class="navbar navbar-expand-lg sticky-top" id="mainMenu">
     <%= image_tag "icons/peanut-butter.png", height: '32', width: '32', class: "navbar-brand" %>
          <!-- Toggler/collapsibe Button -->
 
@@ -32,7 +32,10 @@
               <i class="fas fa-cogs"></i>
             </a>
             <div class="dropdown-menu">
+              <h6 class="dropdown-header">Business Configuration</h6>
               <%= link_to "POS", point_of_sales_path, class: "dropdown-item"%>
+              <div class="dropdown-divider"></div>
+              <h6 class="dropdown-header">Other Configuration</h6>
               <%= link_to t('.tnst_nav'), types_path, class: "dropdown-item"%>
               <%= link_to t('.pt_nav'), payment_types_path, class: "dropdown-item"%>
               <%= link_to t('.dt_nav'), delivery_types_path, class: "dropdown-item"%>
@@ -44,6 +47,7 @@
               <i class="fas fa-language fa-lg"></i>
             </a>
             <div class="dropdown-menu">
+              <h6 class="dropdown-header">Select Language</h6>
               <%= link_to 'Español (CL)', {locale: "es-CL"}, class: "dropdown-item"%>
               <%= link_to 'English', {locale: :en}, class: "dropdown-item"%>
             </div>
@@ -66,7 +70,9 @@
                 <i class="fas fa-user-check"> <%= current_user.email%></i>
               </a>
               <div class="dropdown-menu">
+                  <h6 class="dropdown-header">User session</h6>
                   <%= link_to "Edit user", edit_user_registration_path, class: "dropdown-item"%>
+                  <div class="dropdown-divider"></div>
                   <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item",  method: :delete%>
               </div>
             </li>

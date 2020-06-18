@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive mt-1">
 <table>
   <thead>
     <tr>
@@ -22,40 +22,41 @@
     <% else %>
     <% @sales.each do |sale| %>
       <tr>
-        <td class="buttons text-center">
           <% if sale.paid? %>
-            <i class="far fa-check-circle" style="color:Green"></i>
+            <td class="tIcon">
+              <i class="far fa-check-circle" style="color:Green"></i>
           <% else %>
-            <%= link_to edit_step_3_sale_path(sale), class: "btn-warning" do%>
-            <i class="fas fa-clipboard-check fa-lg"></i>
+            <td class="buttonsWarn">
+              <%= link_to edit_step_3_sale_path(sale), class: "tButton" do%>
+              <i class="fas fa-clipboard-check fa-lg"></i>
           <%end%>
           <% end %>
           
         </td>
-        <td><%= (sale.sale_datetime.nil? or sale.sale_datetime.blank?) ? "Undefined" : l(sale.sale_datetime) %></td>
-        <td><%= sale.client.formatted_name(:reverse) %></td>
-        <td><%= number_to_currency(sale.total_amount) %></td>
-        <td><%= sale.delivery_type_id.nil? ? sale.delivery_type_id : DeliveryType.find(sale.delivery_type_id).name %></td>
-        <td><%= sale.payment_type_id.nil? ? sale.payment_type_id : PaymentType.find(sale.payment_type_id).name %></td>
-        <td><%= l sale.created_at %></td>
-        <td><%= l sale.updated_at %></td>
-        <td class="buttons"><%= link_to sale_shopping_carts_path(sale) do%>
-          <i class="fas fa-cart-plus"> (<%=sale.shopping_carts.count%>)</i>
+        <td class="tText"><%= (sale.sale_datetime.nil? or sale.sale_datetime.blank?) ? "Undefined" : l(sale.sale_datetime) %></td>
+        <td class="tText"><%= sale.client.formatted_name(:reverse) %></td>
+        <td class="tText"><%= number_to_currency(sale.total_amount) %></td>
+        <td class="tText"><%= sale.delivery_type_id.nil? ? sale.delivery_type_id : DeliveryType.find(sale.delivery_type_id).name %></td>
+        <td class="tText"><%= sale.payment_type_id.nil? ? sale.payment_type_id : PaymentType.find(sale.payment_type_id).name %></td>
+        <td class="tText"><%= l sale.created_at %></td>
+        <td class="tText"><%= l sale.updated_at %></td>
+        <td class="buttonsPrim"><%= link_to sale_shopping_carts_path(sale), class: "tButton" do%>
+          <i class="fas fa-cart-plus"></i> <span class="badge badge-pill badge-light"><%=sale.shopping_carts.count%></span>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to sale_deliveries_path(sale) do%>
-          <i class="fas fa-truck"> (<%=sale.deliveries.count%>)</i>
+        <td class="buttonsPrim"><%= link_to sale_deliveries_path(sale), class: "tButton" do%>
+          <i class="fas fa-truck"></i> <span class="badge badge-pill badge-light"> <%=sale.deliveries.count%> </span>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to sale do %>
+        <td class="buttonsPrim"><%= link_to sale, class: "tButton" do %>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_sale_path(sale) do%>
+        <td class="buttonsPrim"><%= link_to edit_sale_path(sale), class: "tButton" do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "tButton" do%>
           <i class="far fa-trash-alt"></i>
           <% end %>
         </td>

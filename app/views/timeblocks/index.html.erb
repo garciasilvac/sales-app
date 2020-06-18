@@ -14,18 +14,18 @@
   <tbody>
     <% @timeblocks.each do |timeblock| %>
       <tr>
-        <td><%= timeblock.name %></td>
-        <td><%= l timeblock.start_time, format: :only_time  %></td>
-        <td><%= l timeblock.end_time, format: :only_time %></td>
-        <td class="buttons"><%= link_to timeblock do %>
+        <td class="tText"><%= timeblock.name %></td>
+        <td class="tText"><%= l timeblock.start_time, format: :only_time  %></td>
+        <td class="tText"><%= l timeblock.end_time, format: :only_time %></td>
+        <td class="buttonsPrim"><%= link_to timeblock, class: "tButton" do %>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_timeblock_path(timeblock) do%>
+        <td class="buttonsPrim"><%= link_to edit_timeblock_path(timeblock), class: "tButton" do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to timeblock, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do %>
+        <td class="buttonsDel"><%= link_to timeblock, method: :delete, data: { confirm: 'Are you sure?' }, class: "tButton" do %>
               <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

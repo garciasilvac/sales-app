@@ -4,10 +4,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th>Deleted</th>
+      <th><%=Type.human_attribute_name(:name)%></th>
+      <th><%=Type.human_attribute_name(:created_at)%></th>
+      <th><%=Type.human_attribute_name(:updated_at)%></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -20,20 +19,22 @@
     <% else %>
     <% @types.each do |type| %>
       <tr>
-        <td><%= type.name %></td>
-        <td><%= l type.created_at %></td>
-        <td><%= l type.updated_at %></td>
-        <td><%= t type.deleted %></td>
-		    <td class="buttons"><%= link_to "Subtypes (#{type.subtypes.count})", type_subtypes_path(type)%></td>
-        <td class="buttons"><%= link_to type_path(type) do%>
+        <td class="tText"><%= type.name %></td>
+        <td class="tText"><%= l type.created_at %></td>
+        <td class="tText"><%= l type.updated_at %></td>
+		    <td class="buttonsPrim"><%= link_to type_subtypes_path(type), class: "tButton"  do%>
+        <%=Subtype.model_name.human.pluralize%> <span class="badge badge-pill badge-light"> <%=type.subtypes.count%></span>
+        <%end%>  
+        </td>
+        <td class="buttonsPrim"><%= link_to type_path(type), class: "tButton"  do%>
            <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_type_path(type) do%>
+        <td class="buttonsPrim"><%= link_to edit_type_path(type), class: "tButton"  do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to type, method: :delete, data: { confirm: 'Are you sure?' }, class: "tButton" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

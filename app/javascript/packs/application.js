@@ -4,11 +4,10 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-import 'bootstrap'
+
 import "../stylesheets/application"
 
 import { initMap } from '../adresses/gmaps';
@@ -18,6 +17,8 @@ import $ from 'jquery';
 global.$ = jQuery;
 
 import "../sales/sales"
+
+import 'bootstrap'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -43,7 +44,6 @@ var checkAndSetDMVar = function(){
 }
 
 $(document).on('load',checkAndSetDMVar);
-$(document).on('turbolinks:load',checkAndSetDMVar);
 
 $(document).on("change", "#darkSwitch",function(){
      /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
@@ -82,8 +82,6 @@ var disableSubmit = function() {
 }
 
 $(document).on('load',disableSubmit);
-$(document).on('turbolinks:load',disableSubmit);
-
 
 ///// currency format /////
 $(document).ready(function(){
@@ -135,7 +133,6 @@ var formUiUx = function() {
 }
 
 $(document).on('load',formUiUx);
-$(document).on('turbolinks:load',formUiUx);
 
 ///////// SELECT PICKER /////////
 
@@ -146,8 +143,6 @@ var focusSearch = function(){
 }
 
 $(document).on('load',focusSearch);
-$(document).on('turbolinks:load',focusSearch);
-
 
 var fileInputText = function(){
   $(".custom-file-input").on("change", function() {
@@ -157,5 +152,5 @@ var fileInputText = function(){
 }
 
 $(document).on('load',fileInputText);
-$(document).on('turbolinks:load',fileInputText);
+
 

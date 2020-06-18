@@ -5,25 +5,25 @@
   <% else %>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.formatted_name(:reverse) %></td>
-        <td><%= client.phone_countrycode %></td>
-        <td><%= client.phone_number %></td>
-        <td><%= client.email %></td>
-        <td><%= l client.created_at %></td>
-        <td><%= l client.updated_at %></td>
-        <td class="buttons"><%= link_to client_adresses_path(client) do%>
-         <i class="fa fa-home" aria-hidden="true"> (<%=client.adresses.count%>)</i>
-          <% end %>
+        <td class="tText"><%= client.formatted_name(:reverse) %></td>
+        <td class="tText"><%= client.phone_countrycode %></td>
+        <td class="tText"><%= client.phone_number %></td>
+        <td class="tText"><%= client.email %></td>
+        <td class="tText"><%= l client.created_at %></td>
+        <td class="tText"><%= l client.updated_at %></td>
+        <td class="buttonsPrim"><%= link_to client_adresses_path(client), class: "tButton" do%>
+         <i class="fa fa-home" aria-hidden="true"></i> <span class="badge badge-pill badge-light"> <%=client.adresses.count%> </span>
+          <% end %> 
         </td>
-        <td class="buttons"><%= link_to client_path(client) do%>
+        <td class="buttonsPrim"><%= link_to client_path(client), class: "tButton" do%>
           <i class="far fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to edit_client_path(client) do%>
+        <td class="buttonsPrim"><%= link_to edit_client_path(client),class: "tButton" do%>
           <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttons"><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "tButton" do%>
               <i class="far fa-trash-alt"></i>
             <% end %>
         </td>
