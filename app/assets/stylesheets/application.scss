@@ -1,5 +1,5 @@
+@import "bootstrap/dist/css/bootstrap.css";
 @import "bootstrap/scss/bootstrap";
-@import "bootstrap.scss";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "products";
@@ -146,15 +146,16 @@ table{
 		width:100%;
 	}
 }
+
 #mainMenu{
 	@extend .navbar;
-	@extend .sticky-top;
 	@extend .navbar-expand-md;
 	@extend .navbar-dark;
 	padding:5px 5px;
 	color:black !important;
 	background: Darkgray;
 	min-height:50px;
+
 	ul{
 		padding:0px;
 		height:100%;
@@ -184,7 +185,7 @@ table{
 	}
 
 	.show > a.dropdown-toggle{
-		box-shadow: inset 0 -1px 0 #ddd;
+		outline: 0;
 	}
 	.nav-item-switch{
 		padding-left:40px;
@@ -313,3 +314,4 @@ textarea {
 .js-unhighlight-label {
 	color: #999 
 }
+
