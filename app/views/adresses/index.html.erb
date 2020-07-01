@@ -27,7 +27,7 @@
         <td class="tText"><%= l adress.created_at %></td>
         <td class="tText"><%= l adress.updated_at %></td>
         <td class="buttonsPrim"><%= link_to polymorphic_path([@parent,adress]), class: "tButton" do%>
-          <i class="far fa-info-circle" aria-hidden="true"></i>
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
         <td class="buttonsPrim"><%= link_to edit_polymorphic_path([@parent, adress]), class: "tButton" do%>

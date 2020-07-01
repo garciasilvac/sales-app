@@ -5,7 +5,7 @@
 <%= render 'form', shopping_cart: @shopping_cart %>
 
 <%= link_to [@sale,@shopping_cart] do%>
-<i class="far fa-info-circle" aria-hidden="true"></i>
+<i class="fas fa-info-circle" aria-hidden="true"></i>
 <%end%>
 <%= link_to sale_shopping_carts_path(@sale) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>

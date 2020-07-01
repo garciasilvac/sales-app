@@ -3,7 +3,7 @@
 <%= render 'form', adress: @adress, url_method: polymorphic_path([@parent,@adress]) %>
 
 <%= link_to [@parent,@adress] do%>
-<i class="far fa-info-circle" aria-hidden="true"></i>
+<i class="fas fa-info-circle" aria-hidden="true"></i>
 <%end%>
 <%= link_to polymorphic_path([@parent,Adress]) do%>
 <i class="fas fa-undo"> <%= t('back') %></i>

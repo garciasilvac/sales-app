@@ -28,7 +28,7 @@
         <td><%= t shopping_cart.product_q %></td>
         <td><%= number_to_currency(shopping_cart.subtotal) %></td>
         <td><%= link_to [@sale,shopping_cart] do%>
-           <i class="far fa-info-circle" aria-hidden="true"></i>
+           <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
         <td><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart) do%>
