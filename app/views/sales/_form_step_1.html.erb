@@ -17,7 +17,7 @@
             <div class="input-group">
               <%= form.collection_select(:client_id, Client.all.order(:last_name), :id, :formatted_name, {include_blank: 'Select client..', required: true}, {class: 'custom-select border border-primary'}) %>
               <div class="input-group-append">
-                <%= link_to new_client_path, class: "btn-success" do %>
+                <%= link_to new_client_sales_path do %>
                   <i class="fas fa-plus"></i>
                 <% end %>
               </div>

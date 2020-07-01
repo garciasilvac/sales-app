@@ -26,6 +26,7 @@ class SalesController < ApplicationController
   end
 
    def new_client
+    puts 'dentro de sales#new_client'
     @client = Client.new
     render 'clients/new'
   end
@@ -83,9 +84,11 @@ class SalesController < ApplicationController
 
   def create_client
     @client = Client.new(client_params)
+    puts 'dentro de sales#create_client'
 
     respond_to do |format|
       if @client.save
+        puts 'dentro de sales#create_client .save'
         format.html { redirect_to new_sale_path, notice: 'Client was successfully created.' }
         format.json { render :show, status: :created, location: @client }
       else
