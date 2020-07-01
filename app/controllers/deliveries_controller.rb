@@ -41,7 +41,7 @@ class DeliveriesController < ApplicationController
 
     respond_to do |format|
       if @delivery.save
-        format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully created.' }
+        format.html { redirect_to sales_path, notice: 'Delivery was successfully created.' }
         format.json { render :show, status: :created, location: @delivery }
       else
         format.html { render :new }
