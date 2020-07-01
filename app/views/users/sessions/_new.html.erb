@@ -1,31 +1,31 @@
 
 <div>
-<h2 id="loginTitle">Welcome!</h2>
+	<h2 id="loginTitle">Welcome!</h2>
 
-<%= form_with model: @user, url: session_path(@user) do |f| %>
-<div class="form-row d-flex justify-content-center">
-	<div class="col-10 col-md-6">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formStyle", placeholder: "Email", inputmode: "email" %>
-	</div>
-</div>
-<div class="form-row d-flex justify-content-center">
-	<div class="col-10 col-md-6">
-    <%= f.password_field :password, autocomplete: "current-password", class: "formStyle", placeholder: "Password" %>
-	</div>
-</div>
-<div class="form-row d-flex justify-content-center">
-	<div class="col-10 col-md-6">
-	  <div class="actions d-flex justify-content-center">
-	    <%= f.submit "Log in",  class: "formButton" %>
-	  </div>
-	</div>
-</div>
-<div class="form-row d-flex justify-content-center">
-	<div class="col-10 col-md-6 d-flex justify-content-center">
-	    <%= link_to "Forgot your password?", new_password_path(@user), class: "formButton" %>
-	</div>
-</div>
-<% end %>
+	<%= form_with model: User, url: session_path(@user) do |f| %>
+		<div class="form-row d-flex justify-content-center">
+			<div class="col-10 col-md-6">
+			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formStyle", placeholder: "Email", inputmode: "email" %>
+			</div>
+		</div>
+		<div class="form-row d-flex justify-content-center">
+			<div class="col-10 col-md-6">
+			<%= f.password_field :password, autocomplete: "current-password", class: "formStyle", placeholder: "Password" %>
+			</div>
+		</div>
+		<div class="form-row d-flex justify-content-center">
+			<div class="col-10 col-md-6">
+			<div class="actions d-flex justify-content-center">
+				<%= f.submit "Log in",  class: "formButton" %>
+			</div>
+			</div>
+		</div>
+		<div class="form-row d-flex justify-content-center">
+			<div class="col-10 col-md-6 d-flex justify-content-center">
+				<%= link_to "Forgot your password?", new_password_path(@user), class: "formButton" %>
+			</div>
+		</div>
+	<% end %>
 </div>
 
 

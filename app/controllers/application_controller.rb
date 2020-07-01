@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
 	  { locale: I18n.locale }
 	end
 
+	protected
+
 	def after_sign_in_path_for(resource)
-	  sales_path
+		sales_path
 	end
+
 end

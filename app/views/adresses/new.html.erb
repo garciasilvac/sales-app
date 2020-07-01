@@ -4,7 +4,7 @@
 
 <% if controller_name == 'sales'%>
 	<%= render 'adresses/form', adress: @adress, url_method: create_adress_sale_url  %>
-	<%= link_to new_sale_delivery_path(@sale) do%>
+	<%= link_to new_sale_delivery_path(@parent) do%>
 		<i class="fas fa-undo"> <%= t('back') %></i>
 	<%end%>
 <% else %>
