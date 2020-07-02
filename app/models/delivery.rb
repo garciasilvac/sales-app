@@ -23,7 +23,16 @@ class Delivery < ApplicationRecord
 
 	def get_realtb_name
 		self.real_timeblock.nil? ? "Not Defined" : Timeblock.find(self.real_timeblock).name
-	end
+  end
+
+  def self.gmap_roundtrip(deliveries)
+    coords = ""
+    deliveries.each do |d|
+      coords += CGI::escape("via:#{d.get_adress.full_adress}")+"%7C"
+      ##coords += "via:#{d.get_adress.latitude},#{d.get_adress.longitude}%7C"
+    end 
+    "https://www.google.com/maps/dir/?api=1&origin=-33.4181376,-70.59449190000001&destination=-33.4181376,-70.59449190000001&waypoints="+coords+"&key="+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]
+  end
 
  private
   def set_defaults

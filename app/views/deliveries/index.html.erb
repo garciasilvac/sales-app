@@ -1,5 +1,11 @@
 <h1>Deliveries</h1>
 
+<% if !(@deliveries.nil? || @deliveries.empty?) %>
+  <%= link_to Delivery.gmap_roundtrip(@deliveries) , target: "_blank" do%>
+      <i class="fas fa-directions"></i> Roundtrip
+  <%end%>
+<%end%>
+
 <div class="table-responsive mt-1">
 <table>
   <thead>
@@ -44,7 +50,7 @@
         <%end%>
         
         <td class="tText"><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
-        <td class="tText"><%= delivery.get_adress.full_adress %></td>
+        <td class="tText"><%= delivery.get_adress.full_adress%> - unit <%= delivery.get_adress.adr_unit%> </td>
         <td class="tText"><%= delivery.get_client.formatted_name(:reverse) %></td>
         <td>
             <% if delivery.get_products.nil? || delivery.get_products.empty? %>
