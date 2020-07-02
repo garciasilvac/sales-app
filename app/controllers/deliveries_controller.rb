@@ -11,7 +11,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
   def driver_index
-    @deliveries = Delivery.where({ delivered: [false,nil] }).order(sched_date: :desc)
+    @deliveries = Delivery.where({ delivered: [false,nil] }).order(sched_date: :asc)
     render :index
   end
 
@@ -31,6 +31,7 @@ class DeliveriesController < ApplicationController
 
   # GET /deliveries/1/edit_step_2
   def edit_step_2
+    @delivery.real_date = DateTime.now
     render :edit
   end
 

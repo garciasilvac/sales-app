@@ -13,6 +13,12 @@ class Delivery < ApplicationRecord
 
 	def get_adress
 		self.adress_id.nil? ? "Not Defined" : Adress.find(self.adress_id)
+  end
+  def get_client
+		Sale.find(self.sale_id).client.nil? ? "Not Defined" : Client.find(Sale.find(self.sale_id).client.id)
+  end
+  def get_products
+		Sale.find(self.sale_id).shopping_carts
 	end
 
 	def get_realtb_name

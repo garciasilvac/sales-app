@@ -8,10 +8,14 @@
       <th><%=Delivery.human_attribute_name(:delivered)%></th>
       <th><%=Delivery.human_attribute_name(:sched_date)%></th>
       <th><%=Adress.human_attribute_name(:full_adress)%></th>
+      <th><%=Client.model_name.human%></th>
+      <th><%=Product.model_name.human%></th>
+      <% if action_name == 'index'%>
       <th><%=Delivery.human_attribute_name(:real_date)%></th>
       <th><%=Delivery.human_attribute_name(:successful)%></th>
       <th><%=Delivery.human_attribute_name(:driver_comment)%></th>
       <th colspan="3"></th>
+      <%end%>
     </tr>
   </thead>
 
@@ -41,6 +45,18 @@
         
         <td class="tText"><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
         <td class="tText"><%= delivery.get_adress.full_adress %></td>
+        <td class="tText"><%= delivery.get_client.formatted_name(:reverse) %></td>
+        <td>
+            <% if delivery.get_products.nil? || delivery.get_products.empty? %>
+              No products yet :)
+            <%else%>
+              <% delivery.get_products.each do |item| %>
+                <li><%=Product.find(item.product_id).name%>: <%=item.product_q%> </li>
+              <%end%>
+            <%end%>
+        </td>
+
+        <% if action_name == 'index'%>
         <td class="tText"><%= delivery.real_date %> <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : " | " + delivery.get_realtb_name %></td>
         <td class='tIcon'>
           <% if delivery.successful.nil? %>
@@ -52,7 +68,6 @@
           <%end%>
         </td>
         <td class="tText"><%= delivery.driver_comment %></td>
-        <% if action_name == 'index'%>
             <td class="buttonsPrim"><%= link_to [@sale,delivery], class: "tButton" do%>
               <i class="fas fa-info-circle" aria-hidden="true"></i>
               <% end %>
