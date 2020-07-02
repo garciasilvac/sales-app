@@ -6,6 +6,8 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("chartkick")
+require("chart.js")
 
 
 import "../stylesheets/application"
@@ -31,24 +33,26 @@ import 'bootstrap'
 
 ////////// SWITCH LIGHT DARK MODE////////
 
-/*  SET GLOBAL VAR  */
-var globalDarkMode = 0;
 
 var checkAndSetDMVar = function(){
-    if (globalDarkMode == 1){
-      $("#darkSwitch").prop('checked', true);
-      /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
-      document.body.classList.toggle("dark-mode");
+    /*  SET SESSION VAR  */
+    if (sessionStorage.darkMode){
+      if (Number(sessionStorage.darkMode) === 1){
+        $("#darkSwitch").prop('checked', true);
+        /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
+        document.body.classList.toggle("dark-mode");
+      }
+    }else{
+      sessionStorage.darkMode = 0;
     }
     return
 }
-
 $(document).on('load',checkAndSetDMVar);
 
 $(document).on("change", "#darkSwitch",function(){
      /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
      document.body.classList.toggle("dark-mode");
-     globalDarkMode = 1 - globalDarkMode;
+     sessionStorage.darkMode = 1 - Number(sessionStorage.darkMode);
 });
 
 /////////////////////////////////////////

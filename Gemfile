@@ -46,7 +46,11 @@ gem "simple_form"
 
 gem 'bootstrap-select-rails', '~> 1.13', '>= 1.13.8'
 
+#### CHARTS ########
+
 gem 'groupdate'
+
+gem 'chartkick'
 
 #### USER MANAGEMENT ########
 gem 'devise', '>= 4.7.1'
