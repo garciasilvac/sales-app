@@ -1,4 +1,4 @@
-<h1>Deliveries</h1>
+<h2>Deliveries <span class="badge badge-pill badge-secondary"><%= @deliveries.count%></span> <span class="badge badge-pill badge-secondary">P:<%= Delivery.total_q(@deliveries)%></span></h2> 
 
 <% if !(@deliveries.nil? || @deliveries.empty?) %>
   <%= link_to Delivery.gmap_roundtrip(@deliveries) , target: "_blank" do%>
@@ -52,7 +52,7 @@
         <td class="tText"><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
         <td class="tText"><%= delivery.get_adress.full_adress%> - unit <%= delivery.get_adress.adr_unit%> </td>
         <td class="tText"><%= delivery.get_client.formatted_name(:reverse) %></td>
-        <td>
+        <td class="tText">
             <% if delivery.get_products.nil? || delivery.get_products.empty? %>
               No products yet :)
             <%else%>

@@ -34,6 +34,16 @@ class Delivery < ApplicationRecord
     "https://www.google.com/maps/dir/?api=1&origin=-33.4181376,-70.59449190000001&destination=-33.4181376,-70.59449190000001&waypoints="+coords+"&key="+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]
   end
 
+  def self.total_q(deliveries)
+    total = 0
+    deliveries.each do |d|
+      d.get_products.each do |p|
+        total+=p.product_q
+      end
+    end
+    total
+  end
+
  private
   def set_defaults
     self.sched_date = Time.now.utc.to_date if self.sched_date.nil?
