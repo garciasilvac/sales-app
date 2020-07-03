@@ -1,4 +1,5 @@
 class Adress < ApplicationRecord
+after_initialize :set_defaults, unless: :persisted?
 geocoded_by :full_adress
 after_validation :geocode, if: :adress_changed?
 belongs_to :adressable, polymorphic: true
@@ -21,4 +22,9 @@ def gmap_dir
 	"https://www.google.com/maps/dir/?api=1&destination=#{self.latitude},#{self.longitude}"
 end
 
+private
+  def set_defaults
+	self.phone_countrycode = 56 if self.phone_countrycode.nil?
+	self.deleted = false if self.deleted.nil?
+  end
 end

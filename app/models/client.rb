@@ -41,6 +41,7 @@ end
 
  private
   def set_defaults
-    self.phone_countrycode = 56 if self.phone_countrycode.nil?
+	self.phone_countrycode = 56 if self.phone_countrycode.nil?
+	self.deleted = false if self.deleted.nil?
   end
 end

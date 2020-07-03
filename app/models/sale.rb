@@ -15,6 +15,8 @@ class Sale < ApplicationRecord
  private
   def set_defaults
     self.sale_datetime = DateTime.now if self.sale_datetime.nil?
+    self.deleted = false if self.deleted.nil?
+    self.paid = false if self.paid.nil?
   end
 
 end
