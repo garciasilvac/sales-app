@@ -4,7 +4,11 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all.order(sale_datetime: :desc)
+    #@sales = Sale.all.order(sale_datetime: :desc)
+    
+    pre_sales = Sale.all.order(sale_datetime: :desc)
+    paid_sales = [false,true]
+    @sales = paid_sales.map {|val| [val,pre_sales.where(paid: val)]}
   end
 
   # GET /sales/1

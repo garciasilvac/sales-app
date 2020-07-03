@@ -20,7 +20,9 @@
       <%= render 'index_dashboard' %>
   </div>
   <div class="tab-pane active" id="data">
-      <%= render 'index_data' %>
+    <% @sales.each do |ps,s|%>
+      <%= render 'index_data', sales:s, paid_sales:ps %>
+    <%end%>
   </div>
 </div>
 

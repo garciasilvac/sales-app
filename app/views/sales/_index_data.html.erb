@@ -1,3 +1,6 @@
+<h4><%= paid_sales ? "Paid" : "Unpaid" %> <span class="badge badge-pill badge-secondary"><%= sales.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(sales.sum(:total_amount))%></span></h4> 
+
+
 <div class="table-responsive mt-1">
 <table>
   <thead>
@@ -15,12 +18,12 @@
   </thead>
 
   <tbody>
-    <% if @sales.empty? %>
+    <% if sales.empty? %>
       <tr>
         <td colspan="13"> No sales yet :) </td>
       </tr>
     <% else %>
-    <% @sales.each do |sale| %>
+    <% sales.each do |sale| %>
       <tr>
           <% if sale.paid? %>
             <td class="tIcon">
