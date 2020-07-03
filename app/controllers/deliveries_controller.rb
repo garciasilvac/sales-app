@@ -5,7 +5,9 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
   def index
-    @deliveries = @sale.deliveries.order(sched_date: :desc)
+    pre_deliveries = @sale.deliveries.order(sched_date: :desc)
+    dates = pre_deliveries.select(:sched_date).distinct.order(:sched_date).map {|d| d.sched_date}
+    @deliveries = dates.map {|date| [date,pre_deliveries.where(sched_date: date)]}
   end
 
   # GET /deliveries
