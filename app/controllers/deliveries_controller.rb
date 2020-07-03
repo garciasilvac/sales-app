@@ -11,7 +11,10 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   # GET /deliveries.json
   def driver_index
-    @deliveries = Delivery.where({ delivered: [false,nil] }).order(sched_date: :asc)
+    pre_deliveries = Delivery.where({ delivered: [false,nil] }).order(sched_date: :asc)
+    dates = pre_deliveries.select(:sched_date).distinct.order(:sched_date).map {|d| d.sched_date}
+    @deliveries = dates.map {|date| [date,pre_deliveries.where(sched_date: date)]}
+
     render :index
   end
 
