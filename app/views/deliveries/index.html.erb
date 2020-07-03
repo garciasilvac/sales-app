@@ -1,7 +1,11 @@
 <h2>Deliveries</h2> 
 
-<% @deliveries.each do |d,dels| %>
-  <%= render 'index_data', date:d, deliveries:dels %>
+<%if !(@deliveries.nil? || @deliveries.empty?) %>
+  <% @deliveries.each do |d,dels| %>
+    <%= render 'index_data', date:d, deliveries:dels %>
+  <% end %>
+<% else %>
+  <div class='alert alert-success w100 text-center'><i class="far fa-check-circle"></i> All done!</div>
 <% end %>
 
 <% if action_name == 'index'%>
