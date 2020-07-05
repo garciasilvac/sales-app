@@ -24,7 +24,8 @@ end
 
 private
   def set_defaults
-	self.phone_countrycode = 56 if self.phone_countrycode.nil?
+	self.adr_state = 'RM' if self.adr_state.nil?
+	self.adr_country = 'Chile' if self.adr_country.nil?
 	self.deleted = false if self.deleted.nil?
   end
 end
