@@ -69,6 +69,6 @@ class PointOfSalesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def point_of_sale_params
-      params.require(:point_of_sale).permit(:name, adresses_attributes: [:id, :street, :str_number, :adr_unit, :adr_other, :adr_zip, :adr_county, :adr_state, :adr_country, :_destroy])
+      params.require(:point_of_sale).permit(:name,:timezone, adresses_attributes: [:id, :street, :str_number, :adr_unit, :adr_other, :adr_zip, :adr_county, :adr_state, :adr_country, :_destroy])
     end
 end
