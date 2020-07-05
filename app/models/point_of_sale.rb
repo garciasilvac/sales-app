@@ -17,7 +17,7 @@ class PointOfSale < ApplicationRecord
 
     private
         def set_defaults
-            self.deleted = false if self.deleted.nil?
+			self.deleted = false if self.deleted.nil?
         end
 
 end

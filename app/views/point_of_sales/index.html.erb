@@ -11,6 +11,7 @@
       <tr>
         <th><%=PointOfSale.human_attribute_name("name")%></th>
         <th><%=Adress.human_attribute_name("full_adress")%></th>
+        <th><%=PointOfSale.human_attribute_name("timezone")%></th>
         <th colspan="4"></th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
         <tr>
           <td class="tText"><%= point_of_sale.name %></td>
           <td class="tText"><%= point_of_sale.adresses.empty? ? "Not defined" : point_of_sale.adresses.last.full_adress %>
+          <td class="tText"><%= ActiveSupport::TimeZone[point_of_sale.timezone].to_s %></td>
           </td>
           <td class="buttonsPrim"><%= link_to point_of_sale_adresses_path(point_of_sale), class: "tButton" do%>
            <i class="fa fa-home" aria-hidden="true"></i><span class="badge badge-pill badge-light"> <%=point_of_sale.adresses.count%></span>
