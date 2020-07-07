@@ -1,7 +1,9 @@
 <div class="title container d-flex justify-content-center">
 <h3><%=t('.title')%></h3>
 </div>
-<%= render 'form', client: @client %>
+
+<%= render 'form', client: @client, url_method: clients_path %>
+
 
 <%= link_to @client do%>
 <i class="fas fa-info-circle" aria-hidden="true"></i>
