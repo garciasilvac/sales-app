@@ -1,6 +1,9 @@
 class PublicsController < ApplicationController
 	skip_before_action :authenticate_user!
-    def home
+	def home
+		if user_signed_in?
+    		redirect_to sales_path
+    	end
 	end
 	
 	def login
