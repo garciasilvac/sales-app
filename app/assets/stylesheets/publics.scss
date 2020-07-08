@@ -1,8 +1,10 @@
+@import "colors";
+
 #loginTitle {
   text-align: center !important;
   font-weight: 100 !important;
   font-size: 2.8em !important;
-  color: #ffffff !important;
+  color: $font-color !important;
 }
 
 #loginContainer {
@@ -10,25 +12,25 @@
 }
 
 .formStyle { 
-  background-color: #2ecc71 !important;
+  background-color: transparent;
   padding: 20px !important;
   width:100%;
   margin-bottom: 20px !important; 
   border-bottom-width: 1px !important; 
   border-bottom-style: solid !important; 
-  border-bottom-color: #ecf0f1 !important; 
+  border-bottom-color: $placeholder-color !important; 
   border-top-style: none !important;
   border-right-style: none !important; 
   border-left-style: none !important;
   font-size: 1em !important;
   font-weight: 100 !important;
-  color: #ffffff !important;
+  color: $font-color !important;
   border-radius:none !important;
 }
 
 .formButton {
-	background-color:#ffffff !important;
-	color:#2ecc71 !important;
+	background-color:$inverse-background-color !important;
+	color:$inverse-font-color !important;
 	font-size:28px !important;
 	font-weight: 500 !important;
 	padding:6px 24px !important;
@@ -39,8 +41,8 @@
 }
 
 .formButton:hover {
-	background-color: #27ae60 !important;
-  color:#ffffff !important;
+	background-color: $background-color-2 !important;
+  color:$font-color !important;
 }
 
 .formButton:active {
@@ -56,17 +58,18 @@ input:focus {
 
 /* To format the placeholder text color */
 ::-webkit-input-placeholder {
-   color: #ecf0f1;
+   color: $placeholder-color;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #ecf0f1;  
+   color: $placeholder-color;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #ecf0f1;  
+   color: $placeholder-color;  
 }
 
 :-ms-input-placeholder {  
-   color: #ecf0f1;  
+   color: $placeholder-color;  
 }
+

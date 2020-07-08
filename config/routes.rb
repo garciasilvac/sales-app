@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get '/:locale' => 'publics#home'
     root 'publics#home'
 
+    get 'login', controller: :publics, action: :login
+
     devise_for :users, controllers: {
       sessions: 'users/sessions',
       passwords: 'users/passwords',
