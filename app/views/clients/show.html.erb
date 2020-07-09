@@ -66,13 +66,13 @@
 
 <div class="btn-group">
 <%= link_to client_adresses_path(@client) do%> 
-<i class="fa fa-home" aria-hidden="true"> (<%=@client.adresses.count%>)</i>
+<i class="fa fa-home" aria-hidden="true"></i> (<%=@client.adresses.count%>)
 <%end%>
 <%= link_to edit_client_path(@client) do%>
   <i class="fas fa-pencil-alt"></i>
 <% end %>
 <%= link_to clients_path do%>
-  <i class="fas fa-undo"> <%= t('back') %></i>
+  <i class="fas fa-undo"></i> <%= t('back') %>
 <%end%>
 
 </div>

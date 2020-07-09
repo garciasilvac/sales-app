@@ -2,14 +2,17 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "colors";
-@import "fonts";
+
 @import "spinner";
 @import "products";
 @import "clients";
 @import "adresses";
 @import "sales";
 @import "publics";
+@import "principal";
+
+@import "colors";
+@import "fonts";
 
 html, body{
 	height: 100%;

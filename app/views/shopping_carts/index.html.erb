@@ -23,19 +23,19 @@
               <%= image_tag("default_product_image.jpg", class: "product-img product-img-sm") %>
             <% end %>
         </td>
-        <td><%= @sale.products.find(shopping_cart.product_id).name %></td>
-        <td><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
-        <td><%= t shopping_cart.product_q %></td>
-        <td><%= number_to_currency(shopping_cart.subtotal) %></td>
-        <td><%= link_to [@sale,shopping_cart] do%>
+        <td class="tText"><%= @sale.products.find(shopping_cart.product_id).name %></td>
+        <td class="tText"><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
+        <td class="tText"><%= t shopping_cart.product_q %></td>
+        <td class="tText"><%= number_to_currency(shopping_cart.subtotal) %></td>
+        <td class="buttonsPrim"><%= link_to [@sale,shopping_cart] do%>
            <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart) do%>
+        <td class="buttonsPrim"><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart) do%>
            <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td><%= link_to [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>
@@ -54,13 +54,13 @@
 
 <div class="btn-group">
   <%= link_to new_sale_shopping_cart_path do%>
-    <i class="fa fa-plus" aria-hidden="true"> Item</i>
+    <i class="fa fa-plus" aria-hidden="true"></i> Item
   <% end %>
   <%= link_to sales_path do%>
-    <i class="fas fa-undo"> Sales</i>
+    <i class="fas fa-undo"></i> Sales
   <% end %>
 </div>
 
 <%= link_to edit_step_2_sale_path(@sale) do%>
-    <i class="fas fa-forward"> Continue</i>
+    <i class="fas fa-forward"></i> Continue
 <% end %>

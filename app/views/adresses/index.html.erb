@@ -52,6 +52,6 @@
 <i class="fa fa-home" aria-hidden="true"></i>
 <%end%>
 <%= link_to controller: @parent.class.to_s.pluralize.underscore, action: :index do%>
-<i class="fas fa-undo"> <%= t('back_to_model', model: @parent.model_name.human(count: 2)) %></i>
+<i class="fas fa-undo"></i> <%= t('back_to_model', model: @parent.model_name.human(count: 2)) %>
 <%end%>
 </div>
