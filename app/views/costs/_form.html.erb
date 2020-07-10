@@ -1,0 +1,51 @@
+<div class="form-position">
+<%= form_with(model: cost, local: true) do |form| %>
+  <%= render partial: 'layouts/form_errors',locals: {object: cost} %>
+
+<div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+              <%= form.label :cost_datetime, class: "form-label-special d-flex block text-secondary"%>
+              <div class="row">
+                <%= form.datetime_select :cost_datetime, {required: true}, {class: "custom-select custom-select-sm border border-primary col"} %>
+              </div>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :name, class: "form-label"%>
+            <%= form.text_field :name, class: "form-control", placeholder: Cost.human_attribute_name("name") , required: true %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :value, class: "form-label"%>
+            <%= form.number_field :value, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "decimal"%>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :cost_class_id, class: "form-label-special  d-flex block text-secondary"%>
+            <%= form.collection_select(:cost_class_id, CostClass.all.order(:name), :id, :name, {include_blank: 'Select cost..', required: true}, {class: 'custom-select border border-primary'}) %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :document_id, class: "form-label"%>
+            <%= form.text_field :document_id, class: "form-control", placeholder: Cost.human_attribute_name("document_id") , required: true %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-file">
+            <%= form.file_field :document_image, class: "custom-file-input" %>
+            <%= form.label :document_image, class: "custom-file-label"%>
+          </div>
+        </div>
+</div>
+
+
+        <div class="container d-flex justify-content-center">
+            <div class="btn-group">
+              <%= form.submit name: t('.submit'), tabindex: 0 %>
+          <% end %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_042848) do
+ActiveRecord::Schema.define(version: 2020_07_09_232810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,28 @@ ActiveRecord::Schema.define(version: 2020_07_05_042848) do
     t.string "sex"
     t.date "birthdate"
     t.boolean "deleted"
+  end
+
+  create_table "cost_classes", force: :cascade do |t|
+    t.boolean "deleted"
+    t.string "name"
+    t.bigint "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_cost_classes_on_parent_id"
+  end
+
+  create_table "costs", force: :cascade do |t|
+    t.boolean "deleted"
+    t.string "name"
+    t.bigint "value"
+    t.string "document_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cost_class_id", null: false
+    t.datetime "cost_datetime"
+    t.boolean "paid"
+    t.index ["cost_class_id"], name: "index_costs_on_cost_class_id"
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -192,6 +214,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_042848) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "costs", "cost_classes"
   add_foreign_key "deliveries", "adresses"
   add_foreign_key "deliveries", "sales"
   add_foreign_key "products", "subtypes"

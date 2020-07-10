@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cost Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deleted</th>
+      <th>Name</th>
+      <th>Parent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cost_classes.each do |cost_class| %>
+      <tr>
+        <td><%= cost_class.deleted %></td>
+        <td><%= cost_class.name %></td>
+        <td><%= cost_class.parent_id %></td>
+        <td><%= link_to 'Show', cost_class %></td>
+        <td><%= link_to 'Edit', edit_cost_class_path(cost_class) %></td>
+        <td><%= link_to 'Destroy', cost_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cost Class', new_cost_class_path %>

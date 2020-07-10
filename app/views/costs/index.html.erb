@@ -1,0 +1,13 @@
+<h3><i class="fas fa-dollar-sign"></i> <%=t('.title')%></h3>
+
+<%= link_to new_cost_path do %>
+<i class="fas fa-plus"></i> <%=Cost.model_name.human%>
+<% end %>
+
+<% @costs.each do |pc,c|%>
+  <%= render 'index_data', costs:c, paid_costs:pc %>
+<%end%>
+
+<%= link_to new_cost_path do %>
+<i class="fas fa-plus"></i> <%=Cost.model_name.human%>
+<% end %>

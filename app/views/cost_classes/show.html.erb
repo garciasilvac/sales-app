@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @cost_class.deleted %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cost_class.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @cost_class.parent_id %>
+</p>
+
+<%= link_to 'Edit', edit_cost_class_path(@cost_class) %> |
+<%= link_to 'Back', cost_classes_path %>

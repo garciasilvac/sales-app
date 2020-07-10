@@ -1,0 +1,25 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @cost.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @cost.value %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @cost.document_id %>
+</p>
+
+<div class="btn-group">
+<%= link_to edit_cost_path(@cost) do %>
+<i class="fas fa-pencil-alt"></i>
+<% end %>
+<%= link_to costs_path do %>
+<i class="fas fa-undo"></i> <%= t('back') %>
+<% end %>
+</div>
+

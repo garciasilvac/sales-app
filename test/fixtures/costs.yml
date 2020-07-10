@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deleted: false
+  name: MyString
+  value: 
+  document_id: MyString
+
+two:
+  deleted: false
+  name: MyString
+  value: 
+  document_id: MyString

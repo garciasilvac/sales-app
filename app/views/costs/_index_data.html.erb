@@ -1,0 +1,57 @@
+<h4><%= paid_costs ? "Paid" : "Unpaid" %> <span class="badge badge-pill badge-secondary"><%= costs.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(costs.sum(:value))%></span></h4> 
+
+<div class="table-responsive mt-1">
+    <table>
+    <thead>
+        <tr>
+        <th><%=Cost.human_attribute_name(:cost_datetime)%></th>
+        <th><%=Cost.human_attribute_name(:deleted)%></th>
+        <th><%=Cost.human_attribute_name(:name)%></th>
+        <th><%=Cost.human_attribute_name(:value)%></th>
+        <th><%=Cost.human_attribute_name(:paid)%></th>
+        <th><%=Cost.human_attribute_name(:document_id)%></th>
+        <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if costs.empty? %>
+        <tr>
+            <td colspan="13"> No costs yet :) </td>
+        </tr>
+        <% else %>
+        <% costs.each do |cost| %> 
+        <tr>
+            <td class="tText"><%= cost.cost_datetime %></td>
+            <td class="tText"><%= cost.deleted %></td>
+            <td class="tText"><%= cost.name %></td>
+            <td class="tText"><%= number_to_currency(cost.value) %></td>
+            <% if cost.paid? %>
+            <td class="tIcon">
+                <i class="far fa-check-circle" style="color:Green"></i>
+            <% else %>
+            <td class="buttonsWarn">
+                <%= link_to edit_cost_path(cost), class: "tButton" do%>
+                    <i class="fas fa-clipboard-check fa-lg"></i>
+                <%end%>
+            <% end %>
+            </td>
+            <td class="tText"><%= link_to "#{cost.document_id}",cost.document_image, class: "tButton", target: "_blank"%></td>
+            <td class="buttonsPrim"><%= link_to cost, class: "tButton" do%>
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <% end %>
+            </td>
+            <td class="buttonsPrim"><%= link_to edit_cost_path(cost), class:"tButton" do%>
+                <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            </td>
+            <td class="buttonsDel"><%= link_to cost, method: :delete, data: { confirm: t('.del_confirm') }, class: "tButton" do %>
+                <i class="far fa-trash-alt"></i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+        <% end %>
+    </tbody>
+    </table>
+</div>

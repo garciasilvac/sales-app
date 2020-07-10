@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :cost_classes
+  resources :costs
   scope "(:locale)", locale: /es-CL|en/ do
     get '/:locale' => 'publics#home'
     root 'publics#home'

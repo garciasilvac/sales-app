@@ -9,6 +9,7 @@ class SalesController < ApplicationController
     pre_sales = Sale.all.order(sale_datetime: :desc)
     paid_sales = [false,true]
     @sales = paid_sales.map {|val| [val,pre_sales.where(paid: val)]}
+    
   end
 
   # GET /sales/1
