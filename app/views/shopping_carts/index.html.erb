@@ -27,15 +27,15 @@
         <td class="tText"><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
         <td class="tText"><%= t shopping_cart.product_q %></td>
         <td class="tText"><%= number_to_currency(shopping_cart.subtotal) %></td>
-        <td class="buttonsPrim"><%= link_to [@sale,shopping_cart] do%>
+        <td class="buttonsPrim"><%= link_to [@sale,shopping_cart], class: "tButton" do%>
            <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttonsPrim"><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart) do%>
+        <td class="buttonsPrim"><%= link_to edit_sale_shopping_cart_path(@sale,shopping_cart), class: "tButton" do%>
            <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttonsDel"><%= link_to [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' } , class: "deleteBtn" do%>
+        <td class="buttonsDel"><%= link_to [@sale,shopping_cart], method: :delete, data: { confirm: 'Are you sure?' }, class: "tButton" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

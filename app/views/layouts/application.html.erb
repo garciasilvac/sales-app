@@ -5,9 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <% if !(user_signed_in?) %>
-      <%= stylesheet_link_tag 'publics', media: 'all' %>
-    <% end %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=weekly&key='+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]%>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -18,7 +15,6 @@
   </head>
 
   <body>
-        <%= render 'layouts/application_devise_alerts' %>
         <%= render 'layouts/application_alert_modal' %>
 
     <% if user_signed_in? %>
@@ -37,7 +33,6 @@
     <% else %>
     <div id="minFullBrowserContainerLogin">
       <div id="overflowContainerLogin">
-
         <div id="subBody">
           <%= yield %>
         </div>

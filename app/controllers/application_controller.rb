@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
-	around_action :switch_locale
 	
+	before_action :authenticate_user!
 	protect_from_forgery with: :exception
-  	before_action :authenticate_user!
-	 
+	around_action :switch_locale
+  		 
 	def switch_locale(&action)
+		puts "signed in? : " + user_signed_in?.to_s 
 	  locale = params[:locale] || I18n.default_locale
 	  I18n.with_locale(locale, &action)
 	end
@@ -14,6 +15,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-	  sales_path
+		sales_path
 	end
 end

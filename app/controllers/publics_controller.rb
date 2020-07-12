@@ -2,15 +2,15 @@ class PublicsController < ApplicationController
 	skip_before_action :authenticate_user!
 	def home
 		if user_signed_in?
-    		redirect_to sales_path
-    	end
+			redirect_to sales_path
+		end
 	end
 	
 	def login
-    	if user_signed_in?
-    		redirect_to sales_path
-    	else
-    		@user=User.new
-    	end
+		if user_signed_in?
+			redirect_to sales_path
+		else
+			@user=User.new 
+		end
     end
 end

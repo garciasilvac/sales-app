@@ -1,5 +1,5 @@
 class CostsController < ApplicationController
-  before_action :set_cost, only: [:show, :edit, :update, :destroy]
+  before_action :set_cost, only: [:show, :edit, :update, :update_paid, :destroy]
   require 'mini_magick'
 
   # GET /costs
@@ -62,6 +62,11 @@ class CostsController < ApplicationController
     end
   end
 
+  def update_paid
+    params[:paid] = true
+    update
+  end
+
   # DELETE /costs/1
   # DELETE /costs/1.json
   def destroy
@@ -80,6 +85,6 @@ class CostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cost_params
-      params.require(:cost).permit(:deleted, :name, :value, :document_id,:document_image, :cost_datetime, :cost_class_id)
+      params.require(:cost).permit(:deleted, :name, :value, :document_id,:document_image, :cost_datetime, :cost_class_id,:paid)
     end
 end

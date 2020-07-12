@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :cost_classes
-  resources :costs
+  
   scope "(:locale)", locale: /es-CL|en/ do
     get '/:locale' => 'publics#home'
     root 'publics#home'
@@ -13,6 +12,10 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       registrations: 'users/registrations'
     }
+
+    authenticated :user do
+      root 'sales#index', as: :authenticated_root
+    end
 
     resources :clients do
       resources :adresses
@@ -40,8 +43,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :cost_classes
+    resources :costs do
+      member do
+        get 'update_paid'
+      end
+    end
+
     get 'driver_index', controller: :deliveries, action: :driver_index
-    
 
     #### APP CONFIGURABLE OPTIONS
     resources :point_of_sales do
