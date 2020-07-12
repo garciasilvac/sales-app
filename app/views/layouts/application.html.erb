@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=weekly&key='+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]%>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
 

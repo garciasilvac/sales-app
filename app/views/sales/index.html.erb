@@ -16,10 +16,10 @@
 
 <!-- Tab panes -->
 <div class="tab-content mb-3">
-  <div class="tab-pane fade" id="dashboard">
+  <div class="tab-pane active" id="dashboard">
       <%= render 'index_dashboard' %>
   </div>
-  <div class="tab-pane active" id="data">
+  <div class="tab-pane fade" id="data">
     <% @sales.each do |ps,s|%>
       <%= render 'index_data', sales:s, paid_sales:ps %>
     <%end%>

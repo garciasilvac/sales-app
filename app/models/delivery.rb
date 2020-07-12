@@ -34,6 +34,10 @@ class Delivery < ApplicationRecord
     "https://www.google.com/maps/dir/?api=1&origin=-33.4181376,-70.59449190000001&destination=-33.4181376,-70.59449190000001&waypoints="+coords+"&key="+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]
   end
 
+  def self.get_adresses
+    Adress.group(:adr_county).count
+  end
+
   def self.total_q(deliveries)
     total = 0
     deliveries.each do |d|
