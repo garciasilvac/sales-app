@@ -3,5 +3,5 @@
 
 	<%= column_chart Sale.group_by_month(:sale_datetime, format:"%B %Y").sum(:total_amount),thousands:".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#613f00"], xtitle: "Meses", ytitle: "Monto", title: "Ventas ($)"%>
 	<%= column_chart Sale.group_by_month(:sale_datetime, format:"%B %Y").count(:id),thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], xtitle: "Meses", ytitle: "Cantidad", title: "Ventas (#)"%>
-	<%= column_chart ShoppingCart.group_by_month(:updated_at, format:"%B %Y").sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], xtitle: "Meses", ytitle: "Cantidad", title: "Productos (#)"%>
+	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:"%B %Y").sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], xtitle: "Meses", ytitle: "Cantidad", title: "Productos (#)"%>
 </div>
