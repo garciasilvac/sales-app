@@ -27,11 +27,12 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
-        comp_image = MiniMagick::Image.new(product_params[:product_image].tempfile.path)
-        comp_image.resize '150x150!'
+        if product_params[:product_image] != nil
+          comp_image = MiniMagick::Image.new(product_params[:product_image].tempfile.path)
+          comp_image.resize '150x150!'
+        end 
         format.html { redirect_to products_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -46,7 +47,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        if product_params[:product_image] != Product.find(@product.id).product_image
+        if product_params[:product_image] != nil && (product_params[:product_image] != Product.find(@product.id).product_image)
           comp_image = MiniMagick::Image.new(product_params[:product_image].tempfile.path)
           comp_image.resize '150x150!'
         end

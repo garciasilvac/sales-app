@@ -36,23 +36,23 @@ import 'bootstrap'
 
 var checkAndSetDMVar = function(){
     /*  SET SESSION VAR  */
-    if (sessionStorage.darkMode){
-      if (Number(sessionStorage.darkMode) === 1){
+    if (localStorage.getItem("darkMode") !== null){
+      if (Number(localStorage.getItem("darkMode")) === 1){
         $("#darkSwitch").prop('checked', true);
         /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
         document.body.classList.toggle("dark-mode");
       }
     }else{
-      sessionStorage.darkMode = 0;
+      localStorage.setItem("darkMode", "0");
     }
     return
 }
-$(document).on('load',checkAndSetDMVar);
+$(document).ready(checkAndSetDMVar);
 
 $(document).on("change", "#darkSwitch",function(){
      /*document.getElementById("minFullBrowserContainer").classList.toggle("dark-mode");*/
      document.body.classList.toggle("dark-mode");
-     sessionStorage.darkMode = 1 - Number(sessionStorage.darkMode);
+     localStorage.setItem("darkMode",(1 - Number(localStorage.getItem("darkMode"))).toString());
 });
 
 /////////////////////////////////////////
@@ -148,13 +148,20 @@ var focusSearch = function(){
 
 $(document).on('load',focusSearch);
 
-var fileInputText = function(){
-  $(".custom-file-input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html("<i class='fas fa-file-upload'></i> " + fileName);
-});
-}
+// var fileInputText = function(){
+//   $(".custom-file-input").on("change", function() {
+//   alert("changed! "+fileName);
+//   var fileName = $(this).val().split("\\").pop();
+//   alert("changed! "+fileName)
+//   $(this).siblings(".custom-file-label").addClass("selected").html("<i class='fas fa-file-upload'></i> " + fileName);
+// });
+// }
 
-$(document).on('load',fileInputText);
+// $(document).on('load',fileInputText);
+
+$(document).on("change",".custom-file-input", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html("<i class='fas fa-file-upload'></i> " +fileName);
+});
 
 

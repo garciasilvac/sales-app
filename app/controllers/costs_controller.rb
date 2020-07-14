@@ -1,5 +1,5 @@
 class CostsController < ApplicationController
-  before_action :set_cost, only: [:show, :edit, :update, :update_paid, :destroy]
+  before_action :set_cost, only: [:show, :edit, :update, :edit_paid, :update_paid, :destroy]
   require 'mini_magick'
 
   # GET /costs
@@ -25,6 +25,10 @@ class CostsController < ApplicationController
   # GET /costs/1/edit
   def edit
   end
+  # GET /costs/1/edit
+  def edit_paid
+    render :edit
+  end
 
   # POST /costs
   # POST /costs.json
@@ -33,8 +37,10 @@ class CostsController < ApplicationController
 
     respond_to do |format|
       if @cost.save
-        comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
-        comp_image.resize '150x150!'
+        if cost_params[:document_image] != nil
+          comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
+          comp_image.resize '150x150!'
+        end
         format.html { redirect_to @cost, notice: 'Cost was successfully created.' }
         format.json { render :show, status: :created, location: @cost }
       else
@@ -49,7 +55,7 @@ class CostsController < ApplicationController
   def update
     respond_to do |format|
       if @cost.update(cost_params)
-        if cost_params[:document_image] != Cost.find(@cost.id).document_image
+        if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
           comp_image.resize '150x150!'
         end
@@ -63,8 +69,20 @@ class CostsController < ApplicationController
   end
 
   def update_paid
-    params[:paid] = true
-    update
+    respond_to do |format|
+      if @cost.update(cost_params)
+        @cost.update(paid: true)
+        if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
+          comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
+          comp_image.resize '150x150!'
+        end
+        format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
+        format.json { render :show, status: :ok, location: @cost }
+      else
+        format.html { render :edit }
+        format.json { render json: @cost.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /costs/1

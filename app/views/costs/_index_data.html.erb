@@ -31,12 +31,22 @@
                 <i class="far fa-check-circle" style="color:Green"></i>
             <% else %>
             <td class="buttonsWarn">
-                <%= link_to update_paid_cost_path(cost),  class: "tButton" do%>
+                <%= link_to edit_paid_cost_path(cost),  class: "tButton" do%>
                     <i class="fas fa-clipboard-check fa-lg"></i>
                 <%end%>
             <% end %>
             </td>
-            <td class="tText"><%= link_to "#{cost.document_id}",cost.document_image, class: "tButton", target: "_blank"%></td>
+            <td class="tText">
+            <% if cost.document_id.nil? %>
+                Nothing here!
+            <% else %>
+                <% if cost.document_image.attached? %>
+                    <%= link_to "#{cost.document_id}",cost.document_image, class: "tButton", target: "_blank"%>
+                <%else%>
+                    <%= link_to "#{cost.document_id}",image_url("default_not_found.png"), class: "tButton", target: "_blank"%>
+                <%end%>
+            <% end %>
+            </td>
             <td class="buttonsPrim"><%= link_to cost, class: "tButton" do%>
                 <i class="fas fa-info-circle" aria-hidden="true"></i>
             <% end %>

@@ -46,7 +46,8 @@ Rails.application.routes.draw do
     resources :cost_classes
     resources :costs do
       member do
-        get 'update_paid'
+        get 'edit_paid'
+        patch 'update_paid'
       end
     end
 

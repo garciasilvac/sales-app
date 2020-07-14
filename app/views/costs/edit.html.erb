@@ -2,7 +2,11 @@
 <h3><%=t('.title')%></h3>
 </div>
 
-<%= render 'form', cost: @cost %>
+<% if action_name == ('edit_paid' || 'update_paid')%>
+    <%= render 'form_step_2', cost: @cost %>
+<%else%>
+    <%= render 'form', cost: @cost %>
+<%end%>
 
 <%= link_to @cost do%>
 <i class="fas fa-info-circle" aria-hidden="true"></i>

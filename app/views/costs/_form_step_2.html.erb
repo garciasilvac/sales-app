@@ -1,0 +1,25 @@
+<div class="form-position">
+<%= form_with(model: cost, local: true, url:update_paid_cost_path(cost), class: "was-validated") do |form| %>
+  <%= render partial: 'layouts/form_errors',locals: {object: cost} %>
+
+<div class="input-container">
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :document_id, class: "form-label"%>
+            <%= form.text_field :document_id, class: "form-control", placeholder: Cost.human_attribute_name("document_id") , required: true %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-file">
+            <%= form.file_field :document_image, class: "custom-file-input" %>
+            <%= form.label :document_image, class: "custom-file-label"%>
+          </div>
+        </div>
+</div>
+
+
+        <div class="container d-flex justify-content-center">
+            <div class="btn-group">
+              <%= form.submit name: t('.submit'), tabindex: 0 %>
+          <% end %>
+
