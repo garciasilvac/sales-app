@@ -1,7 +1,26 @@
 <div class="dashboardContainer">
 	<!--iframe width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/50afe59f-8002-4e14-aa9f-7a01a09f1da3/page/TuEUB" frameborder="0" style="border:0" allowfullscreen></iframe-->
-
-	<%= column_chart Sale.group_by_month(:sale_datetime, format:"%B %Y").sum(:total_amount),thousands:".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#613f00"], xtitle: "Meses", ytitle: "Monto", title: "Ventas ($)"%>
+	<% sales = Sale.group_by_month(:sale_datetime, format:"%B %Y").sum(:total_amount)%>
+	<% costs = Cost.group_by_month(:cost_datetime, format:"%B %Y").sum(:value)%>
+	<% months = (sales.keys + costs.keys).uniq %>
+	<% e = Hash.new %>
+	<% months.each do |m| %>
+	<% 	if sales[m] == nil %>
+	<% 		e[m] = -costs[m] %>
+	<% 	elsif costs[m] == nil %>
+	<% 		e[m] = sales[m] %>
+	<% 	else%>
+	<% 		e[m] = sales[m]-costs[m] %>
+	<% 	end%>
+	<% end%>
+	
+	<%= column_chart [
+  		{name: "Sales", data: sales,color:["#017A24"]},
+		{name: "Costs", data: costs, color: ["#FF0F00"]},
+		{name: "Earnings", data: e, color: ["#613F00"],dataset: {type: "line"},}
+		],
+		thousands: ".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", ytitle: "Monto", title: "Margin", download: {filename: "#{Time.now.to_formatted_s(:number)}_margin", defer:true}
+	%>
 	<%= column_chart Sale.group_by_month(:sale_datetime, format:"%B %Y").count(:id),thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], xtitle: "Meses", ytitle: "Cantidad", title: "Ventas (#)"%>
 	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:"%B %Y").sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], xtitle: "Meses", ytitle: "Cantidad", title: "Productos (#)"%>
 </div>
