@@ -8,6 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("chartkick")
 require("chart.js")
+global.toastr = require("toastr")
 
 
 import "../stylesheets/application"
@@ -85,7 +86,7 @@ var disableSubmit = function() {
   }, false);
 }
 
-$(document).on('load',disableSubmit);
+//$(document).on('load',disableSubmit);
 
 ///// currency format /////
 $(document).ready(function(){

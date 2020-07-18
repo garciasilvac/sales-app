@@ -216,8 +216,8 @@ table{
 	min-height:100%;
 	&Login{
 		@extend #minFullBrowserContainer;
-		background-color: $background-color;
-		color:$font-color;
+		background-color: $color-primary;
+		color:$color-secondary;
 		font-size: 5vw;
 	}
 }
@@ -247,8 +247,8 @@ table{
 	text-align: left;
 	font-size: 15px;
 	padding: 20px;
-	color: $font-color;
-	background: $background-color-2;
+	color: $color-secondary;
+	background: $color-tertiary;
 }
 
 //////// LAYOUT ALERTS /////// 

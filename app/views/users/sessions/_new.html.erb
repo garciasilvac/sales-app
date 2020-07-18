@@ -1,7 +1,7 @@
 
 <div id=viewportRow>
 	<h2 id="loginTitle">Welcome!</h2>
-	<%= form_with model: @user, url: user_session_path(@user) do |f| %>
+	<%= form_with model: resource, as:resource_name , url: session_path(resource_name), local:true do |f| %>
 		<div class="form-row d-flex justify-content-center">
 			<div class="col-10 col-md-6">
 			<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formStyle", placeholder: "Email", inputmode: "email" %>
@@ -21,7 +21,7 @@
 		</div>
 		<div class="form-row d-flex justify-content-center">
 			<div class="col-10 col-md-6 d-flex justify-content-center">
-			<%= link_to "Forgot your password?", new_user_password_path(@user), class: "formButton" %>
+			<%= link_to "Forgot your password?", new_user_password_path(resource), class: "formButton" %>
 			</div>
 		</div>
 	<% end %>

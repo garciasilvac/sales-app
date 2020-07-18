@@ -1,4 +1,8 @@
 Rails.application.configure do
+  ## setting up hosts (defining subdomains locally)
+  config.action_dispatch.tld_length = 0
+  config.hosts << "www.fenproductos.local"
+  config.hosts << "manager.fenproductos.local"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -73,4 +77,6 @@ Rails.application.configure do
 
   #use UTC time zone server side
   config.time_zone = 'UTC'
+
+  
 end
