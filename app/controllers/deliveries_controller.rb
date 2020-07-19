@@ -47,6 +47,7 @@ class DeliveriesController < ApplicationController
 
     respond_to do |format|
       if @delivery.save
+        @sale.update(total_amount: @sale.total_amount + @delivery.price)
         format.html { redirect_to sales_path, notice: 'Delivery was successfully created.' }
         format.json { render :show, status: :created, location: @delivery }
       else
@@ -59,8 +60,10 @@ class DeliveriesController < ApplicationController
   # PATCH/PUT /deliveries/1
   # PATCH/PUT /deliveries/1.json
   def update
+    old_price = @delivery.price
     respond_to do |format|
       if @delivery.update(delivery_params)
+        @sale.update(total_amount: @sale.total_amount - old_price + @delivery.price)
         format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully updated.' }
         format.json { render :show, status: :ok, location: @delivery }
       else
@@ -86,6 +89,7 @@ class DeliveriesController < ApplicationController
   # DELETE /deliveries/1
   # DELETE /deliveries/1.json
   def destroy
+    @sale.update(total_amount: @sale.total_amount - @delivery.price)
     @delivery.destroy
     respond_to do |format|
       format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully destroyed.' }
@@ -101,7 +105,7 @@ class DeliveriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def delivery_params
-      params.require(:delivery).permit(:sale_id, :sched_date, :sched_timeblock, :delivered, :real_date, :real_timeblock, :successful, :driver_comment, :adress_id)
+      params.require(:delivery).permit(:sale_id, :sched_date, :sched_timeblock, :delivered, :real_date, :real_timeblock, :successful, :driver_comment, :adress_id, :price)
     end
 
     def get_sale

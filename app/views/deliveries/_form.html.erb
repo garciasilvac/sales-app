@@ -3,6 +3,20 @@
     <%= render partial: 'layouts/form_errors',locals: {object: delivery} %>
 
   <div class="input-container">
+        <div><span>Step 1:</span></div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :adress_id %>
+            <div class="input-group">
+              <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => 'Select adress..', required: true}, {:class => 'custom-select'}) %>
+              <div class="input-group-append">
+                <%= link_to new_adress_sale_path(@sale) do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :sched_date, class: "form-label-special d-flex block text-secondary"%>
@@ -16,7 +30,14 @@
           </div>
         </div>
         <div class="row input-group">
-          <div class="input-position form-group custom-control">
+          <div class="input-position form-group">
+            <%= form.label :price, class: "form-label"%>
+            <%= form.number_field :price, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "decimal"%>
+          </div>
+        </div>
+        <div><span>Execution:</span></div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-control custom-checkbox">
             <%= form.check_box :delivered, class: "custom-control-input" %>
             <%= form.label :delivered, class: "custom-control-label" %>
           </div>
@@ -27,11 +48,22 @@
             <%= form.date_select :real_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab, include_blank: true, default: nil},{class: "custom-select col", required: true}%>
           </div>
         </div>
-
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :real_timeblock %>
             <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..',required: true}, {class: 'custom-select'})  %>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group custom-control custom-checkbox">
+            <%= form.check_box :successful, class: "custom-control-input"%>
+            <%= form.label :successful, class: "custom-control-label"%>
+          </div>
+        </div>
+        <div class="row input-group">
+          <div class="input-position form-group">
+            <%= form.label :driver_comment, class: "form-label"%>
+            <%= form.text_area :driver_comment , class: "form-control", placeholder: "Driver comments..."%>
           </div>
         </div>
       </div>

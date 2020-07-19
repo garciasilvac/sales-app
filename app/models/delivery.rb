@@ -54,6 +54,7 @@ class Delivery < ApplicationRecord
     self.delivered = false if self.delivered.nil?
     self.deleted = false if self.deleted.nil?
     self.successful = false if self.successful.nil?
+    self.price = 0 if self.price.nil?
   end
 
 end

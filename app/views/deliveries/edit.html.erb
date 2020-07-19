@@ -4,6 +4,8 @@
 
 <% if action_name == 'edit_step_2'%>
 	<%= render 'form_step_2', delivery: @delivery %>
+<% elsif !(@delivery.delivered?)%>
+	<%= render 'form_step_1', delivery: @delivery %>
 <% else %>
 	<%= render 'form', delivery: @delivery %>
 <% end %>

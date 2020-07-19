@@ -17,6 +17,7 @@
       <th><%=Client.model_name.human%></th>
       <th><%=Product.model_name.human%></th>
       <% if action_name == 'index'%>
+      <th><%=Delivery.human_attribute_name(:price)%></th>
       <th><%=Delivery.human_attribute_name(:real_date)%></th>
       <th><%=Delivery.human_attribute_name(:successful)%></th>
       <th><%=Delivery.human_attribute_name(:driver_comment)%></th>
@@ -63,6 +64,7 @@
         </td>
 
         <% if action_name == 'index'%>
+        <td class="tText"><%=number_to_currency(delivery.price)%></td>
         <td class="tText"><%= delivery.real_date %> <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : " | " + delivery.get_realtb_name %></td>
         <td class='tIcon'>
           <% if delivery.successful.nil? %>
