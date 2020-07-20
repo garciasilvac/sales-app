@@ -3,26 +3,22 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("@rails/activestorage").start()
-require("channels")
-require("chartkick")
-require("chart.js")
-global.toastr = require("toastr")
-
-
-import "../stylesheets/application"
-
+require("@rails/ujs").start();
+require("@rails/activestorage").start();
+require("channels");
+require("chartkick");
+require("chart.js");
+global.toastr = require("toastr");
+import "moment";
+import "../stylesheets/application";
 import { initMap } from '../adresses/gmaps';
 global.initMap = initMap;
-
+import "jquery";
 import $ from 'jquery';
 global.$ = jQuery;
-
-import "../sales/sales"
-
-import 'bootstrap'
-
+import "../sales/sales";
+import 'bootstrap';
+import "tempusdominus-bootstrap";
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -139,7 +135,32 @@ var formUiUx = function() {
 
 $(document).on('load',formUiUx);
 
-///////// SELECT PICKER /////////
+///////// DATETIME PICKER /////////
+
+$(function () {
+  $('#datetimepicker1').datetimepicker({
+    icons: {
+        time: 'far fa-clock',
+        date: 'far fa-calendar',
+        up: 'far fa-chevron-up',
+        down: 'far fa-chevron-down',
+        previous: 'far fa-chevron-left',
+        next: 'far fa-chevron-right',
+        today: 'fas fa-calendar-day',
+        clear: 'far fa-trash',
+        close: 'far fa-times'
+    },
+    buttons: {
+      showToday:true
+    },
+    allowInputToggle:true,
+    ignoreReadonly:true,
+    format:'L'
+
+  });
+});
+
+
 
 ///////  SEARCH BOX FOCUS ////////
 

@@ -12,7 +12,12 @@
     "chartkick": "^3.2.0",
     "font-awesome-animation": "^0.2.1",
     "jquery": "^3.5.1",
+    "jquery-datetimepicker": "^2.5.21",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "popper.js": "^1.16.1",
+    "tempusdominus": "^5.15.1",
+    "tempusdominus-bootstrap": "^5.27.1",
     "toastr": "^2.1.4",
     "webpack": "^4.43.0"
   },

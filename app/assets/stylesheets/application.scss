@@ -2,6 +2,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@import "datetimepicker";
 @import "spinner";
 @import "products";
 @import "clients";
@@ -50,7 +51,7 @@ html, body{
   	}
  }
 
-a:not([class]), input[type=submit], button[type=submit]{
+a:not([class]),input[type=submit], button[type=submit]{
 	@extend .btn;
 	@extend .btn-outline-primary;
 	white-space:nowrap;

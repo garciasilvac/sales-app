@@ -43,6 +43,12 @@
     <% end %>
     <tr>
       <th colspan="3"></th>
+      <th><b>Delivery<b></th>
+      <th><b><%= number_to_currency(@sale.deliveries.sum(:price)) %><b></th>
+      <th colspan="3"></th>
+    </tr>
+    <tr>
+      <th colspan="3"></th>
       <th><b>Total Amount<b></th>
       <th><b><%= number_to_currency(@sale.total_amount) %><b></th>
       <th colspan="3"></th>

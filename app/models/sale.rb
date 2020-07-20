@@ -17,6 +17,7 @@ class Sale < ApplicationRecord
     self.sale_datetime = DateTime.now if self.sale_datetime.nil?
     self.deleted = false if self.deleted.nil?
     self.paid = false if self.paid.nil?
+    self.total_amount = 0 if self.total_amount.nil?
   end
 
 end

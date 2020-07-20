@@ -57,7 +57,7 @@ class CostsController < ApplicationController
       if @cost.update(cost_params)
         if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
-          comp_image.resize '150x150!'
+          comp_image.resize '40%'
         end
         format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
         format.json { render :show, status: :ok, location: @cost }
@@ -74,7 +74,7 @@ class CostsController < ApplicationController
         @cost.update(paid: true)
         if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
-          comp_image.resize '150x150!'
+          comp_image.resize '40%'
         end
         format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
         format.json { render :show, status: :ok, location: @cost }
