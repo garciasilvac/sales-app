@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :stocks
     scope '(:locale)', locale: /es-CL|en/ do
 
       root to: 'publics#home'

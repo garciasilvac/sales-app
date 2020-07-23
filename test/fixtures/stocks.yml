@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stockable: 
+  parent: one
+  quantity: 
+  SKU: MyString
+  deleted: false
+
+two:
+  stockable: 
+  parent: two
+  quantity: 
+  SKU: MyString
+  deleted: false

@@ -155,7 +155,7 @@ $(function () {
     },
     allowInputToggle:true,
     ignoreReadonly:true,
-    format:'L'
+    format:'YYYY-MM-DD'
 
   });
 });

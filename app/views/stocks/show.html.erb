@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stockable:</strong>
+  <%= @stock.stockable %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @stock.parent_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @stock.quantity %>
+</p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @stock.SKU %>
+</p>
+
+<p>
+  <strong>Deleted:</strong>
+  <%= @stock.deleted %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

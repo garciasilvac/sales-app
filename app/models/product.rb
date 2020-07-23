@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_many :stocks, as: :stockable, dependent: :destroy
   belongs_to :subtype
   has_many :shopping_carts
   has_many :sales, :through => :shopping_carts

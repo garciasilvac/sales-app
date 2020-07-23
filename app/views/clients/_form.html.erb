@@ -35,13 +35,36 @@
             </div>
           </div>
         </div>
+
         <div class="row input-group">
+          <!--
           <div class="input-position form-group input-special-width" data-target-input="nearest">
-            <%= form.label :birthdate, class: "form-label-special d-flex block text-secondary"%>
+            < form.label :birthdate, class: "form-label-special d-flex block text-secondary"%>
             <div class="row">
-              <%= form.date_select :birthdate, {start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab},{class: "custom-select col"}%>
+              < form.date_select :birthdate, {start_year: Date.today.year - 150, end_year: Date.today.year, tabindex: autotab},{class: "custom-select col"}%>
             </div>
           </div>
+          -->
+
+          <div class="input-position form-group input-special-width">
+            <%= form.label :birthdate, class: "form-label-special d-flex block text-secondary"%>
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                    <%= form.text_field :birthdate, class: "form-control datetimepicker-input",data:{target: "#datetimepicker1"}, tabindex: autotab, required: true %>
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                    </div>
+            </div>
+          </div>
+          
+          <!--
+          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+              <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" readonly/>
+              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="far fa-calendar"></i></div>
+              </div>
+          </div> 
+          -->
+
           <div class="input-position form-group input-special-width">
             <%= form.label :sex, class: "form-label-special d-flex block text-secondary"%>
             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">

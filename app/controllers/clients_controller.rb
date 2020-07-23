@@ -5,9 +5,9 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     if params[:search]
-      @clients = Client.all.search_by_name_and_email(params[:search][:search_word])
+      @clients = Client.all.search_by_name_and_email(params[:search][:search_word]).order(:last_name)
     else
-      @clients = Client.all
+      @clients = Client.all.order(:last_name)
     end
     respond_to do |format|
         format.html

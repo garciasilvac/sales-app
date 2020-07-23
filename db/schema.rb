@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_215030) do
+ActiveRecord::Schema.define(version: 2020_07_22_143608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,6 +167,19 @@ ActiveRecord::Schema.define(version: 2020_07_18_215030) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_shopping_carts_on_product_id"
     t.index ["sale_id"], name: "index_shopping_carts_on_sale_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "stockable_type"
+    t.bigint "stockable_id"
+    t.bigint "quantity"
+    t.string "SKU"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_stocks_on_parent_id"
+    t.index ["stockable_type", "stockable_id"], name: "index_stocks_on_stockable_type_and_stockable_id"
   end
 
   create_table "subtypes", force: :cascade do |t|

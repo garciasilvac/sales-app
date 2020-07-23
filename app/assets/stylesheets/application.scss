@@ -167,8 +167,10 @@ table{
 	@extend .navbar-expand-md;
 	@extend .navbar-dark;
 	position: -webkit-sticky;
-  	position: sticky;
-  	top: 0;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	top: 15px;
 	padding:5px 5px;
 	color:black !important;
 	background: Darkgray;
