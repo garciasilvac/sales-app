@@ -17,6 +17,7 @@ import "jquery";
 import $ from 'jquery';
 global.$ = jQuery;
 import "../sales/sales";
+import "../addons/boolean_toggle";
 import 'bootstrap';
 import "tempusdominus-bootstrap";
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -137,8 +138,11 @@ $(document).on('load',formUiUx);
 
 ///////// DATETIME PICKER /////////
 
-$(function () {
-  $('#datetimepicker1').datetimepicker({
+const dateformat = 'YYYY-MM-DD';
+const datetimeformat = 'YYYY-MM-DD HH:mm:ss z'
+
+var datetimepickerparams = function (format) {
+  var output = {
     icons: {
         time: 'far fa-clock',
         date: 'far fa-calendar',
@@ -155,11 +159,21 @@ $(function () {
     },
     allowInputToggle:true,
     ignoreReadonly:true,
-    format:'YYYY-MM-DD'
+    keepOpen: true,
+    format: format
+  }
+  return output
+}
 
-  });
+$(function () {
+  //DATE ONLY
+  $('#datetimepickerclientdob').datetimepicker(datetimepickerparams(dateformat));
+  $('#datetimepickerscheddate').datetimepicker(datetimepickerparams(dateformat));
+  $('#datetimepickerdelivrd').datetimepicker(datetimepickerparams(dateformat));
+  //DATETIME
+  $('#datetimepickersaledt').datetimepicker(datetimepickerparams(datetimeformat));
+  $('#datetimepickercostdt').datetimepicker(datetimepickerparams(datetimeformat));
 });
-
 
 
 ///////  SEARCH BOX FOCUS ////////
@@ -187,3 +201,7 @@ $(document).on("change",".custom-file-input", function() {
 });
 
 
+$(document).on("click",".hamburger", function() {
+  $(this).toggleClass("is-active");
+    // Do something else, like open/close menu
+  });

@@ -7,7 +7,11 @@ class AdressesController < ApplicationController
   # GET /adresses
   # GET /adresses.json
   def index
-    @adresses = @parent.adresses
+    if @parent.class.name == "Client"
+      @adresses = @parent.adresses
+    else
+      @adresses = @parent.adress.nil? ? nil : [@parent.adress]
+    end
   end
 
   # GET /adresses/1
@@ -17,7 +21,16 @@ class AdressesController < ApplicationController
 
   # GET /adresses/new
   def new
-    @adress = @parent.adresses.new
+    if @parent.class.name == "Client"
+      @adress = @parent.adresses.new
+    else
+      if @parent.adress.nil?
+        @adress = Adress.new
+        @adress.adressable = @parent
+      else
+        redirect_to polymorphic_path([@parent,Adress]), alert: 'Already has an adress' 
+      end
+    end
   end
 
   # GET /adresses/1/edit
@@ -27,7 +40,16 @@ class AdressesController < ApplicationController
   # POST /adresses
   # POST /adresses.json
   def create
-    @adress = @parent.adresses.new(adress_params)
+    if @parent.class.name == "Client"
+      @adress = @parent.adresses.new(adress_params)
+    else
+      if @parent.adress.nil?
+        @adress = Adress.new(adress_params)
+        @parent.adress = @adress
+      else
+        redirect_to polymorphic_path([@parent,Adress]), alert: 'Already has an adress' 
+      end
+    end
 
     respond_to do |format|
       if @adress.save
@@ -67,7 +89,11 @@ class AdressesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_adress
-      @adress = @parent.adresses.find(params[:id])
+      if @parent.class.name == "Client"
+        @adress = @parent.adresses.find(params[:id])
+      else
+        @adress = @parent.adress
+      end
     end
 
     # Only allow a list of trusted parameters through.

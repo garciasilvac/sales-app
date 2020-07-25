@@ -4,11 +4,14 @@
 
 <div class="input-container">
         <div class="row input-group">
-          <div class="input-position form-group">
-              <%= form.label :cost_datetime, class: "form-label-special d-flex block text-secondary"%>
-              <div class="row">
-                <%= form.datetime_select :cost_datetime, {required: true}, {class: "custom-select custom-select-sm border border-primary col"} %>
+          <div class="input-position form-group input-special-width">
+            <%= form.label :cost_datetime, class: "form-label-special d-flex block text-secondary"%>
+            <div class="input-group date" id="datetimepickercostdt" data-target-input="nearest">
+              <%= form.text_field :cost_datetime, class: "form-control datetimepicker-input",data:{target: "#datetimepickercostdt"}, tabindex: autotab, required: true %>
+              <div class="input-group-append" data-target="#datetimepickercostdt" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="far fa-calendar"></i></div>
               </div>
+            </div>
           </div>
         </div>
         <div class="row input-group">

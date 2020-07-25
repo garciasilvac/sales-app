@@ -20,11 +20,11 @@
       <% @point_of_sales.each do |point_of_sale| %>
         <tr>
           <td class="tText"><%= point_of_sale.name %></td>
-          <td class="tText"><%= point_of_sale.adresses.empty? ? "Not defined" : point_of_sale.adresses.last.full_adress %>
+          <td class="tText"><%= point_of_sale.adress.nil? ? "Not defined" : point_of_sale.adress.full_adress %>
           <td class="tText"><%= ActiveSupport::TimeZone[point_of_sale.timezone].to_s %></td>
           </td>
           <td class="buttonsPrim"><%= link_to point_of_sale_adresses_path(point_of_sale), class: "tButton" do%>
-           <i class="fa fa-home" aria-hidden="true"></i><span class="badge badge-pill badge-light"> <%=point_of_sale.adresses.count%></span>
+           <i class="fa fa-home" aria-hidden="true"></i> <span class="badge badge-pill badge-light"><%if point_of_sale.adress.nil? %><i class="fas fa-times"></i><% else %><i class="fas fa-check"></i><% end %></span>
             <% end %>
           </td>
           <td class="buttonsPrim"><%= link_to point_of_sale, class: "tButton" do%>

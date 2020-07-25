@@ -1,5 +1,5 @@
 class PointOfSale < ApplicationRecord
-	has_many :adresses, as: :adressable, dependent: :destroy
+	has_one :adress, as: :adressable, dependent: :destroy
 	after_initialize :set_defaults, unless: :persisted?
 
   	def formatted_name(input = :reverse)

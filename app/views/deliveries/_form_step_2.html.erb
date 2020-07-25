@@ -5,10 +5,13 @@
 
       <div class="input-container">
         <div class="row input-group">
-          <div class="input-position form-group">
+          <div class="input-position form-group input-special-width">
             <%= form.label :real_date, class: "form-label-special d-flex block text-secondary"%>
-            <div class="row">
-              <%= form.date_select :real_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab, include_blank: true, default: nil},{class: "custom-select col", required: true}%>
+            <div class="input-group date" id="datetimepickerdelivrd" data-target-input="nearest">
+              <%= form.text_field :real_date, class: "form-control datetimepicker-input",data:{target: "#datetimepickerdelivrd"}, tabindex: autotab, required: true %>
+              <div class="input-group-append" data-target="#datetimepickerdelivrd" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="far fa-calendar"></i></div>
+              </div>
             </div>
           </div>
         </div>
@@ -20,9 +23,9 @@
         </div>
         <div class="row input-group">
           <div class="input-position form-group custom-control custom-checkbox">
-            <%= form.check_box :successful, class: "custom-control-input"%>
-            <%= form.label :successful, class: "custom-control-label"%>
+            <%= form.check_box :successful, data:{toggle:"toggle",on:"<i class='fas fa-check'></i> Succeeded", off:"<i class='fas fa-times'></i> Failed", onstyle:"success",offstyle:"danger"}%>
           </div>
+
         </div>
 
         <div class="row input-group">

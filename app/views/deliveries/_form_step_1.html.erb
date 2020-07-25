@@ -17,10 +17,13 @@
           </div>
         </div>
         <div class="row input-group">
-          <div class="input-position form-group">
+          <div class="input-position form-group input-special-width">
             <%= form.label :sched_date, class: "form-label-special d-flex block text-secondary"%>
-            <div class="row">
-              <%= form.date_select :sched_date, {start_year: Date.today.year, end_year: Date.today.year + 1, tabindex: autotab},{class: "custom-select col", required: true}%>
+            <div class="input-group date" id="datetimepickerscheddate" data-target-input="nearest">
+              <%= form.text_field :sched_date, class: "form-control datetimepicker-input",data:{target: "#datetimepickerscheddate"}, tabindex: autotab, required: true %>
+              <div class="input-group-append" data-target="#datetimepickerscheddate" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="far fa-calendar"></i></div>
+              </div>
             </div>
           </div>
         </div>

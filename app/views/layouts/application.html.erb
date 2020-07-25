@@ -17,8 +17,7 @@
   </head>
 
   <body>
-        <%= render 'layouts/application_alert_modal' %>
-
+    <%= render 'layouts/application_alert_modal' %>
     <% if user_signed_in? %>
     <div id="minFullBrowserContainer">
       <div id="overflowContainer">
@@ -32,6 +31,7 @@
       </div>
     </div>
     <%= render 'layouts/application_footer' %>
+    
     <% else %>
     <div id="minFullBrowserContainerLogin">
       <div id="overflowContainerLogin">

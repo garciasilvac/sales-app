@@ -3,26 +3,19 @@
           <%= render partial: 'layouts/form_errors',locals: {object: sale} %>
 
     <div class="input-container">
-        
-         <div class="row input-group">
-          <div class="input-position form-group">
-              <%= form.label :sale_datetime, class: "form-label-special d-flex block text-secondary"%>
-              <div class="row">
-                <%= form.datetime_select :sale_datetime, {required: true}, {class: "custom-select custom-select-sm border border-primary col"} %>    
-              </div>
-          </div>
-        </div>
-        
-        <!--
+       
         <div class="row input-group">
-          <div class="input-position form-group">
-              <%=form.label :sale_datetime, class: "form-label-special d-flex block text-secondary"%>
-              <div class="row">
-                <%= form.text_field :sale_datetime, {required: true, class: "custom-select custom-select-sm border border-primary col"} %>    
+          <div class="input-position form-group input-special-width">
+            <%= form.label :sale_datetime, class: "form-label-special d-flex block text-secondary"%>
+            <div class="input-group date" id="datetimepickersaledt" data-target-input="nearest">
+              <%= form.text_field :sale_datetime, class: "form-control datetimepicker-input",data:{target: "#datetimepickersaledt"}, tabindex: autotab, required: true %>
+              <div class="input-group-append" data-target="#datetimepickersaledt" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="far fa-calendar"></i></div>
               </div>
+            </div>
           </div>
         </div>
-        -->
+      
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :client_id, class: "form-label-special  d-flex block text-secondary"%>

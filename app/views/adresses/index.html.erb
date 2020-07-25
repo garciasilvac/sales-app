@@ -1,4 +1,4 @@
-<h3><%=t('.title', count:@parent.adresses.count, client: @parent.formatted_name(:compact))%></h3>
+<h3><%=t('.title', count:(@adresses.nil? ? 0 : @adresses.count), client: @parent.formatted_name(:compact))%></h3>
 
 <div class="table-responsive">
 <table>
@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% if @adresses.empty? %>
+    <% if @adresses.nil? or @adresses.empty? %>
       <tr>
         <td colspan="13"> No adresses yet for <%=@parent.formatted_name(:compact)%> :( </td>
       </tr>
