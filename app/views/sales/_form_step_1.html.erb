@@ -20,7 +20,7 @@
           <div class="input-position form-group">
             <%= form.label :client_id, class: "form-label-special  d-flex block text-secondary"%>
             <div class="input-group">
-              <%= form.collection_select(:client_id, Client.all.order(:last_name), :id, :formatted_name, {include_blank: 'Select client..', required: true}, {class: 'custom-select border border-primary'}) %>
+              <%= form.collection_select(:client_id, Client.all.order(:last_name), :id, :formatted_name, {include_blank: t(".client_ph"), required: true}, {class: 'custom-select border border-primary'}) %>
               <div class="input-group-append">
                 <%= link_to new_client_sales_path do %>
                   <i class="fas fa-plus"></i>

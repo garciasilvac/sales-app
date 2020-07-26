@@ -2,9 +2,16 @@ es-CL:
   layouts:
     application_navbar:
       sales_nav: Ventas
+      costs_nav: Costos
+      deliveries_nav: Repartos
       clients_nav: Clientes
       products_nav: Productos
+      business_conf: Configuracion del Negocio
+      pos: POS
+      other_conf: Otras Configuraciones
       tnst_nav: Tipos y Subtipos
+      cost_types: Tipos De Costos
       pt_nav: Opciones de Pago
       dt_nav: Opciones de entrega
+      timeblock: Bloques horarios despacho
       dm_nav: Modo Oscuro

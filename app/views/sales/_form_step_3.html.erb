@@ -6,7 +6,7 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :payment_type_id, class: "form-label"%>
-            <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+            <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => t(".payment_ph")}, {:class => 'custom-select'})  %>
            </div>
          </div>
     </div>

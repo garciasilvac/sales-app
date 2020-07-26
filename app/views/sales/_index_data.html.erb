@@ -1,4 +1,4 @@
-<h4><%= paid_sales ? "Paid" : "Unpaid" %> <span class="badge badge-pill badge-secondary"><%= sales.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(sales.sum(:total_amount))%></span></h4> 
+<h4><%= paid_sales ? t(".paid") : t(".unpaid") %> <span class="badge badge-pill badge-secondary"><%= sales.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(sales.sum(:total_amount))%></span></h4> 
 
 
 <div class="table-responsive mt-1">

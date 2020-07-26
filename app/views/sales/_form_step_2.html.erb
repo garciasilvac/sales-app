@@ -6,7 +6,7 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :delivery_type_id, class: "form-label-special d-flex block text-secondary"%>
-            <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => 'Delivery type...'}, {:class => 'custom-select'})  %>
+            <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => t('.delivery_ph')}, {:class => 'custom-select'})  %>
           </div>
         </div>
       </div>

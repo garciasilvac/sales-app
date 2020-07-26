@@ -1,12 +1,15 @@
-<div class="title container d-flex justify-content-center">
-<h3><%=t('.title')%></h3>
-</div>
-
+	<div class="title container d-flex justify-content-center">
 <% if action_name == ('edit_step_2' || 'update_step_2') %>
+		<h3><%=t('.step2_title')%></h3>
+	</div>
 	<%= render 'form_step_2', sale: @sale %>
 <% elsif action_name == ('edit_step_3' || 'update_step_3') %>
+		<h3><%=t('.step3_title')%></h3>
+	</div>
 	<%= render 'form_step_3', sale: @sale %>
 <% else%>
+		<h3><%=t('.title')%></h3>
+	</div>
 	<%= render 'form', sale: @sale %>
 <% end %>
 

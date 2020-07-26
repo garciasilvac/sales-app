@@ -36,7 +36,7 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :delivery_type_id, class: "form-label-special d-flex block text-secondary"%>
-            <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => 'Delivery type...'}, {:class => 'custom-select'})  %>
+            <%= form.collection_select(:delivery_type_id, DeliveryType.all, :id, :name, {:include_blank => t(".delivery_type_ph")}, {:class => 'custom-select'})  %>
           </div>
         </div>
         <div class="row input-group">
@@ -48,7 +48,7 @@
         <div class="row input-group">
           <div class="input-position form-group custom-control custom-checkbox">
             <%= form.label :payment_type_id, class: "form-label-special d-flex block text-secondary"%>
-            <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => 'Payment type...'}, {:class => 'custom-select'})  %>
+            <%= form.collection_select(:payment_type_id, PaymentType.all, :id, :name, {:include_blank => t(".payment_type_ph")}, {:class => 'custom-select'})  %>
           </div>
         </div>
       </div>

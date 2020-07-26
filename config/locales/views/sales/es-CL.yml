@@ -2,8 +2,33 @@ es-CL:
     sales: 
         index:
             title: "Ventas"
+            dashboard: "Panel de Mando"
+            data: "Datos"
+        index_data:
             del_confirm: "Estas seguro? Eliminarias la venta seleccionada"
+            unpaid: "Pago Pendiente"
+            paid: "Pagado"
+        index_dashboard:
+            sales: "Ventas"
+            costs: "Costos"
+            earnings: "Ganancias"
+            margin: "Margen"
+            amount: "Monto"
+            months: "Meses"
+            quantity: "Cantidad"
+            products: "Productos"
         new:
             title: "Nueva Venta"
         edit:
             title: "Editar Venta"
+            step2_title: "Tipo de Entrega"
+            step3_title: "Tipo de pago"
+        form:
+            delivery_type_ph: "-- Selecciona un tipo de Entrega --"
+            payment_type_ph: "-- Selecciona un tipo de Pago --"
+        form_step_1:
+            client_ph: "-- Selecciona un cliente --"
+        form_step_2:
+            delivery_ph: "-- Selecciona un tipo de entrega --"
+        form_step_3:
+            payment_ph: "-- Selecciona un tipo de pago --"

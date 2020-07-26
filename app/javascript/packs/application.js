@@ -27,7 +27,7 @@ import "tempusdominus-bootstrap";
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-
+Chart.defaults.global.defaultFontFamily = 'montserratregular';
 
 ////////// SWITCH LIGHT DARK MODE////////
 
@@ -183,17 +183,6 @@ var focusSearch = function(){
 }
 
 $(document).on('load',focusSearch);
-
-// var fileInputText = function(){
-//   $(".custom-file-input").on("change", function() {
-//   alert("changed! "+fileName);
-//   var fileName = $(this).val().split("\\").pop();
-//   alert("changed! "+fileName)
-//   $(this).siblings(".custom-file-label").addClass("selected").html("<i class='fas fa-file-upload'></i> " + fileName);
-// });
-// }
-
-// $(document).on('load',fileInputText);
 
 $(document).on("change",".custom-file-input", function() {
   var fileName = $(this).val().split("\\").pop();

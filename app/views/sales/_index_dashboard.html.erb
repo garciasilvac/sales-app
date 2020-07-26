@@ -1,9 +1,8 @@
-<div class="dashboardContainer">
-	<!--iframe width="100%" height="100%" src="https://datastudio.google.com/embed/reporting/50afe59f-8002-4e14-aa9f-7a01a09f1da3/page/TuEUB" frameborder="0" style="border:0" allowfullscreen></iframe-->
-	
+<div class="dashboardContainer">	
 	<!-- MOVER CODIGO AL CONTROLADOR/MODELO-->
-	<% sales = Sale.group_by_month(:sale_datetime, format:"%B %Y").sum(:total_amount)%>
-	<% costs = Cost.group_by_month(:cost_datetime, format:"%B %Y").sum(:value)%>
+	<% dateformat = "%b%y"%>
+	<% sales = Sale.group_by_month(:sale_datetime, format:dateformat).sum(:total_amount)%>
+	<% costs = Cost.group_by_month(:cost_datetime, format:dateformat).sum(:value)%>
 	<% months = (sales.keys + costs.keys).uniq %>
 	<% e = Hash.new %>
 	<% months.each do |m| %>
@@ -21,12 +20,12 @@
 	<% end %>
 
 	<%= column_chart [
-  		{name: "Sales", data: sales,color:["#017A24"]},
-		{name: "Costs", data: costs, color: ["#FF0F00"]},
-		{name: "Earnings", data: e, color: ["#613F00"],dataset: {type: "line"},}
+  		{name: t(".sales"), data: sales,color:["#017A24"]},
+		{name: t(".costs"), data: costs, color: ["#FF0F00"]},
+		{name: t(".earnings"), data: e, color: ["#613F00"],dataset: {type: "line"}}
 		],
-		thousands: ".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", ytitle: "Monto", title: "Margin", download: {filename: "#{Time.now.to_formatted_s(:number)}_margin", defer:true}
+		thousands: ".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", ytitle: t(".amount"), title: t(".margin"), download: {filename: "#{Time.now.to_formatted_s(:number)}_margin"},  library:{animation: { easing: 'easeOutQuad' }}
 	%>
-	<%= column_chart Sale.group_by_month(:sale_datetime, format:"%B %Y").count(:id),thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], xtitle: "Meses", ytitle: "Cantidad", title: "Ventas (#)"%>
-	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:"%B %Y").sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], xtitle: "Meses", ytitle: "Cantidad", title: "Productos (#)"%>
+	<%= column_chart Sale.group_by_month(:sale_datetime, format:dateformat).count(:id),thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], ytitle: t(".quantity") , title: t(".sales"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
+	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:dateformat).sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], ytitle: t(".quantity"), title: t(".products"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
 </div>
