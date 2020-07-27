@@ -1,0 +1,18 @@
+es-CL:
+    costs: 
+        index:
+            title: "Costos"
+            del_confirm: "Estas seguro? Eliminarías el costo %{name} por %{value}"
+        index_data:
+            unpaid: Sin pagar
+            paid: Pagado
+            no_costs: No hay costos ingresados :)
+            nothing: No hay adjuntos!
+        new:
+            title: "Nuevo Costo"
+        edit:
+            title: "Editar Costo"
+        form:
+            cost_class: "-- Selecciona tipo de costo --"
+            document_image: "Selecciona Imagen"
+        form_step_2:

@@ -1,5 +1,8 @@
 {
     "emmet.includeLanguages": {
         "erb":"html"
+    },
+    "search.exclude": {
+        "**/node_modules": false
     }
 }

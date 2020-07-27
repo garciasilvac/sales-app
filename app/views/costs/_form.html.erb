@@ -23,13 +23,13 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :value, class: "form-label"%>
-            <%= form.number_field :value, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "decimal"%>
+            <%= form.number_field :value, class: "form-control", placeholder: Cost.human_attribute_name("value"), pattern:"[0-9]*", inputmode: "decimal"%>
           </div>
         </div>
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :cost_class_id, class: "form-label-special  d-flex block text-secondary"%>
-            <%= form.collection_select(:cost_class_id, CostClass.all.order(:name), :id, :name, {include_blank: 'Select cost..', required: true}, {class: 'custom-select border border-primary'}) %>
+            <%= form.collection_select(:cost_class_id, CostClass.all.order(:name), :id, :name, {include_blank: t(".cost_class"), required: true}, {class: 'custom-select border border-primary'}) %>
           </div>
         </div>
         <div class="row input-group">
@@ -47,7 +47,7 @@
         <div class="row input-group">
           <div class="input-position form-group custom-file">
             <%= form.file_field :document_image, class: "custom-file-input" %>
-            <%= form.label :document_image, class: "custom-file-label"%>
+            <%= form.label t(".document_image"), class: "custom-file-label"%>
           </div>
         </div>
 </div>

@@ -1,0 +1,16 @@
+es-CL:
+  activerecord:
+    models:
+      cost: Costos
+    attributes:
+      cost:
+        created_at: Creado
+        updated_at: Modificado
+        name: Nombre
+        value: Valor
+        document_id: Documento
+        document_image: Imagen del documento
+        cost_class_id: Tipo de Costo
+        cost_datetime: Fecha y Hora de Costo
+        paid: Pagado
+        deleted: Eliminado

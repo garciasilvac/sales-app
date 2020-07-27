@@ -1,4 +1,4 @@
-<h4><%= paid_costs ? "Paid" : "Unpaid" %> <span class="badge badge-pill badge-secondary"><%= costs.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(costs.sum(:value))%></span></h4> 
+<h4><%= paid_costs ? t(".paid") : t(".unpaid") %> <span class="badge badge-pill badge-secondary"><%= costs.count%></span> <span class="badge badge-pill badge-secondary">T: <%= number_to_currency(costs.sum(:value))%></span></h4> 
 
 <div class="table-responsive mt-1">
     <table>
@@ -17,13 +17,13 @@
     <tbody>
         <% if costs.empty? %>
         <tr>
-            <td colspan="13"> No costs yet :) </td>
+            <td colspan="13"> <%t(".no_costs")%> </td>
         </tr>
         <% else %>
         <% costs.each do |cost| %> 
         <tr>
-            <td class="tText"><%= cost.cost_datetime %></td>
-            <td class="tText"><%= cost.deleted %></td>
+            <td class="tText"><%= l cost.cost_datetime %></td>
+            <td class="tText"><%= t cost.deleted %></td>
             <td class="tText"><%= cost.name %></td>
             <td class="tText"><%= number_to_currency(cost.value) %></td>
             <% if cost.paid? %>
@@ -38,7 +38,7 @@
             </td>
             <td class="tText">
             <% if cost.document_id.nil? %>
-                Nothing here!
+                <%= t(".nothing") %>
             <% else %>
                 <% if cost.document_image.attached? %>
                     <%= link_to "#{cost.document_id}",cost.document_image, class: "tButton", target: "_blank"%>

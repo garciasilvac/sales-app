@@ -9,7 +9,7 @@ require("channels");
 require("chartkick");
 require("chart.js");
 global.toastr = require("toastr");
-import "moment";
+import moment from "moment/min/moment.min";
 import "../stylesheets/application";
 import { initMap } from '../adresses/gmaps';
 global.initMap = initMap;
@@ -19,7 +19,7 @@ global.$ = jQuery;
 import "../sales/sales";
 import "../addons/boolean_toggle";
 import 'bootstrap';
-import "tempusdominus-bootstrap";
+import "tempusdominus-bootstrap/build/js/tempusdominus-bootstrap.min";
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -134,7 +134,7 @@ var formUiUx = function() {
     } 
 }
 
-$(document).on('load',formUiUx);
+$(document).ready(formUiUx);
 
 ///////// DATETIME PICKER /////////
 
@@ -182,7 +182,7 @@ var focusSearch = function(){
   $('#search_search_word').focus();
 }
 
-$(document).on('load',focusSearch);
+$(document).ready(focusSearch);
 
 $(document).on("change",".custom-file-input", function() {
   var fileName = $(this).val().split("\\").pop();
