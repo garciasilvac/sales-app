@@ -304,6 +304,10 @@ textarea {
 .form-position{
 	@extend .col-12;
 }
+
+.custom-file-input ~ .custom-file-label::after {
+    content: "Elegir";
+}
 .input-position{
 	@extend .col-10;
 	@extend .col-sm-8;

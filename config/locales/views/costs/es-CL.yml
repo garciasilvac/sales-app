@@ -2,12 +2,13 @@ es-CL:
     costs: 
         index:
             title: "Costos"
-            del_confirm: "Estas seguro? Eliminarías el costo %{name} por %{value}"
+            
         index_data:
             unpaid: Sin pagar
             paid: Pagado
             no_costs: No hay costos ingresados :)
             nothing: No hay adjuntos!
+            del_confirm: "Estas seguro? Eliminarías el costo %{name} por %{value}"
         new:
             title: "Nuevo Costo"
         edit:

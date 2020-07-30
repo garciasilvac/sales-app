@@ -55,7 +55,7 @@
                 <i class="fas fa-pencil-alt"></i>
             <% end %>
             </td>
-            <td class="buttonsDel"><%= link_to cost, method: :delete, data: { confirm: t('.del_confirm') }, class: "tButton" do %>
+            <td class="buttonsDel"><%= link_to cost, method: :delete, data: { confirm: t('.del_confirm', {name: cost.name, value:number_to_currency(cost.value)}) }, class: "tButton" do %>
                 <i class="far fa-trash-alt"></i>
             <% end %>
             </td>

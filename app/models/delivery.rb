@@ -31,7 +31,7 @@ class Delivery < ApplicationRecord
       coords += CGI::escape("via:#{d.get_adress.full_adress}")+"%7C"
       ##coords += "via:#{d.get_adress.latitude},#{d.get_adress.longitude}%7C"
     end 
-    "https://www.google.com/maps/dir/?api=1&origin=-33.4181376,-70.59449190000001&destination=-33.4181376,-70.59449190000001&waypoints="+coords+"&key="+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]
+    "https://www.google.com/maps/dir/?api=1&destination=-33.4181376,-70.59449190000001&waypoints="+coords+"&key="+Rails.application.credentials[Rails.env.to_sym][:gmapsapi][:key]
   end
 
   def self.get_adresses

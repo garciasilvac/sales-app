@@ -1,0 +1,19 @@
+es-CL:
+  activerecord:
+    models:
+      delivery: Reparto
+    attributes:
+      delivery:
+        created_at: Creado
+        updated_at: Modificado
+        sale_id: Venta
+        sched_date: Fecha Programada
+        sched_timeblock: Bloque Programado
+        delivered: Pedido Ejecutado
+        real_date: Fecha Real
+        real_timeblock: Bloque Real
+        successful: Exitoso
+        deleted: Eliminado
+        driver_comment: Comentarios del repartidor
+        adress_id: Dirección
+        price: Costo de despacho

@@ -1,0 +1,16 @@
+es-CL:
+    deliveries: 
+        index:
+            title: "Repartos"
+            all_done: Todo listo!
+            back_sales: Volver a Ventas
+        index_data:
+            roundtrip: Recorrido completo
+            directions: Indicaciones
+            del_confirm: "Estas seguro? Eliminarías el reparto seleccionado"
+            no_deliveries: No hay repartos :)
+        new:
+            title: "Nuevo Reparto"
+        edit:
+            title: "Editar Reparto"
+        form:

@@ -2,7 +2,7 @@
 
 <% if !(deliveries.nil? || deliveries.empty?) %>
   <%= link_to Delivery.gmap_roundtrip(deliveries) , target: "_blank" do%>
-      <i class="fas fa-directions"></i> Roundtrip
+      <i class="fas fa-directions"></i> <%=t('.roundtrip')%>
   <%end%>
 <%end%>
 
@@ -10,7 +10,7 @@
 <table>
   <thead>
     <tr>
-      <th>Directions</th>
+      <th><%=t('.directions')%></th>
       <th><%=Delivery.human_attribute_name(:delivered)%></th>
       <th><%=Delivery.human_attribute_name(:sched_date)%></th>
       <th><%=Adress.human_attribute_name(:full_adress)%></th>
@@ -29,7 +29,7 @@
   <tbody>
     <% if deliveries.nil? || deliveries.empty? %>
       <tr>
-        <td colspan="14"> No deliveries yet :) </td>
+        <td colspan="14"> <%= t('.no_deliveries')%> </td>
       </tr>
     <% else %>
     <% deliveries.each do |delivery| %>
@@ -45,7 +45,7 @@
             <%end%>
           </td>
         <td class="buttonsWarn"><%= link_to edit_step_2_sale_delivery_path(delivery.sale_id,delivery), class: "tButton" do%>
-            <i class="far fa-check-circle"></i></i>
+            <i class="far fa-check-circle"></i>
           <% end %>
         </td>
         <%end%>
