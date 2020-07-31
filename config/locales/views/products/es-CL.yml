@@ -1,0 +1,14 @@
+es-CL:
+    products: 
+        index:
+            title: "Productos"
+            del_confirm: "Estas segur@ que quieres eliminar el producto: %{name}"
+        new:
+            title: "Nuevo Producto"
+        edit:
+            title: "Editar Producto"
+        form:
+            name_ph: "Nombre del producto"
+            subtype_ph: "-- Selecciona un subtipo --"
+            price_ph: "Ingresa el precio"
+            product_image: "Selecciona Imagen"

@@ -18,20 +18,19 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :real_timeblock, class: "form-label-special d-flex block text-secondary"%>
-            <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..',required: true}, {class: 'custom-select'})  %>
+            <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => t(".timeblock_ph"),required: true}, {class: 'custom-select'})  %>
           </div>
         </div>
         <div class="row input-group">
           <div class="input-position form-group custom-control custom-checkbox">
-            <%= form.check_box :successful, data:{toggle:"toggle",on:"<i class='fas fa-check'></i> Succeeded", off:"<i class='fas fa-times'></i> Failed", onstyle:"success",offstyle:"danger"}%>
+            <%= form.check_box :successful, data:{toggle:"toggle",on:"<i class='fas fa-check'></i> #{t(".d_succeeded")}", off:"<i class='fas fa-times'></i> #{t(".d_failed")}", onstyle:"success",offstyle:"danger"}%>
           </div>
-
         </div>
 
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :driver_comment, class: "form-label"%>
-            <%= form.text_area :driver_comment , class: "form-control", placeholder: "Driver comments..."%>
+            <%= form.text_area :driver_comment , class: "form-control", placeholder: t(".driver_comments")%>
           </div>
         </div>
       </div>

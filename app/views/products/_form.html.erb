@@ -6,25 +6,25 @@
     <div class="row input-group">
       <div class="input-position form-group">
         <%= form.label :name, class: "form-label"%>
-        <%= form.text_field :name, class: "form-control", placeholder: "Product name...", required: true %>
+        <%= form.text_field :name, class: "form-control", placeholder: t(".name_ph"), required: true %>
       </div>
     </div>
     <div class="row input-group">
       <div class="input-position form-group">
         <%= form.label :subtype_id, class: "form-label"%>
-        <%= form.collection_select(:subtype_id, Subtype.all.sort_by {|st| [st.type.name, st.name]}, :id, :full_subtype, {:include_blank => 'Subtype...'}, {:class => 'custom-select'})  %>
+        <%= form.collection_select(:subtype_id, Subtype.all.sort_by {|st| [st.type.name, st.name]}, :id, :full_subtype, {:include_blank => t(".subtype_ph")}, {:class => 'custom-select'})  %>
       </div>
     </div>
     <div class="row input-group">
       <div class="input-position form-group">
         <%= form.label :price, class: "form-label"%>
-        <%= form.number_field :price, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "decimal"%>
+        <%= form.number_field :price, class: "form-control", placeholder: t(".price_ph"), pattern:"[0-9]*", inputmode: "decimal"%>
       </div>
     </div>
     <div class="row input-group">
       <div class="input-position form-group custom-file">
         <%= form.file_field :product_image, class: "custom-file-input" %>
-        <%= form.label :product_image, class: "custom-file-label"%>
+        <%= form.label t(".product_image"), class: "custom-file-label"%>
       </div>
     </div>
   </div>

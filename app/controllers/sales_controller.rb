@@ -48,7 +48,7 @@ class SalesController < ApplicationController
   def edit_step_3
     respond_to do |format|
       if @sale.paid?
-          format.html { redirect_to sales_path, notice: 'Already paid!' }
+          format.html { redirect_to sales_path, notice: t(".already_paid") }
       else
           format.html {render :edit}
       end
@@ -61,7 +61,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to sale_shopping_carts_path(@sale), notice: 'Sale was successfully created.' }
+        format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success") }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new }
@@ -78,7 +78,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @adress.save
-        format.html { redirect_to new_sale_delivery_path(@sale), notice: 'Adress was successfully created.' }
+        format.html { redirect_to new_sale_delivery_path(@sale), notice: t(".adress_created") }
         format.json { render :show, status: :created, location: @adress }
       else
         format.html { render :new }
@@ -89,15 +89,13 @@ class SalesController < ApplicationController
 
   def create_client
     @client = Client.new(client_params)
-    puts 'dentro de sales#create_client'
 
     respond_to do |format|
       if @client.save
-        puts 'dentro de sales#create_client .save'
-        format.html { redirect_to new_sale_path, notice: 'Client was successfully created.' }
+        format.html { redirect_to new_sale_path, notice: t(".client_created") }
         format.json { render :show, status: :created, location: @client }
       else
-        format.html { render :new, alert: 'Ooops! There is a problem creating' }
+        format.html { render :new, alert: t(".problem") }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
@@ -108,7 +106,7 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
-        format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to sales_path, notice: t(".success") }
         format.json { render :show, status: :ok, location: @sale }
       else
         format.html { render :edit }
@@ -125,10 +123,10 @@ class SalesController < ApplicationController
       if @sale.update(sale_params)
         ## if sale requires delivery, then render deliveries path. O/W, render sales path as sale finished
         if @sale.delivery_type.requires_delivery?
-          format.html { redirect_to new_sale_delivery_path(@sale), notice: 'Ok! Schedule delivery :)' }
+          format.html { redirect_to new_sale_delivery_path(@sale), notice: t(".delivery") }
           format.json { render :show, status: :ok, location: @sale }
         else
-          format.html { redirect_to sales_path, notice: 'The order is finished!' }
+          format.html { redirect_to sales_path, notice: t(".order_finished") }
           format.json { render :show, status: :ok, location: @sale }
         end
       else
@@ -146,7 +144,7 @@ class SalesController < ApplicationController
       if @sale.update(sale_params)
         ## comments
         @sale.update(paid: true)
-        format.html { redirect_to sales_path, notice: 'Marked paid!' }
+        format.html { redirect_to sales_path, notice: t(".paid") }
         format.json { render :show, status: :ok, location: @sale }
       else
         format.html { render :edit }
@@ -160,7 +158,7 @@ class SalesController < ApplicationController
   def destroy
     @sale.destroy
     respond_to do |format|
-      format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }
+      format.html { redirect_to sales_url, notice: t(".success") }
       format.json { head :no_content }
     end
   end

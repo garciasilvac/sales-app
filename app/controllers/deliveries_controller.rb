@@ -48,7 +48,7 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.save
         @sale.update(total_amount: @sale.total_amount + @delivery.price)
-        format.html { redirect_to sales_path, notice: 'Delivery was successfully created.' }
+        format.html { redirect_to sales_path, notice: t(".success") }
         format.json { render :show, status: :created, location: @delivery }
       else
         format.html { render :new }
@@ -64,7 +64,7 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.update(delivery_params)
         @sale.update(total_amount: @sale.total_amount - old_price + @delivery.price)
-        format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully updated.' }
+        format.html { redirect_to sale_deliveries_path(@sale), notice: t(".success")  }
         format.json { render :show, status: :ok, location: @delivery }
       else
         format.html { render :edit }
@@ -77,7 +77,7 @@ class DeliveriesController < ApplicationController
     respond_to do |format|
       if @delivery.update(delivery_params)
         @delivery.update(delivered: true)
-        format.html { redirect_to driver_index_path, notice: 'Delivery was successfully executed' }
+        format.html { redirect_to driver_index_path, notice: t(".success") }
         format.json { render :show, status: :ok, location: @delivery }
       else
         format.html { render :edit }
@@ -92,7 +92,7 @@ class DeliveriesController < ApplicationController
     @sale.update(total_amount: @sale.total_amount - @delivery.price)
     @delivery.destroy
     respond_to do |format|
-      format.html { redirect_to sale_deliveries_path(@sale), notice: 'Delivery was successfully destroyed.' }
+      format.html { redirect_to sale_deliveries_path(@sale), notice: t(".success") }
       format.json { head :no_content }
     end
   end

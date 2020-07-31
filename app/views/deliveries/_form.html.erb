@@ -9,7 +9,7 @@
           <div class="input-position form-group">
             <%= form.label :adress_id %>
             <div class="input-group">
-              <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => 'Select adress..', required: true}, {:class => 'custom-select'}) %>
+              <%= form.collection_select(:adress_id, @sale.client.adresses, :id, :full_adress, {:include_blank => t(".adress_ph"), required: true}, {:class => 'custom-select'}) %>
               <div class="input-group-append">
                 <%= link_to new_adress_sale_path(@sale) do %>
                   <i class="fas fa-plus"></i>
@@ -32,13 +32,13 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :sched_timeblock, class: "form-label" %>
-            <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {include_blank: 'Time Block..', required: true}, {class: 'custom-select'}) %>
+            <%= form.collection_select(:sched_timeblock, Timeblock.order(:name), :id, :name, {include_blank: t(".timeblock_ph"), required: true}, {class: 'custom-select'}) %>
           </div>
         </div>
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :price, class: "form-label"%>
-            <%= form.number_field :price, class: "form-control", placeholder: "Price", pattern:"[0-9]*", inputmode: "decimal"%>
+            <%= form.number_field :price, class: "form-control", placeholder: t(".price"), pattern:"[0-9]*", inputmode: "decimal"%>
           </div>
         </div>
         <div><span>Execution:</span></div>
@@ -62,19 +62,18 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :real_timeblock %>
-            <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => 'Time Block..',required: true}, {class: 'custom-select'})  %>
+            <%= form.collection_select(:real_timeblock, Timeblock.order(:name), :id, :name, {:include_blank => t(".timeblock_ph"),required: true}, {class: 'custom-select'})  %>
           </div>
         </div>
         <div class="row input-group">
           <div class="input-position form-group custom-control custom-checkbox">
-            <%= form.check_box :successful, class: "custom-control-input"%>
-            <%= form.label :successful, class: "custom-control-label"%>
+            <%= form.check_box :successful, data:{toggle:"toggle",on:"<i class='fas fa-check'></i> #{t(".d_succeeded")}", off:"<i class='fas fa-times'></i> #{t(".d_failed")}", onstyle:"success",offstyle:"danger"}%>
           </div>
         </div>
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :driver_comment, class: "form-label"%>
-            <%= form.text_area :driver_comment , class: "form-control", placeholder: "Driver comments..."%>
+            <%= form.text_area :driver_comment , class: "form-control", placeholder: t(".driver_comments")%>
           </div>
         </div>
       </div>

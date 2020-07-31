@@ -13,4 +13,21 @@ es-CL:
             title: "Nuevo Reparto"
         edit:
             title: "Editar Reparto"
+            step_1_title: Programa el reparto
+            step_2_title: Reparto ejecutado
         form:
+            adress_ph: -- Selecciona la dirección --
+            timeblock_ph: -- Selecciona el bloque --
+            price: Ingresa el precio...
+            d_succeeded: Exitoso
+            d_failed: Fallido
+            driver_commments: Comentarios del repartidor...
+        form_step_1:
+            adress_ph: -- Selecciona la dirección --
+            timeblock_ph: -- Selecciona el bloque --
+            price: Ingresa el precio...
+        form_step_2:
+            timeblock_ph: -- Selecciona el bloque --
+            d_succeeded: Exitoso
+            d_failed: Fallido
+            driver_comments: Comentarios del repartidor...

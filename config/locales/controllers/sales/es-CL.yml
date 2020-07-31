@@ -1,0 +1,20 @@
+es-CL:
+  sales:
+    edit_step_3:
+      already_paid: Ya está pagado! 
+    create:
+      success: Venta creada
+    create_adress:
+      adress_created: Dirección creada
+    create_client:
+      client_created: Cliente creado
+      problem: Oh-oh! Hay un problema
+    update:
+      success: Venta actualizada
+    update_step_2:
+      delivery: Ok! Programa el despacho :)
+      order_finished: Has terminado la orden!
+    update_step_3:
+      paid: Venta recaudada :)
+    destroy:
+      success: Venta eliminada

@@ -1,0 +1,10 @@
+es-CL:
+  deliveries:
+    create:
+      success: "Reparto Programado!"
+    update:
+      success: "Reparto Actualizado!"
+    update_step_2:
+      success: "Reparto Ejecutado!"
+    destroy:
+      success: Reparto Eliminado!

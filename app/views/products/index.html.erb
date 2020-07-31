@@ -39,7 +39,7 @@
          <i class="fas fa-pencil-alt"></i>
           <% end %>
         </td>
-        <td class="buttonsDel"><%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } , class: "tButton" do%>
+        <td class="buttonsDel"><%= link_to product, method: :delete, data: { confirm: t(".del_confirm", name: product.name)} , class: "tButton" do%>
              <i class="far fa-trash-alt"></i>
             <% end %>
         </td>

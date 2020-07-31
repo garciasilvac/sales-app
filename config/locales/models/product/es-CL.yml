@@ -1,0 +1,13 @@
+es-CL:
+  activerecord:
+    models:
+      product: Producto
+    attributes:
+      product:
+        created_at: Creado
+        updated_at: Modificado
+        name: Nombre
+        subtype_id: Subtipo
+        price: Precio
+        deleted: ELiminado
+        product_image: Imagen del Producto

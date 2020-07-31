@@ -1,12 +1,16 @@
 <div class="title container d-flex justify-content-center">
-<h3><%=t('.title')%></h3>
-</div>
 
 <% if action_name == 'edit_step_2'%>
+		<h3><%=t('.step_2_title')%></h3>
+	</div>
 	<%= render 'form_step_2', delivery: @delivery %>
 <% elsif !(@delivery.delivered?)%>
+		<h3><%=t('.step_1_title')%></h3>
+	</div>
 	<%= render 'form_step_1', delivery: @delivery %>
 <% else %>
+		<h3><%=t('.title')%></h3>
+	</div>
 	<%= render 'form', delivery: @delivery %>
 <% end %>
 
