@@ -31,7 +31,7 @@ class ShoppingCartsController < ApplicationController
       @shopping_cart.subtotal = @shopping_cart.product_q * @shopping_cart.product.price
       if @shopping_cart.save
         @sale.update(total_amount: @sale.total_amount + @shopping_cart.subtotal)
-        format.html { redirect_to sale_shopping_carts_path(@sale), notice: "Item was successfully added. Sale Total = #{@sale.shopping_carts.sum(:subtotal)}" }
+        format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :created, location: @shopping_cart }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class ShoppingCartsController < ApplicationController
         @shopping_cart.update(subtotal: @shopping_cart.product_q * Product.find(@shopping_cart.product_id).price)
         @sale.update(total_amount: @sale.total_amount - old_subtotal + @shopping_cart.subtotal)
         ## AGREGAR SALE TOTAL AMOUNT UPDATE
-        format.html { redirect_to sale_shopping_carts_path(@sale), notice: "Item was successfully udpdated. Sale Total = #{@sale.shopping_carts.sum(:subtotal)}" }
+        format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :ok, location: @shopping_cart }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class ShoppingCartsController < ApplicationController
     @sale.update(total_amount: @sale.total_amount - @shopping_cart.subtotal)
     @shopping_cart.destroy
     respond_to do |format|
-      format.html { redirect_to sale_shopping_carts_path(@sale), notice: 'Shopping cart was successfully destroyed.' }
+      format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success") }
       format.json { head :no_content }
     end
   end

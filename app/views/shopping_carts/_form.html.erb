@@ -6,7 +6,7 @@
         <div class="row input-group">
           <div class="input-position form-group">
             <%= form.label :product_id, class: "form-label-special"%>
-            <%= form.collection_select(:product_id, Product.all, :id, :name, {:include_blank => 'Product..'}, {:class => 'custom-select'})  %>
+            <%= form.collection_select(:product_id, Product.all, :id, :name, {:include_blank => t(".product_ph")}, {:class => 'custom-select'})  %>
           </div>
         </div>
         <div class="row input-group">
@@ -20,5 +20,5 @@
 <br>
 <div class="container d-flex justify-content-center">
   <div class="btn-group">
-        <%= form.submit name: t('.submit'), tabindex: 0 %>
+        <%= form.submit value: t(".submit_product"), tabindex: 0 %>
 <% end %>

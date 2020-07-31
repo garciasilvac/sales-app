@@ -1,0 +1,17 @@
+es-CL:
+    shopping_carts: 
+        index:
+            title: "Compra de %{name}"
+            delivery: Despacho
+            total_amount: Total
+            continue: Continuar
+            unit_price: Precio Unitario
+        new:
+            title: "Agregar Producto"
+        edit:
+            title: "Editar Producto"
+        form:
+            product_ph: "-- Selecciona un Producto --"
+            submit_product: Agregar al carrito
+        
+        

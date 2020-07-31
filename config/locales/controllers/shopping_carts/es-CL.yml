@@ -1,0 +1,8 @@
+es-CL:
+  shopping_carts:
+    create:
+      success: "Se agregó el producto al carrito. Total = %{total}"
+    update:
+      success: "El producto fue actualizado. Total = %{total}"
+    destroy:
+      success: 'Se ha quitado el producto del carrito'

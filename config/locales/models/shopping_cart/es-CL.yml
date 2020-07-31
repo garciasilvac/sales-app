@@ -1,0 +1,14 @@
+es-CL:
+  activerecord:
+    models:
+      shopping_cart: Carrito
+    attributes:
+      shopping_cart:
+        created_at: Creado
+        updated_at: Modificado
+        sale_id: Venta
+        product_id: Producto
+        product_q: Cantidad
+        subtotal: Subtotal
+        deleted: Eliminado
+       
