@@ -4,6 +4,15 @@ geocoded_by :full_adress
 after_validation :geocode, if: :adress_changed?
 belongs_to :adressable, polymorphic: true
 
+validates :street, presence: true, length: {minimum: 3}
+validates :str_number,presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+validates :adr_zip, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank:true
+validates :adr_county, presence: true, length: {minimum: 3}
+validates :adr_state, presence: true, length: {minimum: 2}
+validates :adr_country, presence: true, length: {minimum: 3}
+validates :deleted, inclusion: { in: [true, false] }
+validates :adressable, presence: true
+
 
 
 def full_adress

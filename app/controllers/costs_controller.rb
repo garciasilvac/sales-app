@@ -41,7 +41,7 @@ class CostsController < ApplicationController
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
           comp_image.resize '150x150!'
         end
-        format.html { redirect_to @cost, notice: 'Cost was successfully created.' }
+        format.html { redirect_to costs_path, notice: 'Cost was successfully created.' }
         format.json { render :show, status: :created, location: @cost }
       else
         format.html { render :new }
@@ -55,11 +55,11 @@ class CostsController < ApplicationController
   def update
     respond_to do |format|
       if @cost.update(cost_params)
-        if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
+        if cost_params[:document_image] != nil ##&& (cost_params[:document_image] != Cost.find(@cost.id).document_image)
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
           comp_image.resize '40%'
         end
-        format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
+        format.html { redirect_to costs_path, notice: 'Cost was successfully updated.' }
         format.json { render :show, status: :ok, location: @cost }
       else
         format.html { render :edit }
@@ -70,13 +70,14 @@ class CostsController < ApplicationController
 
   def update_paid
     respond_to do |format|
-      if @cost.update(cost_params)
+      @cost.document_id = cost_params[:document_id]
+      if @cost.save context: :step_2
         @cost.update(paid: true)
-        if cost_params[:document_image] != nil && (cost_params[:document_image] != Cost.find(@cost.id).document_image)
+        if cost_params[:document_image] != nil ##&& (cost_params[:document_image] != Cost.find(@cost.id).document_image)
           comp_image = MiniMagick::Image.new(cost_params[:document_image].tempfile.path)
           comp_image.resize '40%'
         end
-        format.html { redirect_to @cost, notice: 'Cost was successfully updated.' }
+        format.html { redirect_to costs_path, notice: 'Cost was successfully updated.' }
         format.json { render :show, status: :ok, location: @cost }
       else
         format.html { render :edit }
@@ -90,7 +91,7 @@ class CostsController < ApplicationController
   def destroy
     @cost.destroy
     respond_to do |format|
-      format.html { redirect_to costs_url, notice: 'Cost was successfully destroyed.' }
+      format.html { redirect_to costs_path, notice: 'Cost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

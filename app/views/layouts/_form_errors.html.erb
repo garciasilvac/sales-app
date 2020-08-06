@@ -2,7 +2,7 @@
   <div id="error_explanation" class="card mb-3 border border-0">
     <div class="card-header bg-danger text-white border">
     	<i class="fas fa-exclamation-circle"></i> 
-    	<%= pluralize(object.errors.count, "error") %> prohibited this <%=object.class%> from being saved:
+    	<%= t(".record_invalid", q: pluralize(object.errors.count, "error", locale: I18n.locale)) %>
     </div>
     <div class="card-body border border-top-0">
     	<ul>

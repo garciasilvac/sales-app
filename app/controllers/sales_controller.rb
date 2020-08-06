@@ -31,7 +31,6 @@ class SalesController < ApplicationController
   end
 
    def new_client
-    puts 'dentro de sales#new_client'
     @client = Client.new
     render 'clients/new'
   end
@@ -60,7 +59,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
 
     respond_to do |format|
-      if @sale.save
+      if @sale.save 
         format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success") }
         format.json { render :show, status: :created, location: @sale }
       else
@@ -81,7 +80,7 @@ class SalesController < ApplicationController
         format.html { redirect_to new_sale_delivery_path(@sale), notice: t(".adress_created") }
         format.json { render :show, status: :created, location: @adress }
       else
-        format.html { render :new }
+        format.html { render 'adresses/new' }
         format.json { render json: @adress.errors, status: :unprocessable_entity }
       end
     end
@@ -95,7 +94,7 @@ class SalesController < ApplicationController
         format.html { redirect_to new_sale_path, notice: t(".client_created") }
         format.json { render :show, status: :created, location: @client }
       else
-        format.html { render :new, alert: t(".problem") }
+        format.html { render 'clients/new', alert: t(".problem") }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
@@ -105,7 +104,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
   def update
     respond_to do |format|
-      if @sale.update(sale_params)
+      if @sale.update(sale_params) 
         format.html { redirect_to sales_path, notice: t(".success") }
         format.json { render :show, status: :ok, location: @sale }
       else
@@ -119,10 +118,11 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
 
   def update_step_2
+    @sale.delivery_type_id = sale_params[:delivery_type_id]
     respond_to do |format|
-      if @sale.update(sale_params)
+      if @sale.save context: :step_2
         ## if sale requires delivery, then render deliveries path. O/W, render sales path as sale finished
-        if @sale.delivery_type.requires_delivery?
+        if !(@sale.delivery_type.blank?) && @sale.delivery_type.requires_delivery? 
           format.html { redirect_to new_sale_delivery_path(@sale), notice: t(".delivery") }
           format.json { render :show, status: :ok, location: @sale }
         else
@@ -141,13 +141,13 @@ class SalesController < ApplicationController
 
   def update_step_3
     respond_to do |format|
-      if @sale.update(sale_params)
+      if @sale.update(params:sale_params, context: :step_3)
         ## comments
         @sale.update(paid: true)
         format.html { redirect_to sales_path, notice: t(".paid") }
         format.json { render :show, status: :ok, location: @sale }
       else
-        format.html { render :edit }
+        format.html { render :edit_step_3 }
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end
@@ -179,6 +179,6 @@ class SalesController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:email, :first_name, :middle_name, :last_name, :phone_countrycode, :phone_number, :birthdate, :sex)
+      params.require(:client).permit(:email,:email_confirmation, :first_name, :middle_name, :last_name, :phone_countrycode, :phone_number, :birthdate, :sex)
     end
 end

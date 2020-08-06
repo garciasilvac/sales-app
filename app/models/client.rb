@@ -11,11 +11,14 @@ pg_search_scope :search_by_name_and_email, :against => [:first_name, :middle_nam
 
  validates :first_name, presence: true
  validates :last_name, presence: true
- validates :phone_countrycode, presence: true
- validates :phone_number, presence: true
- validates :email, presence: true
+ validates :phone_countrycode, presence: true, numericality:{only_integer:true, greater_than_or_equal_to: 0}
+ validates :phone_number, presence: true, numericality:{only_integer:true, greater_than_or_equal_to: 0}
+ validates :email, uniqueness: true, confirmation: true, unless: -> { email.blank? }
+ validates :email_confirmation, presence: true, unless: -> { email.blank? }
  validates :birthdate, presence: true
  validates :sex, presence: true
+ validates :deleted, inclusion: { in: [true, false] }
+ 
  
 def formatted_name(input = :reverse)
 	case input

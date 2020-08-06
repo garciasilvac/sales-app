@@ -22,6 +22,10 @@
             <%= form.label :email, class: "form-label"%>
             <%= form.text_field :email, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email), required: true, inputmode: "email" %>
           </div>
+          <div class="input-position form-group">
+          <%= form.label :email_confirmation, class: "form-label"%>
+            <%= form.text_field :email_confirmation, class: "form-control", tabindex: autotab, placeholder: Client.human_attribute_name(:email_confirmation), required: true, inputmode: "email" %>
+          </div>
           <div class="input-position-double form-group">
             <div class="row">
               <div class="col-4">
@@ -49,7 +53,7 @@
             <%= form.label :sex, class: "form-label-special d-flex block text-secondary"%>
             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
               <label class="btn btn-outline-success active">
-                <%= form.radio_button :sex, "F", :checked => true %> Mujer
+                <%= form.radio_button :sex, "F", checked: true %> Mujer
               </label>
               <label class="btn btn-outline-success">
                 <%= form.radio_button :sex, "M"%> Hombre

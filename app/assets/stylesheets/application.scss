@@ -21,6 +21,7 @@ html, body{
 	height: 100%;
 	transition: background 0.4s, color 0.4s;
 	font-family: montserratregular;
+	font-weight: normal;
 	box-sizing: border-box;
 }
 
@@ -353,3 +354,20 @@ textarea {
 	color: #999 
 }
 
+::-webkit-input-placeholder{ /* Edge */
+	color: #EEEEEE;
+	font-style: italic;
+	font-weight: lighter;
+}
+
+:-ms-input-placeholder{ /* Edge */
+	color: #EEEEEE;
+	font-style: italic;
+	font-weight: lighter;
+}
+
+::placeholder { /* Edge */
+	color: #EEEEEE;
+	font-style: italic;
+	font-weight: lighter;
+}

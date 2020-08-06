@@ -1,6 +1,6 @@
 <div class="title container d-flex justify-content-center">
 
-<% if action_name == 'edit_step_2'%>
+<% if ['edit_step_2','update_step_2'].include? action_name %>
 		<h3><%=t('.step_2_title')%></h3>
 	</div>
 	<%= render 'form_step_2', delivery: @delivery %>

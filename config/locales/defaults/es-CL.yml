@@ -39,15 +39,51 @@ es-CL:
   hello: "Hola Mundo"
   activerecord:
     models:
-      client:
-        one: Cliente
-        other: Clientes
       adress:
         one: Dirección
         other: Direcciones
+      client:
+        one: Cliente
+        other: Clientes
+      cost:
+        one: Costo
+        other: Costos
+      cost_class:
+        one: Tipo de Costo
+        other: Tipos de Costo
+      delivery:
+        one: Reparto
+        other: Repartos
+      delivery_type:
+        one: Tipo de Reparto
+        other: Tipos de Reparto
+      payment_type:
+        one: Tipo de Pago
+        other: Tipos de Pago
+      point_of_sale:
+        one: Punto de Venta
+        other: Puntos de Venta
+      product:
+        one: Producto
+        other: Productos
+      sale:
+        one: Venta
+        other: Ventas
+      shopping_cart:
+        one: Carrito
+        other: Carritos
+      stock:
+        one: Stock
+        other: Stocks
+      subtype:
+        one: Subtipo
+        other: Subtipos
+      timeblock:
+        one: Bloque Horario
+        other: Bloques Horarios
     errors:
       messages:
-        record_invalid: 'La validación falló: %{errors}'
+        record_invalid: 'Se encontraron %{q} errores que impiden registrar:'
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes

@@ -15,3 +15,5 @@ es-CL:
       dt_nav: Opciones de entrega
       timeblock: Bloques horarios despacho
       dm_nav: Modo Oscuro
+    form_errors:
+      record_invalid: 'Se encontró %{q}:'

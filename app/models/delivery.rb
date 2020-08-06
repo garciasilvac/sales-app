@@ -2,10 +2,15 @@ class Delivery < ApplicationRecord
   belongs_to :sale
   after_initialize :set_defaults, unless: :persisted?
 
-  validates :sale_id, presence: true
-  validates :adress_id, presence: true
+  validates :sale, presence: true
   validates :sched_date, presence: true
   validates :sched_timeblock, presence: true
+  validates :delivered, inclusion: { in: [true, false] }
+  validates :adress_id, presence: true ## PENDING CUSTOM VALIDATION: CHECK IF ADRESS BELONGS TO SALE'S CLIENT
+  validates :price, numericality: {greater_than_or_equal_to: 0}
+  validates :successful, inclusion: { in: [true, false] } , on: :step_2
+  validates :real_date, presence: true , on: :step_2
+  validates :real_timeblock, presence: true , on: :step_2
 
 	def get_schedtb_name
 		self.sched_timeblock.nil? ? "Not Defined" : Timeblock.find(self.sched_timeblock).name
@@ -53,7 +58,6 @@ class Delivery < ApplicationRecord
     self.sched_date = Time.now.utc.to_date if self.sched_date.nil?
     self.delivered = false if self.delivered.nil?
     self.deleted = false if self.deleted.nil?
-    self.successful = false if self.successful.nil?
     self.price = 0 if self.price.nil?
   end
 

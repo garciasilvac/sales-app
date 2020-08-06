@@ -2,7 +2,7 @@
 <h3><%=t('.title')%></h3>
 </div>
 
-<% if action_name == ('edit_paid' || 'update_paid')%>
+<% if ['edit_paid','update_paid'].include? action_name%>
     <%= render 'form_step_2', cost: @cost %>
 <%else%>
     <%= render 'form', cost: @cost %>

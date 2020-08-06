@@ -74,8 +74,12 @@ class DeliveriesController < ApplicationController
   end
 
   def update_step_2
+    @delivery.real_date = delivery_params[:real_date]
+    @delivery.real_timeblock = delivery_params[:real_timeblock]
+    @delivery.successful = delivery_params[:successful]
+    @delivery.driver_comment = delivery_params[:driver_comment]
     respond_to do |format|
-      if @delivery.update(delivery_params)
+      if @delivery.save context: :step_2
         @delivery.update(delivered: true)
         format.html { redirect_to driver_index_path, notice: t(".success") }
         format.json { render :show, status: :ok, location: @delivery }

@@ -28,8 +28,8 @@ class ShoppingCartsController < ApplicationController
     @shopping_cart = @sale.shopping_carts.new(shopping_cart_params)
 
     respond_to do |format|
-      @shopping_cart.subtotal = @shopping_cart.product_q * @shopping_cart.product.price
       if @shopping_cart.save
+        @shopping_cart.update(subtotal:@shopping_cart.product_q * @shopping_cart.product.price) 
         @sale.update(total_amount: @sale.total_amount + @shopping_cart.subtotal)
         format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :created, location: @shopping_cart }
@@ -48,7 +48,6 @@ class ShoppingCartsController < ApplicationController
         old_subtotal = @shopping_cart.subtotal
         @shopping_cart.update(subtotal: @shopping_cart.product_q * Product.find(@shopping_cart.product_id).price)
         @sale.update(total_amount: @sale.total_amount - old_subtotal + @shopping_cart.subtotal)
-        ## AGREGAR SALE TOTAL AMOUNT UPDATE
         format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :ok, location: @shopping_cart }
       else
