@@ -20,12 +20,12 @@ class Sale < ApplicationRecord
 
   def reference_existance_delivery_type
     if delivery_type_id.nil? || !(DeliveryType.exists?(id: delivery_type_id))
-      errors.add(:delivery_type, :required)
+      errors.add(:delivery_type_id, :required)
     end
   end
   def reference_existance_payment_type
     if payment_type_id.nil? || !(PaymentType.exists?(id: payment_type_id))
-      errors.add(:payment_type, :required)
+      errors.add(:payment_type_id, :required)
     end
   end
 

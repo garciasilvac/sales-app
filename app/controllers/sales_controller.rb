@@ -140,14 +140,15 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
 
   def update_step_3
+    @sale.payment_type_id = sale_params[:payment_type_id]
     respond_to do |format|
-      if @sale.update(params:sale_params, context: :step_3)
+      if @sale.save context: :step_3
         ## comments
         @sale.update(paid: true)
         format.html { redirect_to sales_path, notice: t(".paid") }
         format.json { render :show, status: :ok, location: @sale }
       else
-        format.html { render :edit_step_3 }
+        format.html { render :edit }
         format.json { render json: @sale.errors, status: :unprocessable_entity }
       end
     end
