@@ -204,10 +204,11 @@ $(document).ready(function () {
         yAxes: [{
           ticks: {
             callback: function(value, index, values) {
-              if(parseInt(value) >= 1e6){
-                return (parseFloat(value)/1e6).toFixed(1) + 'MM';
-              } else if(parseInt(value) >= 1e3){
-                return (parseFloat(value)/1e3) + 'M';
+              const vnum = parseFloat(value)
+              if(Math.abs(vnum) >= 1e6){
+                return (vnum/1e6).toFixed(1) + 'MM';
+              } else if(Math.abs(vnum) >= 1e3){
+                return (vnum/1e3) + 'M';
               }else {
                 return value;
               }
