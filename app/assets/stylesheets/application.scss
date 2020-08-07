@@ -168,7 +168,6 @@ table{
 
 #mainMenu{
 	@extend .navbar;
-	@extend .navbar-expand-lg;
 	@extend .navbar-dark;
 	position: -webkit-sticky;
 	position: -moz-sticky;
@@ -182,6 +181,9 @@ table{
 
 	.navbar-brand{
 		padding:0px;
+		height:50px;
+		width:50px;
+		margin-left:5px;
 	}
 	
 	ul{
