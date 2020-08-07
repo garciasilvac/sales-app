@@ -194,3 +194,27 @@ $(document).on("click",".hamburger", function() {
   $(this).toggleClass("is-active");
     // Do something else, like open/close menu
   });
+
+
+$(document).ready(function () {
+  var chart = Chartkick.charts["chart-1"];
+  chart.setOptions({
+    library:{
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: function(value, index, values) {
+              if(parseInt(value) >= 1e6){
+                return (parseFloat(value)/1e6).toFixed(1) + 'MM';
+              } else if(parseInt(value) >= 1e3){
+                return (parseFloat(value)/1e3) + 'M';
+              }else {
+                return value;
+              }
+            }
+          }
+        }]
+      }
+    }
+  });
+});

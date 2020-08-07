@@ -24,8 +24,11 @@
 		{name: t(".costs"), data: costs, color: ["#FF0F00"]},
 		{name: t(".earnings"), data: e, color: ["#613F00"],dataset: {type: "line"}}
 		],
-		thousands: ".", prefix: "$ ", xmin: "2020-01-01", xmax: "2021-01-01", ytitle: t(".amount"), title: t(".margin"), download: {filename: "#{Time.now.to_formatted_s(:number)}_margin"},  library:{animation: { easing: 'easeOutQuad' }}
+		id:"chart-1", xmin: "2020-01-01", xmax: "2021-01-01", ytitle: t(".amount"), title: t(".margin"), download: {filename: "#{Time.now.to_formatted_s(:number)}_margin"},  
+		library:{
+			animation:{ easing: 'easeOutQuad' }
+		}
 	%>
-	<%= column_chart Sale.group_by_month(:sale_datetime, format:dateformat).count(:id),thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], ytitle: t(".quantity") , title: t(".sales"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
-	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:dateformat).sum(:product_q), thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], ytitle: t(".quantity"), title: t(".products"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
+	<%= column_chart Sale.group_by_month(:sale_datetime, format:dateformat).count(:id),id:"chart-2",thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#F7E6B2"], ytitle: t(".quantity") , title: t(".sales"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
+	<%= column_chart ShoppingCart.joins(:sale).group_by_month(:sale_datetime, format:dateformat).sum(:product_q), id:"chart-3",thousands:".", xmin: "2020-01-01", xmax: "2021-01-01", colors: ["#CC5C29"], ytitle: t(".quantity"), title: t(".products"), defer:true, library:{animation: { easing: 'easeOutQuad' }}%>
 </div>
