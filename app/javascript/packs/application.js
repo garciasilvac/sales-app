@@ -215,7 +215,20 @@ $(document).ready(function () {
             }
           }
         }]
+      },
+      tooltips: { 
+        callbacks: {
+                      label: function(tooltipItem, data) {
+                          return "$ " + tooltipItem.yLabel.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+                      },
+                  }
+      },
+      animation:{ easing: 'easeOutQuad' },
+      title: {
+        display: true,
+        text: 'Resultado Acumulado'
       }
-    }
+    },
+    download: {filename: "#{Time.now.to_formatted_s(:number)}_margin"}
   });
 });

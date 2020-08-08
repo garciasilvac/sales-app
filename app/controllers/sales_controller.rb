@@ -4,12 +4,53 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    #@sales = Sale.all.order(sale_datetime: :desc)
     
+    ##### INDEX DATA #######
+
     pre_sales = Sale.all.order(sale_datetime: :desc)
     paid_sales = [false,true]
     @sales = paid_sales.map {|val| [val,pre_sales.where(paid: val)]}
     
+    ##### INDEX DASHBOARD ########
+
+    # -------------- Sales, costs and earnings ($)---------------
+
+    dateformat = "%b%y"
+    @salesdata = Sale.group_by_month(:sale_datetime, format:dateformat).sum(:total_amount)
+    @costsdata = Cost.group_by_month(:cost_datetime, format:dateformat).sum(:value)
+    months = (@salesdata.keys + @costsdata.keys).uniq
+    @e = Hash.new
+    months.each do |m|
+      if @salesdata[m] == nil
+        @e[m] = -@costsdata[m]
+      elsif @costsdata[m] == nil
+        @e[m] = @salesdata[m]
+      else
+        @e[m] = @salesdata[m]-@costsdata[m]
+      end
+    end
+
+    @e.inject(0) do |sum,(date,total)|
+      @e[date]=sum+total
+    end
+
+    # -------------- Sales (q) ---------------
+
+    @salesq = Sale.group_by_month(:sale_datetime, format:dateformat).count(:id)
+
+    # -------------- products (q) ---------------
+
+    phash = Hash.new
+    Product.where(deleted:false).each do |p|
+      phash[p.name] = ShoppingCart.where(product_id: p.id).joins(:sale).group_by_month(:sale_datetime, format:dateformat).sum(:product_q)
+    end
+
+    @pdata = []
+    phash.each do |k,v|
+			@pdata << {name: k, data: v}
+		end
+
+
   end
 
   # GET /sales/1
