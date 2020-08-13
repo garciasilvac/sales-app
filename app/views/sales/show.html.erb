@@ -32,7 +32,7 @@
 
 <div class="btn-group">
   <%= link_to sale_shopping_carts_path(@sale) do%> 
-<i class="fa fa-home" aria-hidden="true"> (<%=@sale.shopping_carts.count%>)</i>
+<i class="fas fa-cart-plus" aria-hidden="true"> (<%=@sale.shopping_carts.count%>)</i>
 <%end%>
 <%= link_to edit_sale_path(@sale) do%>
   <i class="fas fa-pencil-alt"></i>

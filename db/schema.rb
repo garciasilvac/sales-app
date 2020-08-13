@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_143608) do
+ActiveRecord::Schema.define(version: 2020_08_09_220620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,6 +142,13 @@ ActiveRecord::Schema.define(version: 2020_07_22_143608) do
     t.index ["subtype_id"], name: "index_products_on_subtype_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sales", force: :cascade do |t|
     t.datetime "sale_datetime"
     t.bigint "client_id", null: false
@@ -209,6 +216,16 @@ ActiveRecord::Schema.define(version: 2020_07_22_143608) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.boolean "deleted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -238,4 +255,6 @@ ActiveRecord::Schema.define(version: 2020_07_22_143608) do
   add_foreign_key "shopping_carts", "products"
   add_foreign_key "shopping_carts", "sales"
   add_foreign_key "subtypes", "types"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

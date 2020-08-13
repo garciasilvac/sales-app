@@ -1,4 +1,5 @@
 class PointOfSalesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_point_of_sale, only: [:show, :edit, :update, :destroy]
 
   # GET /point_of_sales

@@ -1,4 +1,5 @@
 class DeliveriesController < ApplicationController
+  load_and_authorize_resource
   before_action :get_sale, except: :driver_index
   before_action :set_delivery, only: [:show, :edit, :edit_step_2, :update, :update_step_2, :destroy]
 

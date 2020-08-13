@@ -15,5 +15,13 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
 		sales_path	
 	end
+
+	rescue_from CanCan::AccessDenied do |exception|
+		respond_to do |format|
+		  format.json { head :forbidden, content_type: 'text/html' }
+		  format.html { redirect_back fallback_location: '/', allow_other_host: false, alert: exception.message }
+		  format.js   { head :forbidden, content_type: 'text/html' }
+		end
+	  end
 	
 end

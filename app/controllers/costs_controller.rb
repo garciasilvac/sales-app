@@ -1,4 +1,5 @@
 class CostsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cost, only: [:show, :edit, :update, :edit_paid, :update_paid, :destroy]
   require 'mini_magick'
 

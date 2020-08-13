@@ -1,4 +1,5 @@
 class SubtypesController < ApplicationController
+  load_and_authorize_resource
   before_action :get_type, :sort_by_full_subtype
   before_action :set_subtype, only: [:show, :edit, :update, :destroy]
 

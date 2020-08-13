@@ -1,4 +1,5 @@
 class AdressesController < ApplicationController
+  load_and_authorize_resource
   before_action :get_parent
   before_action :set_adress, only: [:show, :edit, :update, :destroy]
   before_action :puts_parent

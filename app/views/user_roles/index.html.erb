@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Roles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% User.all.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.roles.nil? %>
+            No roles yet
+          <% else %>
+            <% user.user_roles.each do |ur| %>
+              <%= ur.role.name %>
+              <%= link_to 'Show', ur %> |
+              <%= link_to 'Edit', edit_user_role_path(ur) %> |
+              <%= link_to 'Destroy', ur, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Role', new_user_role_path %>

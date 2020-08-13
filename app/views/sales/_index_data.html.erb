@@ -5,7 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th><%=Sale.human_attribute_name(:paid)%></th>
+      <% if can? :manage, Sale%>
+        <th><%=Sale.human_attribute_name(:paid)%></th>
+      <% end %>
       <th><%=Sale.human_attribute_name(:sale_datetime)%></th>
       <th><%=Sale.human_attribute_name(:client_id)%></th>
       <th><%=Sale.human_attribute_name(:total_amount)%></th>
@@ -13,7 +15,12 @@
       <th><%=Sale.human_attribute_name(:payment_type_id)%></th>
       <th><%=Sale.human_attribute_name(:created_at)%></th>
       <th><%=Sale.human_attribute_name(:updated_at)%></th>
-      <th colspan="5"></th>
+      <%if can? :manage, Sale%>
+        <th colspan="5"></th>
+      <% else %>
+        <th colspan="3"></th>
+      <% end %>
+
     </tr>
   </thead>
 
@@ -25,17 +32,18 @@
     <% else %>
     <% sales.each do |sale| %>
       <tr>
-          <% if sale.paid? %>
-            <td class="tIcon">
-              <i class="far fa-check-circle" style="color:Green"></i>
-          <% else %>
-            <td class="buttonsWarn">
-              <%= link_to edit_step_3_sale_path(sale), class: "tButton" do%>
-              <i class="fas fa-clipboard-check fa-lg"></i>
-          <%end%>
-          <% end %>
-          
+          <% if can? :manage, Sale%>
+            <% if sale.paid? %>
+              <td class="tIcon">
+                <i class="far fa-check-circle" style="color:Green"></i>
+            <% else %>
+              <td class="buttonsWarn">
+                <%= link_to edit_step_3_sale_path(sale), class: "tButton" do%>
+                  <i class="fas fa-clipboard-check fa-lg"></i>
+                <%end%>
+            <% end %>
         </td>
+        <% end %>
         <td class="tText"><%= (sale.sale_datetime.nil? or sale.sale_datetime.blank?) ? "Undefined" : l(sale.sale_datetime) %></td>
         <td class="tText"><%= sale.client.formatted_name(:reverse) %></td>
         <td class="tText"><%= number_to_currency(sale.total_amount) %></td>
@@ -55,14 +63,16 @@
           <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttonsPrim"><%= link_to edit_sale_path(sale), class: "tButton" do%>
-          <i class="fas fa-pencil-alt"></i>
-          <% end %>
-        </td>
-        <td class="buttonsDel"><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "tButton" do%>
-          <i class="far fa-trash-alt"></i>
-          <% end %>
-        </td>
+        <% if can? :manage, sale%>
+          <td class="buttonsPrim"><%= link_to edit_sale_path(sale), class: "tButton" do%>
+            <i class="fas fa-pencil-alt"></i>
+            <% end %>
+          </td>
+          <td class="buttonsDel"><%= link_to sale, method: :delete, data: { confirm: t('.del_confirm') }, class: "tButton" do%>
+            <i class="far fa-trash-alt"></i>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
     <% end %>

@@ -1,10 +1,15 @@
 <thead>
 	<tr>
-	  <th><%=Client.human_attribute_name("full_name")%></th>
-	  <th colspan="2"><%=Client.human_attribute_name("phone_number")%></th>
-	  <th><%=Client.human_attribute_name("email")%></th>
-	  <th><%=Client.human_attribute_name("created_at")%></th>
-	  <th><%=Client.human_attribute_name("updated_at")%></th>
-	  <th colspan="4"></th>
+		<th><%=Client.human_attribute_name("full_name")%></th>
+		<th colspan="2"><%=Client.human_attribute_name("phone_number")%></th>
+		<th><%=Client.human_attribute_name("email")%></th>
+		<th><%=Client.human_attribute_name("created_at")%></th>
+		<th><%=Client.human_attribute_name("updated_at")%></th>
+		<% if can? :manage, Client%>
+			<th colspan="4"></th>
+		<% else %>
+			<th colspan="2"></th>
+		<% end %>
+
 	</tr>
 </thead>

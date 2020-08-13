@@ -1,0 +1,154 @@
+es-CL:
+  admin:
+    js:
+      true: Verdadero
+      false: Falso
+      is_present: Está presente
+      is_blank: Está en blanco
+      date: Fecha ...
+      between_and_: Entre ... y ...
+      today: Hoy
+      yesterday: Ayer
+      this_week: Esta semana
+      last_week: La semana pasada
+      number: Númuero ...
+      contains: Contiene
+      is_exactly: es exactamente
+      starts_with: Empieza con
+      ends_with: Termina con
+      too_many_objects: "Demasiados objetos, use el campo de búsqueda de arriba"
+      no_objects: "No se encontraron objetos"
+    loading: "Cargando..."
+    toggle_navigation: Activar navegacion
+    home:
+      name: "Inicio"
+    pagination:
+      previous: "&laquo; Anterior"
+      next: "Siguiente &raquo;"
+      truncate: "…"
+    misc:
+      search: "Buscar"
+      filter: "Filtrar"
+      reset_filters: "Borrar filtros"
+      refresh: "Actualizar"
+      show_all: "Mostrar todo"
+      add_filter: "Agregar filtro"
+      bulk_menu_title: "Items seleccionados"
+      remove: "Quitar"
+      add_new: "Agregar nuevo"
+      chosen: "%{name} seleccionado"
+      chose_all: "Seleccionar todo"
+      clear_all: "Borrar todo"
+      up: "Arriba"
+      down: "Abajo"
+      navigation: "Navegación"
+      root_navigation: "Acciones"
+      navigation_static_label: "Links"
+      log_out: "Cerrar sesión"
+      time_ago: "Hace %{time}"
+      ago: "hace"
+      more: "%{count} %{models_name} más"
+    flash:
+      successful: "%{name} %{action} correctamente"
+      error: "%Falló %{action} de{name}"
+      noaction: "No se tomaron acciones"
+      model_not_found: "No se encontró el modelo '%{model}'"
+      object_not_found: "No se encontró %{model} con id '%{id}'"
+    table_headers:
+      model_name: "Nombre del modelo"
+      last_created: "Ultimo creado"
+      records: "Registros"
+      username: "usuario"
+      changes: "Cambios"
+      created_at: "Fecha/Hora"
+      item: "Item"
+      message: "Mensaje"
+    actions:
+      dashboard:
+        title: "Administración del sitio"
+        menu: "Dashboard"
+        breadcrumb: "Dashboard"
+      index:
+        title: "Listado de %{model_label_plural}"
+        menu: "Lista"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "Detalles del %{model_label} '%{object_label}'"
+        menu: "Mostrar"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "Mostrar en app"
+      new:
+        title: "Nuevo %{model_label}"
+        menu: "Agregar nuevo"
+        breadcrumb: "Nuevo"
+        link: "Agregar un nuevo %{model_label}"
+        done: "Creado"
+      edit:
+        title: "Editar %{model_label} '%{object_label}'"
+        menu: "Editar"
+        breadcrumb: "Editar"
+        link: "Editar este %{model_label}"
+        done: "Actualizado"
+      delete:
+        title: "Eliminar %{model_label} '%{object_label}'"
+        menu: "Eliminar"
+        breadcrumb: "Eliminar"
+        link: "Eliminar '%{object_label}'"
+        done: "Eliminado"
+      bulk_delete:
+        title: "Eliminar %{model_label_plural}"
+        menu: "Eliminación masiva"
+        breadcrumb: "Eliminación masiva"
+        bulk_link: "Eliminar los %{model_label_plural} seleccionados"
+      export:
+        title: "Exportar %{model_label_plural}"
+        menu: "Exportar"
+        breadcrumb: "Exportar"
+        link: "Exportar los %{model_label_plural} encontrados"
+        bulk_link: "Exportar los %{model_label_plural} seleccionados"
+        done: "Exportados"
+      history_index:
+        title: "Hitorial para %{model_label_plural}"
+        menu: "Historial"
+        breadcrumb: "Historial"
+      history_show:
+        title: "Historial para %{model_label} '%{object_label}'"
+        menu: "Historial"
+        breadcrumb: "Historial"
+    form:
+      cancel: "Cancelar"
+      basic_info: "Informacion básica"
+      required: "Obligatorio"
+      optional: "Opcional"
+      one_char: "caracter"
+      char_length_up_to: "largo hasta"
+      char_length_of: "largo de"
+      save: "Guardar"
+      save_and_add_another: "Guardar y Sigueinte"
+      save_and_edit: "Guardar y Editar"
+      all_of_the_following_related_items_will_be_deleted: "? Los sigueintes item relacionados serán eliminados o quedarán sin relación alguna:"
+      are_you_sure_you_want_to_delete_the_object: "Estas seguro de eliminar el %{model_name}"
+      confirmation: "Estoy seguro"
+      bulk_delete: "Los siguientes objetos serán eliminados, lo que podría eliminar o dejar sin relación alguna a sus dependencias relacionadas:"
+      new_model: "%{name} (Nuevo)"
+    export:
+      confirmation: "Exportar hacia %{name}"
+      select: "Seleccione los campos a exportar"
+      select_all_fields: "Seleccionar todos los campos"
+      fields_from: "Campos desde %{name}"
+      fields_from_associated: "Camposa desde el %{name} asociado"
+      display: "Mostrar %{name}: %{type}"
+      options_for: "Opciones para %{name}"
+      empty_value_for_associated_objects: "<vacío>"
+      click_to_reverse_selection: 'Click para deshacer selección'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "Codificar usando"
+        encoding_to_help: "Seleccione la codificación de salida. Deje en blanco para conservar la codificación de entrada actual: (%{name})"
+        skip_header: "Sin encabezado"
+        skip_header_help: "No genera encabezado (los campos no tendrán descripción)"
+        default_col_sep: ","
+        col_sep: "Separador de columnas"
+        col_sep_help: "Dejar en blanco para usar valor predeterminado ('%{value}')" # value is default_col_sep

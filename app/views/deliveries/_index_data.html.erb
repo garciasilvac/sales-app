@@ -11,17 +11,23 @@
   <thead>
     <tr>
       <th><%=t('.directions')%></th>
-      <th><%=Delivery.human_attribute_name(:delivered)%></th>
+      <% if can? :manage, Delivery%>
+        <th><%=Delivery.human_attribute_name(:delivered)%></th>
+      <% end %>
       <th><%=Delivery.human_attribute_name(:sched_date)%></th>
       <th><%=Adress.human_attribute_name(:full_adress)%></th>
       <th><%=Client.model_name.human%></th>
       <th><%=Product.model_name.human%></th>
       <% if action_name == 'index'%>
-      <th><%=Delivery.human_attribute_name(:price)%></th>
-      <th><%=Delivery.human_attribute_name(:real_date)%></th>
-      <th><%=Delivery.human_attribute_name(:successful)%></th>
-      <th><%=Delivery.human_attribute_name(:driver_comment)%></th>
-      <th colspan="3"></th>
+        <th><%=Delivery.human_attribute_name(:price)%></th>
+        <th><%=Delivery.human_attribute_name(:real_date)%></th>
+        <th><%=Delivery.human_attribute_name(:successful)%></th>
+        <th><%=Delivery.human_attribute_name(:driver_comment)%></th>
+        <% if can? :manage, Delivery%>
+          <th colspan="3"></th>
+        <%else%>
+          <th colspan="1"></th>
+        <%end%>
       <%end%>
     </tr>
   </thead>
@@ -29,7 +35,7 @@
   <tbody>
     <% if deliveries.nil? || deliveries.empty? %>
       <tr>
-        <td colspan="14"> <%= t('.no_deliveries')%> </td>
+        <div> <%= t('.no_deliveries')%> </div>
       </tr>
     <% else %>
     <% deliveries.each do |delivery| %>
@@ -44,10 +50,12 @@
               <i class="fas fa-directions"></i>
             <%end%>
           </td>
-        <td class="buttonsWarn"><%= link_to edit_step_2_sale_delivery_path(delivery.sale_id,delivery), class: "tButton" do%>
-            <i class="far fa-check-circle"></i>
-          <% end %>
-        </td>
+          <% if can? :manage, Delivery%>
+            <td class="buttonsWarn"><%= link_to edit_step_2_sale_delivery_path(delivery.sale_id,delivery), class: "tButton" do%>
+                <i class="far fa-check-circle"></i>
+              <% end %>
+            </td>
+          <%end%>
         <%end%>
         
         <td class="tText"><%= delivery.sched_date %> | <%= delivery.get_schedtb_name %></td>
@@ -64,22 +72,23 @@
         </td>
 
         <% if action_name == 'index'%>
-        <td class="tText"><%=number_to_currency(delivery.price)%></td>
-        <td class="tText"><%= delivery.real_date %> <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : " | " + delivery.get_realtb_name %></td>
-        <td class='tIcon'>
-          <% if delivery.successful.nil? %>
-            <i class="fas fa-exclamation-triangle" style="color:Orange"></i>
-          <% elsif delivery.successful %>
-            <i class="far fa-check-circle" style="color:Green"></i>
-          <%else%>
-            <i class="far fa-times-circle" style="color:Red"></i>
-          <%end%>
-        </td>
-        <td class="tText"><%= delivery.driver_comment %></td>
-            <td class="buttonsPrim"><%= link_to [@sale,delivery], class: "tButton" do%>
-              <i class="fas fa-info-circle" aria-hidden="true"></i>
-              <% end %>
-            </td>
+          <td class="tText"><%=number_to_currency(delivery.price)%></td>
+          <td class="tText"><%= delivery.real_date %> <%= delivery.real_timeblock.nil? ? delivery.real_timeblock : " | " + delivery.get_realtb_name %></td>
+          <td class='tIcon'>
+            <% if delivery.successful.nil? %>
+              <i class="fas fa-exclamation-triangle" style="color:Orange"></i>
+            <% elsif delivery.successful %>
+              <i class="far fa-check-circle" style="color:Green"></i>
+            <%else%>
+              <i class="far fa-times-circle" style="color:Red"></i>
+            <%end%>
+          </td>
+          <td class="tText"><%= delivery.driver_comment %></td>
+          <td class="buttonsPrim"><%= link_to [@sale,delivery], class: "tButton" do%>
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <% if can? :manage, Delivery%>
             <td class="buttonsPrim"><%= link_to edit_sale_delivery_path(@sale,delivery), class: "tButton" do%>
               <i class="fas fa-pencil-alt"></i>
               <% end %>
@@ -88,6 +97,7 @@
               <i class="far fa-trash-alt"></i>
               <%end%>
             </td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

@@ -1,4 +1,5 @@
 class ShoppingCartsController < ApplicationController
+  load_and_authorize_resource
   before_action :get_sale
   before_action :set_shopping_cart, only: [:show, :edit, :update, :destroy]
 

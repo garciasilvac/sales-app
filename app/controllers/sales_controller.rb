@@ -1,4 +1,5 @@
 class SalesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_sale, only: [:show, :new_adress, :create_adress, :edit, :edit_step_2, :edit_step_3, :update, :update_step_2, :update_step_3, :destroy]
 
   # GET /sales
@@ -48,7 +49,9 @@ class SalesController < ApplicationController
     @pdata = []
     phash.each do |k,v|
 			@pdata << {name: k, data: v}
-		end
+    end
+    
+    @pdata.sort_by {|p| p[:name]}
 
 
   end

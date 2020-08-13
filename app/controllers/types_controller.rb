@@ -1,4 +1,5 @@
 class TypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_type, only: [:show, :edit, :update, :destroy]
 
   # GET /types

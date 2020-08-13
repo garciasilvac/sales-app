@@ -1,10 +1,11 @@
 <h3><i class="fas fa-user-friends"></i> <%=t('.title', count: Client.count)%></h3>
 
 <div id="clientsTopMenu" class="d-flex flex-row mb-2 w-100">
+  <% if can? :create, Client%>
     <%= link_to new_client_path do%>
       <i class="fas fa-plus"></i> <%=Client.model_name.human%>
-
     <% end %>
+  <% end %>
     <%= render partial: 'client_search_box' %>
 </div>
 
@@ -17,6 +18,8 @@
 </table>
 </div>
 
-<%= link_to new_client_path do%>
-  <i class="fas fa-plus"></i> <%=Client.model_name.human%>
+<% if can? :create, Client%>
+  <%= link_to new_client_path do%>
+    <i class="fas fa-plus"></i> <%=Client.model_name.human%>
+  <% end %>
 <% end %>

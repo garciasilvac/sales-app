@@ -1,4 +1,5 @@
 class CostClassesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cost_class, only: [:show, :edit, :update, :destroy]
 
   # GET /cost_classes

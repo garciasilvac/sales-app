@@ -1,31 +1,38 @@
 <h3><i class="fas fa-dollar-sign"></i> <%=t('.title')%></h3>
 
-<%= link_to new_sale_path do %>
-<i class="fas fa-plus"></i> <%=Sale.model_name.human%>
+<% if can? :create, Sale%>
+  <%= link_to new_sale_path do %>
+  <i class="fas fa-plus"></i> <%=Sale.model_name.human%>
+  <% end %>
 <% end %>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs mt-3" role="tablist">
   <li class="nav-item">
-    <a class="nav-link navtab active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true"><%=t('.dashboard')%></a>
+    <a class="nav-link navtab" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true"><%=t('.dashboard')%></a>
+    <!--a class="nav-link navtab<if cannot? :manage, Sale > disabled< end >" -->
   </li>
-  <li class="nav-item">
-    <a class="nav-link navtab" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="false"><%=t('.data')%></a>
-  </li>
+  
+    <li class="nav-item">
+      <a class="nav-link navtab active" id="data-tab" data-toggle="tab" href="#data" role="tab" aria-controls="data" aria-selected="false"><%=t('.data')%></a>
+    </li>
+  
 </ul>
 
 <!-- Tab panes -->
-<div class="tab-content mb-3">
-  <div class="tab-pane active" id="dashboard">
+<div class="tab-content mt-3 mb-3">
+  <div class="tab-pane fade" id="dashboard">
       <%= render 'index_dashboard' %>
   </div>
-  <div class="tab-pane fade" id="data">
+  <div class="tab-pane active" id="data">
     <% @sales.each do |ps,s|%>
       <%= render 'index_data', sales:s, paid_sales:ps %>
     <%end%>
   </div>
 </div>
 
-<%= link_to new_sale_path do %>
-<i class="fas fa-plus"></i> <%=Sale.model_name.human%>
+<% if can? :create, Sale%>
+  <%= link_to new_sale_path do %>
+  <i class="fas fa-plus"></i> <%=Sale.model_name.human%>
+  <% end %>
 <% end %>

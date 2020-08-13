@@ -1,6 +1,6 @@
   <% if @clients.nil? || @clients.empty? %>
       <tr>
-        <td colspan="14"> No clients yet :) </td>
+        <div> No clients yet :) </div>
       </tr>
   <% else %>
     <% @clients.each do |client| %>
@@ -19,14 +19,18 @@
           <i class="fas fa-info-circle" aria-hidden="true"></i>
           <% end %>
         </td>
-        <td class="buttonsPrim"><%= link_to edit_client_path(client),class: "tButton" do%>
-          <i class="fas fa-pencil-alt"></i>
-          <% end %>
-        </td>
-        <td class="buttonsDel"><%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "tButton" do%>
-              <i class="far fa-trash-alt"></i>
+        <% if can? :manage, client %>
+          <td class="buttonsPrim">
+            <%= link_to edit_client_path(client),class: "tButton" do%>
+              <i class="fas fa-pencil-alt"></i>
             <% end %>
-        </td>
+          </td>
+          <td class="buttonsDel">
+              <%= link_to client, method: :delete, data: { confirm: t('.del_confirm', user: client.formatted_name(:full)) } , class: "tButton" do%>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   <% end %>

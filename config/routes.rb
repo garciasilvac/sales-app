@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
  
-  resources :stocks
     scope '(:locale)', locale: /es-CL|en/ do
 
       root to: 'publics#home'
@@ -63,6 +62,10 @@ Rails.application.routes.draw do
       resources :types do
         resources :subtypes
       end
+
+      resources :user_roles
+      resources :roles
+      resources :stocks
 
       mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     end 
