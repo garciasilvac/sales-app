@@ -1,13 +1,48 @@
+<% puts "using rails mailer"%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      @font-face{
+        font-family: 'montserratregular';
+          src: font-url('montserrat-regular-webfont.woff2') format('woff2'),
+          font-url('montserrat-regular-webfont.woff') format('woff'),
+          font-url('Montserrat-Regular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+      }
+      @font-face{
+        font-family: 'montserratregular';
+          src: font-url('montserrat-bold-webfont.woff2') format('woff2'),
+              font-url('montserrat-bold-webfont.woff') format('woff'),
+              font-url('Montserrat-Bold.ttf') format('truetype');
+          font-weight: Bold;
+          font-style: normal;
+      }
+      html, body{
+        	height: 100%;
+          font-family: montserratregular;
+          font-weight: normal;
+          box-sizing: border-box;
+          background:#F7E6B2;
+          color: #613f00;
+      }
+      #minFullMailContainer{
+        min-height:100%;
+      }
+      #overflowMailContainer{
+        overflow: auto;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="minFullMailContainer">
+        <div id="overflowMailContainer">
+         <%= image_tag "banners/logoimg2.png", style: "height:100px; width:100px; display:block;" %>
+          <%= yield %>
+        </div>
+    </div>
   </body>
 </html>

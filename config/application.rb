@@ -18,7 +18,12 @@ module Pbutter
     
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = ["es-CL", :en]
-  	config.i18n.default_locale = "es-CL"
+    config.i18n.default_locale = "es-CL"
+    
+    config.to_prepare do
+      # Or to configure mailer layout
+      Devise::Mailer.layout "mailer" # email.haml or email.erb
+    end
     
   end
 end
