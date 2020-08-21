@@ -9,6 +9,7 @@ es-CL:
         sale_id: Venta
         product_id: Producto
         product_q: Cantidad
+        discount: Descuento
         subtotal: Subtotal
         deleted: Eliminado
        

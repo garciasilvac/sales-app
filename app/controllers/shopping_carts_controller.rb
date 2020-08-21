@@ -30,7 +30,7 @@ class ShoppingCartsController < ApplicationController
 
     respond_to do |format|
       if @shopping_cart.save
-        @shopping_cart.update(subtotal:@shopping_cart.product_q * @shopping_cart.product.price) 
+        @shopping_cart.update(subtotal:(@shopping_cart.product_q * @shopping_cart.product.price * (1 - (@shopping_cart.discount/100))).round) 
         @sale.update(total_amount: @sale.total_amount + @shopping_cart.subtotal)
         format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :created, location: @shopping_cart }
@@ -47,7 +47,7 @@ class ShoppingCartsController < ApplicationController
     respond_to do |format|
       if @shopping_cart.update(shopping_cart_params)
         old_subtotal = @shopping_cart.subtotal
-        @shopping_cart.update(subtotal: @shopping_cart.product_q * Product.find(@shopping_cart.product_id).price)
+        @shopping_cart.update(subtotal: (@shopping_cart.product_q * Product.find(@shopping_cart.product_id).price * (1 - (@shopping_cart.discount/100))).round)
         @sale.update(total_amount: @sale.total_amount - old_subtotal + @shopping_cart.subtotal)
         format.html { redirect_to sale_shopping_carts_path(@sale), notice: t(".success" , total: view_context.number_to_currency(@sale.shopping_carts.sum(:subtotal)))}
         format.json { render :show, status: :ok, location: @shopping_cart }
@@ -77,7 +77,7 @@ class ShoppingCartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shopping_cart_params
-      params.require(:shopping_cart).permit(:sale_id, :product_id, :product_q)
+      params.require(:shopping_cart).permit(:sale_id, :product_id, :product_q, :discount)
     end
 
     def get_sale

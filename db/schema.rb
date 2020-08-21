@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_161136) do
+ActiveRecord::Schema.define(version: 2020_08_20_233742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_161136) do
     t.bigint "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "discount"
     t.index ["product_id"], name: "index_shopping_carts_on_product_id"
     t.index ["sale_id"], name: "index_shopping_carts_on_sale_id"
   end

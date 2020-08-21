@@ -8,6 +8,7 @@
       <th colspan="2"><%=ShoppingCart.human_attribute_name(:product_id)%></th>
       <th><%=t(".unit_price")%></th>
       <th><%=ShoppingCart.human_attribute_name(:product_q)%></th>
+      <th><%=ShoppingCart.human_attribute_name(:discount)%></th>
       <th><%=ShoppingCart.human_attribute_name(:subtotal)%></th>
       <%if can? :manage, ShoppingCart%>
         <th colspan="3"></th>
@@ -30,6 +31,7 @@
         <td class="tText"><%= @sale.products.find(shopping_cart.product_id).name %></td>
         <td class="tText"><%= number_to_currency(@sale.products.find(shopping_cart.product_id).price) %></td>
         <td class="tText"><%= t shopping_cart.product_q %></td>
+        <td class="tText"><%= shopping_cart.discount %>%</td>
         <td class="tText"><%= number_to_currency(shopping_cart.subtotal) %></td>
         <td class="buttonsPrim"><%= link_to [@sale,shopping_cart], class: "tButton" do%>
            <i class="fas fa-info-circle" aria-hidden="true"></i>
