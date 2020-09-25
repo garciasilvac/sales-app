@@ -65,6 +65,7 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @sale = Sale.new
+    @sale.client = Client.find(params[:client]) unless params[:client].nil?
   end
 
   # GET /sales/1/new_adress
@@ -121,7 +122,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @adress.save
-        format.html { redirect_to new_sale_delivery_path(@sale), notice: t(".adress_created") }
+        format.html { redirect_to new_sale_delivery_path(@sale, adress: @adress), notice: t(".adress_created") }
         format.json { render :show, status: :created, location: @adress }
       else
         format.html { render 'adresses/new' }
@@ -135,7 +136,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to new_sale_path, notice: t(".client_created") }
+        format.html { redirect_to new_sale_path(client: @client) , notice: t(".client_created") }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render 'clients/new', alert: t(".problem") }

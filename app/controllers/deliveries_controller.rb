@@ -29,6 +29,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries/new
   def new
     @delivery = @sale.deliveries.new
+    @delivery.adress_id = params[:adress] unless params[:adress].nil?
   end
 
   # GET /deliveries/1/edit
